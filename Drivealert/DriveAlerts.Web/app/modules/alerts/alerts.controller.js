@@ -13,12 +13,25 @@
             IsConnectionViolations: true,
             IsCallViolationAlerts: true
         };
+        vm.searchAlerts = _searchAlerts;
+
+        _loadPhones();
+
+        $scope.$watch('vm.selectedPhone', function (current, original) {
+            if (current !== '') {
+                _searchAlerts();
+            }
+        });
 
         //  get phones for user
         function _loadPhones() {
             devicesService.getDevices()
                 .then(function (result) {//success
-                    vm.phones.push(result);
+                    //  todo: optimise this when API will be ready
+                    for (var i = 0; i < result.length; i++) {
+                        vm.phones.push(result[i].PhoneNumber);
+                    }
+
                     vm.selectedPhone = vm.phones[0];
                 }, function () {//fail
                 });
@@ -37,14 +50,5 @@
                     console.log(exc);
                 });
         }
-
-        vm.searchAlerts = _searchAlerts;
-        _loadPhones();
-
-        $scope.$watch('vm.selectedPhone', function (current, original) {
-            if (current !== '') {
-                _searchAlerts();
-            }
-        });
     }
 ]);

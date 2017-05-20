@@ -1,0 +1,14 @@
+﻿<div>
+    <form>
+        <input ng-model="vm.phone.PhoneNumber" />
+        <input ng-model="vm.phone.FirstName" />
+        <input ng-model="vm.phone.LastName" />
+        <select ng-model="vm.phone.OsType"
+                ng-init="vm.phone.OsType = vm.deviceTypes[0]"
+                ng-options="option.name for option in vm.deviceTypes">
+        </select>
+
+        <button type="submit" class="btn btn-success" ng-click="vm.saveDevice()">Save</button>
+        <button type="submit" class="btn btn-danger" ng-click="vm.cancel()">Cancel</button>
+    </form>
+</div>

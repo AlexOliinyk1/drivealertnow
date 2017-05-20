@@ -1,5 +1,17 @@
-﻿app.controller('DevicesController', [function () {
-    var self = this;
+﻿app.controller('DevicesController', ['DevicesService',
+    function (devicesService) {
+        var vm = this;
+        vm.text = "Devices";
+        vm.phones = [];
+        vm.$onInit = _loadDevices;
 
-    self.text = "Devices";
-}]);
+        function _loadDevices() {
+            devicesService.getDevices()
+                .then(function (result) {//success
+                    vm.phones = result;
+                });
+        }
+
+        _loadDevices();
+    }
+]);

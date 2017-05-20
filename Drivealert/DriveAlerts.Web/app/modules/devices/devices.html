@@ -1,3 +1,61 @@
-﻿<div>
-    Devices
+﻿<div class="row">
+    <div class="col-md-12">
+        Devices
+
+        <a class="btn btn-default" href="#!/add-device">Add device</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        User							
+    </div>
+    <div class="col-md-2">
+        Phone Number
+    </div>
+    <div class="col-md-1">
+        Activation Code
+    </div>
+    <div class="col-md-1">
+        Last Activity Date
+    </div>
+    <div class="col-md-1">
+        Install Date
+    </div>
+    <div class="col-md-1">
+        Phone
+    </div>
+    <div class="col-md-2">
+        Version
+    </div>
+    <div class="col-md-2">
+        Options
+    </div>
+</div>
+
+<div class="row" ng-repeat="phone in vm.phones">
+    <div class="col-md-2">
+        {{phone.User}}
+    </div>
+    <div class="col-md-2">
+        {{phone.PhoneNumber}}
+    </div>
+    <div class="col-md-1">
+        {{phone.ActivationCode}}
+    </div>
+    <div class="col-md-1">
+        {{phone.LastActivityDate}}
+    </div>
+    <div class="col-md-1">
+        {{phone.InstallDate}}
+    </div>
+    <div class="col-md-1">
+        {{phone.Phone}}
+    </div>
+    <div class="col-md-2">
+        {{phone.Version}}
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-danger">Delete</button>
+    </div>
 </div>
