@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Drive Alert Now</title>
-  
+
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/oneui.css" rel="stylesheet" />
-    <link href="Content/drivealertnow.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
 </head>
 
-<body ng-controller="DriveAlertNowCtrl" ng-cloak>
+<body ng-controller="DriveAlertNowController" ng-cloak>
     <div class="navbar navbar-static-top navbar-inverse">
         <div class="container">
             <div class="navbar-header">
@@ -29,11 +29,9 @@
                     <li ng-hide="!authentication.isAuth"><a href="#!/account">Account</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/video">Video</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/faq">FAQ</a></li>
-                    <li ng-hide="authentication.isAuth"><a href="http://www.drivealertnow.com/drivealertnow-product/"><i class="fa fa-shopping-cart"></i> BUY NOW</a></li>
-                    <li ng-hide="authentication.isAuth"><a href="http://pg.drivealertnow.com/activation/signupwizard.aspx"><i class="fa fa-key"></i> ACTIVATE</a></li>
+                    <li ng-hide="authentication.isAuth"><a href="#!/monthly-subscriptions"><i class="fa fa-shopping-cart"></i> BUY NOW</a></li>
+                    <li ng-hide="authentication.isAuth"><a href="#!/signup-wizard"><i class="fa fa-key"></i> ACTIVATE</a></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/login"><i class="fa fa-sign-in"></i> LOGIN</a></li>
-
-                   
                     <li ng-hide="!authentication.isAuth"><a href="" ng-click="logOut()">Logout</a></li>
                 </ul>
 
@@ -56,26 +54,29 @@
     <script src="Scripts/angular-route.min.js"></script>
     <script src="Scripts/angular-local-storage.min.js"></script>
 
+    <!-- Plugins -->
+
     <script src="Scripts/plugins.js"></script>
+
     <!-- Core -->
     <script src="app/core/app.js"></script>
     <script src="app/core/app.config.js"></script>
     <script src="app/core/app.controller.js"></script>
     <script src="app/core/app.run.js"></script>
-   
+
     <!-- Services -->
-    <script src="app/services/authInterceptorService.js"></script>
-    <script src="app/services/authService.js"></script>
-    <script src="app/services/alertService.js"></script>
-    
+    <script src="app/services/auth-interceptor.service.js"></script>
+    <script src="app/services/auth.service.js"></script>
+    <script src="app/services/alert.service.js"></script>
+
     <!-- Controllers -->
-    <script src="app/modules/login/loginCtrl.js"></script>
-    <script src="app/modules/alerts/alertsCtrl.js"></script>
-    <script src="app/modules/account/accountCtrl.js"></script>
-    <script src="app/modules/devices/devicesCtrl.js"></script>
-    <script src="app/modules/faq/faqCtrl.js"></script>
-    <script src="app/modules/settings/settingsCtrl.js"></script>
-    <script src="app/modules/video/videoCtrl.js"></script>
-    <script src="app/modules/reminder/reminderCtrl.js"></script>
+    <script src="app/modules/login/login.controller.js"></script>
+    <script src="app/modules/alerts/alerts.controller.js"></script>
+    <script src="app/modules/account/account.controller.js"></script>
+    <script src="app/modules/devices/devices.controller.js"></script>
+    <script src="app/modules/faq/faq.controller.js"></script>
+    <script src="app/modules/settings/settings.controller.js"></script>
+    <script src="app/modules/video/video.controller.js"></script>
+    <script src="app/modules/reminder-password/reminder-password.controller.js"></script>
 </body>
 </html>

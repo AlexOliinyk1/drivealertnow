@@ -1,55 +1,69 @@
 ﻿app.config(function ($routeProvider, $locationProvider) {
     $routeProvider.when('/', {
-        controller: 'AlertsCtrl',
+        controller: 'AlertsController',
         templateUrl: 'app/modules/alerts/alerts.html',
         controllerAs: 'vm',
         authorize: true
     });
 
     $routeProvider.when('/login', {
-        controller: 'LoginCtrl',
+        controller: 'LoginController',
         templateUrl: '/app/modules/login/login.html',
         controllerAs: 'vm'
     });
 
     $routeProvider.when('/account', {
-        controller: 'AccountCtrl',
+        controller: 'AccountController',
         templateUrl: '/app/modules/account/account.html',
         controllerAs: 'vm',
         authorize: true
     });
 
     $routeProvider.when('/devices', {
-        controller: 'DevicesCtrl',
+        controller: 'DevicesController',
         templateUrl: '/app/modules/devices/devices.html',
         controllerAs: 'vm',
         authorize: true
     });
 
     $routeProvider.when('/faq', {
-        controller: 'FaqCtrl',
+        controller: 'FaqController',
         templateUrl: '/app/modules/faq/faq.html',
         controllerAs: 'vm',
         authorize: true
     });
 
     $routeProvider.when('/settings', {
-        controller: 'SettingsCtrl',
+        controller: 'SettingsController',
         templateUrl: '/app/modules/settings/settings.html',
         controllerAs: 'vm',
         authorize: true
     });
 
     $routeProvider.when('/video', {
-        controller: 'VideoCtrl',
+        controller: 'VideoController',
         templateUrl: '/app/modules/video/video.html',
         controllerAs: 'vm',
         authorize: true
     });
 
-    $routeProvider.when('/reminder', {
-        controller: 'ReminderCtrl',
-        templateUrl: '/app/modules/reminder/reminder.html',
+    $routeProvider.when('/reminder-password', {
+        controller: 'ReminderPasswordController',
+        templateUrl: '/app/modules/reminder-password/reminder-password.html',
+        controllerAs: 'vm',
+        authorize: false
+    });
+
+    $routeProvider.when('/signup-wizard', {
+        controller: 'SignupWizardController',
+        templateUrl: '/app/modules/signup-wizard/signup-wizard.html',
+        controllerAs: 'vm',
+        authorize: false
+    });
+
+    $routeProvider.when('/monthly-subscriptions', {
+        controller: 'MonthlySubscriptionsController',
+        templateUrl: '/app/modules/monthly-subscriptions/monthly-subscriptions.html',
         controllerAs: 'vm',
         authorize: false
     });

@@ -1,4 +1,4 @@
-﻿app.controller('AlertsCtrl', ['$scope', 'AlertService',
+﻿app.controller('AlertsController', ['$scope', 'AlertService',
     function ($scope, alertService) {
         var vm = this;
 

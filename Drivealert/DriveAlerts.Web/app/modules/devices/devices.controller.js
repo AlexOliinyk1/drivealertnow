@@ -1,4 +1,4 @@
-﻿app.controller('DevicesCtrl', [function () {
+﻿app.controller('DevicesController', [function () {
     var self = this;
 
     self.text = "Devices";

@@ -1,4 +1,4 @@
-﻿app.controller('AccountCtrl', [function () {
+﻿app.controller('AccountController', [function () {
     var self = this;
 
     self.text = "account";

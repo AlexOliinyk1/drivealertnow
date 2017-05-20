@@ -1,4 +1,4 @@
-﻿app.controller('FaqCtrl', [function () {
+﻿app.controller('FaqController', [function () {
     var self = this;
 
     self.text = "FAQ";

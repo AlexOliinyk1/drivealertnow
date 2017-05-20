@@ -1,4 +1,4 @@
-﻿app.controller('DriveAlertNowCtrl', ['$scope', '$location', 'AuthService',
+﻿app.controller('DriveAlertNowController', ['$scope', '$location', 'AuthService',
     function ($scope, $location, AuthService) {
 
         function _logout() {

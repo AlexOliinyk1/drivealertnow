@@ -1,4 +1,4 @@
-﻿app.controller('SettingsCtrl', [function () {
+﻿app.controller('SettingsController', [function () {
     var self = this;
 
     self.text = "settings";

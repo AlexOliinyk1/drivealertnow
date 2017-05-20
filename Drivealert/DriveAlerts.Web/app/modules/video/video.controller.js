@@ -1,4 +1,4 @@
-﻿app.controller('VideoCtrl', [function () {
+﻿app.controller('VideoController', [function () {
     var self = this;
 
     self.text = "video";

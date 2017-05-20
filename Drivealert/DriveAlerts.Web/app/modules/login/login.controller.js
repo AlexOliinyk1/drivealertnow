@@ -1,4 +1,4 @@
-﻿app.controller('LoginCtrl', ['$location', 'AuthService', 'ngWebSettings', function ($location, AuthService, ngWebSettings) {
+﻿app.controller('LoginController', ['$location', 'AuthService', 'ngWebSettings', function ($location, AuthService, ngWebSettings) {
     var self = this;
 
     self.loginData = {
