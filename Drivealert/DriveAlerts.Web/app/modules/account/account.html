@@ -1,12 +1,13 @@
-﻿ <!-- Main Content -->
+﻿<h2 class="content-heading">Account</h2>
+<!-- Main Content -->
 <form action="pages_profile_edit.html" method="post" onsubmit="return false;">
     <div class="block">
         <ul class="nav nav-tabs nav-justified push-20" data-toggle="tabs">
             <li class="active">
-                <a href="#tab-profile-personal"><i class="fa fa-fw fa-pencil"></i> Personal</a>
+                <a target="_self" href="#tab-profile-personal"><i class="fa fa-fw fa-pencil"></i> Personal</a>
             </li>
             <li>
-                <a href="#tab-profile-password"><i class="fa fa-fw fa-asterisk"></i> Password</a>
+                <a target="_self" href="#tab-profile-password"><i class="fa fa-fw fa-asterisk"></i> Password</a>
             </li>
 
         </ul>
@@ -17,42 +18,51 @@
                     <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <label for="profile-email">Email</label>
-                                <input class="form-control input-lg" type="email" id="profile-email" name="profile-email" placeholder="Enter your email..">
+                                <div class="form-material form-material-primary">
+                                    <label for="profile-email">Email</label>
+                                    <input class="form-control input-lg" type="email" id="profile-email" name="profile-email" placeholder="Enter your email..">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="profile-firstname">First Name</label>
-                                <input class="form-control input-lg" type="text" id="profile-firstname" name="profile-firstname" placeholder="Enter your First Name..">
+                                <div class="form-material form-material-primary">
+                                    <label for="profile-firstname">First Name</label>
+                                    <input class="form-control input-lg" type="text" id="profile-firstname" name="profile-firstname" placeholder="Enter your First Name..">
+                                </div>
                             </div>
                             <div class="col-xs-6">
-                                <label for="profile-lastname">Last Name</label>
-                                <input class="form-control input-lg" type="text" id="profile-lastname" name="profile-lastname" placeholder="Enter your Last Name..">
+                                <div class="form-material form-material-primary">
+                                    <label for="profile-lastname">Last Name</label>
+                                    <input class="form-control input-lg" type="text" id="profile-lastname" name="profile-lastname" placeholder="Enter your Last Name..">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <label for="profile-phone">Phone</label>
-                                <input class="form-control input-lg" type="text" id="profile-phone" name="profile-phone" placeholder="Enter your Phone">
+                                <div class="form-material form-material-primary">
+                                    <label for="profile-phone">Phone</label>
+                                    <input class="form-control input-lg" type="text" id="profile-phone" name="profile-phone" placeholder="Enter your Phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="form-material form-material-primary">
 
-                                <div id="val-phoneus2-error" class="help-block text-right animated fadeInDown">Please enter a US phone!</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <label for="profile-skills">Time Zone</label>
-                                <select class="form-control" id="time-zone" name="time-zone">
-                                    <option value="1">Atlantic Standard Time (AST)</option>
-                                    <option selected="selected" value="2">Eastern Standard Time (EST)</option>
-                                    <option value="3">Central Standard Time (CST)</option>
-                                    <option value="4">Mountain Standard Time (MST)</option>
-                                    <option value="5">Pacific Standard Time (PST)</option>
-                                    <option value="6">Alaskan Standard Time (AKST)</option>
-                                    <option value="7">Hawaiian Standard Time (HST)</option>
-                                    <option value="8">Samoa Standard Time</option>
-                                    <option value="9">West Pacific Standard Time (WPST)</option>
-                                </select>
+                                    <label for="profile-skills">Time Zone</label>
+                                    <select class="form-control" id="time-zone" name="time-zone">
+                                        <option value="1">Atlantic Standard Time (AST)</option>
+                                        <option selected="selected" value="2">Eastern Standard Time (EST)</option>
+                                        <option value="3">Central Standard Time (CST)</option>
+                                        <option value="4">Mountain Standard Time (MST)</option>
+                                        <option value="5">Pacific Standard Time (PST)</option>
+                                        <option value="6">Alaskan Standard Time (AKST)</option>
+                                        <option value="7">Hawaiian Standard Time (HST)</option>
+                                        <option value="8">Samoa Standard Time</option>
+                                        <option value="9">West Pacific Standard Time (WPST)</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
@@ -66,21 +76,27 @@
                     <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <label for="profile-password">Current Password</label>
-                                <input class="form-control input-lg" type="password" id="profile-password" name="profile-password">
+                                <div class="form-material form-material-primary">
+                                    <label for="profile-password">Current Password</label>
+                                    <input class="form-control input-lg" type="password" id="profile-password" name="profile-password">
+                                </div>
                             </div>
                         </div>
                         <hr>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <label for="profile-password-new">New Password</label>
-                                <input class="form-control input-lg" type="password" id="profile-password-new" name="profile-password-new">
+                                <div class="form-material form-material-primary">
+                                    <label for="profile-password-new">New Password</label>
+                                    <input class="form-control input-lg" type="password" id="profile-password-new" name="profile-password-new">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <label for="profile-password-new-confirm">Confirm New Password</label>
-                                <input class="form-control input-lg" type="password" id="profile-password-new-confirm" name="profile-password-new-confirm">
+                                <div class="form-material form-material-primary">
+                                    <label for="profile-password-new-confirm">Confirm New Password</label>
+                                    <input class="form-control input-lg" type="password" id="profile-password-new-confirm" name="profile-password-new-confirm">
+                                </div>
                             </div>
                         </div>
                     </div>
