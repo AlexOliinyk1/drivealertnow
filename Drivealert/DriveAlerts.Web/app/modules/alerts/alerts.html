@@ -1,40 +1,66 @@
 ﻿<h2 class="content-heading">Alerts</h2>
 
 <div class="row">
-    <div class="col-md-12">
-        <select ng-model="vm.selectedPhone"
-                ng-init="vm.selectedPhone = vm.phones[0]"
-                ng-options="phone.PhoneNumber for phone in vm.phones">
-        </select>
+    
+    <div class="col-xs-12">
+        <form class="form-inline">
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Add phone</button>
+            </div>
+            <div class="form-material form-material-primary input-group remove-margin-t remove-margin-b pull-right">
+                <input class="form-control" type="text" id="base-material-text" name="base-material-text" placeholder="Search..">
+                <span class="input-group-addon"><i class="si si-magnifier"></i></span>
+            </div>
+            <div class="form-group">
+                <select  class="form-control" ng-model="vm.selectedPhone"
+                        ng-init="vm.selectedPhone = vm.phones[0]"
+                        ng-options="phone.PhoneNumber for phone in vm.phones"></select>
+            </div>
+</form>
+
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-3">
-        User
-    </div>
-    <div class="col-md-3">
-        Date
-    </div>
-    <div class="col-md-3">
-        Violation Type
-    </div>
-    <div class="col-md-3">
-        Violation Description
-    </div>
-</div>
+    <div class="col-sm-12">
+        <!-- Dynamic Table Full -->
+        <div class="block">
+            <!--<div class="block-header">
+                <h3 class="block-title">Dynamic Table <small>Full</small></h3>
+            </div>-->
 
-<div class="row" ng-repeat="alert in vm.alerts">
-    <div class="col-md-3">
-        {{alert.User}}
-    </div>
-    <div class="col-md-3">
-        {{alert.Date}}
-    </div>
-    <div class="col-md-3">
-        {{alert.ViolationType}}
-    </div>
-    <div class="col-md-3">
-        {{alert.ViolationDescription}}
+            <div class="block-content">
+                <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+                <table class="table table-bordered table-striped js-dataTable-full">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Date</th>
+                            <th>Violation Type</th>
+                            <th>Violation Description</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="alert in vm.alerts">
+                        <tr>
+                            <td>{{alert.User}}</td>
+                            <td>{{alert.Date}}</td>
+                            <td>{{alert.ViolationType}}</td>
+                            <td>{{alert.ViolationDescription}}</td>
+
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- END Dynamic Table Full -->
     </div>
 </div>

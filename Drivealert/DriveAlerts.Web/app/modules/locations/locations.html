@@ -1,40 +1,85 @@
 ﻿<h2 class="content-heading">Alerts</h2>
 
 <div class="row">
-    <div class="col-md-12">
+    <!--<div class="col-md-12">
         <select ng-model="vm.selectedPhone"
                 ng-init="vm.selectedPhone = vm.phones[0]"
                 ng-options="phone.PhoneNumber for phone in vm.phones"></select>
+    </div>-->
+    <div class="col-xs-12">
+        <form class="form-inline" action="base_forms_elements.html" method="post" onsubmit="return false;">
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">View Map</button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">View Alerts</button>
+            </div>
+            <div class="form-group pull-right">
+                <div class="col-xs-12">
+                    <div class="form-material form-material-primary">
+                        <select class="form-control" id="faq-contact-subject" name="faq-contact-subject" ng-model="vm.selectedPhone"
+                                ng-init="vm.selectedPhone = vm.phones[0]"
+                                ng-options="phone.PhoneNumber for phone in vm.phones"></select>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-3">
-        Select all
-    </div>
-    <div class="col-md-3">
-        Date
-    </div>
-    <div class="col-md-3">
-        Longitude
-    </div>
-    <div class="col-md-3">
-        Latitude
-    </div>
-</div>
+    <div class="col-sm-12">
+        <!-- Dynamic Table Full -->
+        <div class="block">
+            <!--<div class="block-header">
+                <h3 class="block-title">Dynamic Table <small>Full</small></h3>
+            </div>-->
 
-<div class="row" ng-repeat="location in vm.locations">
-    <div class="col-md-3">
-        <input type="checkbox" />
-    </div>
-    <div class="col-md-3">
-        {{location.Date}}
-    </div>
-    <div class="col-md-3">
-        {{location.Longitude}}
-    </div>
-    <div class="col-md-3">
-        {{location.Latitude}}
-    </div>
+            <div class="block-content">
+                <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+                <table class="table table-bordered table-striped js-dataTable-full">
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="width: 70px;">
+                                <label class="css-input css-checkbox css-checkbox-primary remove-margin-t remove-margin-b">
+                                    <input type="checkbox" id="check-all" name="check-all"><span></span>
+                                </label>
+                            </th>
+                            <th>Select all</th>
+                            <th>Date</th>
+                            <th>Longitude</th>
+                            <th>Latitude</th>
+                            <th>Options</th>
 
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="location in vm.locations">
+                        <tr>
+                            <td class="text-center">
+                                <label class="css-input css-checkbox css-checkbox-primary">
+                                    <input type="checkbox" id="row_1" name="row_1"><span></span>
+                                </label>
+                            </td>
+                            <td>{{location.Date}}</td>
+                            <td>{{location.Longitude}}</td>
+                            <td>{{location.Latitude}}</td>
+
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- END Dynamic Table Full -->
+    </div>
 </div>
