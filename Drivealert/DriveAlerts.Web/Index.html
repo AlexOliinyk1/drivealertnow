@@ -25,6 +25,7 @@
             <div class="navbar-collapse collapse navbar-right">
                 <ul class="nav navbar-nav">
                     <li ng-hide="!authentication.isAuth"><a href="#">Alerts</a></li>
+                    <li ng-hide="!authentication.isAuth"><a href="#!/locations">Locations</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/devices">Devices</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/settings">Settings</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/account">Account</a></li>
@@ -72,7 +73,8 @@
     <script src="app/services/alert.service.js"></script>
     <script src="app/services/devices.service.js"></script>
     <script src="app/services/locations.service.js"></script>
-
+    <!-- Directives -->
+    <script src="app/directives/show-tab.directive.js"></script>
     <!-- Controllers -->
     <script src="app/modules/login/login.controller.js"></script>
     <script src="app/modules/alerts/alerts.controller.js"></script>
@@ -83,5 +85,6 @@
     <script src="app/modules/video/video.controller.js"></script>
     <script src="app/modules/reminder-password/reminder-password.controller.js"></script>
     <script src="app/modules/add-device/add-device.controller.js"></script>
+    <script src="app/modules/locations/locations.controller.js"></script>
 </body>
 </html>
