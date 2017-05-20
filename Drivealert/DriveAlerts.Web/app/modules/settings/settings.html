@@ -1,57 +1,282 @@
 ﻿<h2 class="content-heading">Settings</h2>
 <div class="row">
-    
-</div>
-    <div class="row">
-        <div class="col-lg-4">
-            <!-- Email Center Widget -->
-            <div class="block block-bordered">
-                <div class="block-header">
-                    <ul class="block-options">
-                        <li>
-                            <button type="button" data-toggle="block-option" data-action="help_toggle">Help</button>
-                        </li>
-                    </ul>
-                    <h3 class="block-title">Alert Features</h3>
-                </div>
-                <div class="block-content">
+    <div class="col-xs-12">
+        <form class="form-inline" action="base_forms_elements.html" method="post" onsubmit="return false;">
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Save All</button>
+            </div>
+            <div class="form-group pull-right">
+                <div class="col-xs-12">
+                    <div class="form-material form-material-primary">
+                        <select class="form-control" id="faq-contact-subject" name="faq-contact-subject" size="1">
+                            <option value="(516) 589-2530">Bill  |  (516) 589-2530  |  <i class="fa fa-apple"></option>
+                            <option value="(518) 915-0762">Tim honey  |  (518) 915-0762  |  <i class="fa fa-android"></i></option>
+                            <option value="(631) 822-807">Bill's S7  |  (631) 822-8070  |  <i class="fa fa-android"></i></option>
+                            <option value="(516) 526-8504">Robert  |  (516) 526-8504  |  <i class="fa fa-apple"></i></option>
 
+                        </select>
+                    </div>
                 </div>
             </div>
-            <!-- END Email Center Widget -->
-        </div>
-        <div class="col-lg-4">
-            <!-- Notifications Widget -->
-            <div class="block block-bordered">
-                <div class="block-header">
-                    <ul class="block-options">
-                        <li>
-                            <button type="button" data-toggle="block-option" data-action="help_toggle">Help</button>
-                        </li>
-                    </ul>
-                    <h3 class="block-title">Overriding Preferences</h3>
-                </div>
-                <div class="block-content">
-
-                </div>
-            </div>
-            <!-- END Notifications Widget -->
-        </div>
-        <div class="col-lg-4">
-            <!-- Friends Widget -->
-            <div class="block block-bordered">
-                <div class="block-header">
-                    <ul class="block-options">
-                        <li>
-                            <button type="button" data-toggle="block-option" data-action="help_toggle">Help</button>
-                        </li>
-                    </ul>
-                    <h3 class="block-title">Alert and Allowed Phones</h3>
-                </div>
-                <div class="block-content">
-
-                </div>
-            </div>
-            <!-- END Friends Widget -->
-        </div>
+        </form>
     </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <!-- Email Center Widget -->
+        <div class="block block-bordered">
+            <div class="block-header">
+                <ul class="block-options">
+                    <li>
+                        <button type="button" data-toggle="block-option" data-action="help_toggle">Help</button>
+                    </li>
+                </ul>
+                <h3 class="block-title">Alert Features</h3>
+            </div>
+            <div class="block-content">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label>Interval Between Alerts</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input class="form-control" type="number" min="0" step="1" id="interval-beetwen-alerts" name="interval-beetwen-alerts">
+                            <span class="input-group-addon">minutes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label>Send Speed Alerts</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="enable-speed-alerts" name="enable-speed-alerts"><span></span> Enable Speed Alerts
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-xs-12">
+                        <div class="radio">
+                            <label class="css-input css-radio css-radio-primary push-10-r">
+                                <input type="radio" name="speed" checked=""><span></span> 60MPH
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="css-input css-radio css-radio-primary push-10-r">
+                                <input type="radio" name="speed"><span></span> 65MPH
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="css-input css-radio css-radio-primary push-10-r">
+                                <input type="radio" name="speed"><span></span> 75MPH
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label class="css-input css-radio css-radio-primary push-10-r">
+                                <input type="radio" name="speed"><span></span> 80MPH
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label>Allow Hands-Free Bluetooth</label>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-xs-12">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="make-calls" name="make-calls"><span></span> Recieve/Make Calls
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- END Email Center Widget -->
+    </div>
+    <div class="col-lg-4">
+        <!-- Notifications Widget -->
+        <div class="block block-bordered">
+            <div class="block-header">
+                <ul class="block-options">
+                    <li>
+                        <button type="button" data-toggle="block-option" data-action="help_toggle">Help</button>
+                    </li>
+                </ul>
+                <h3 class="block-title">Overriding Preferences</h3>
+            </div>
+            <div class="block-content">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label>Notifications</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="notify-location" name="notify-location"><span></span> Notify if Location Services are disabled
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="notify-bluetooth" name="notify-bluetooth"><span></span> Notify if Bluetooth is off
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-xs-12">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="notify-uninstalled" name="notify-uninstalled"><span></span> Notify if Uninstalled
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block block-bordered">
+            <div class="block-header">
+                <ul class="block-options">
+                    <li>
+                        <button type="button" data-toggle="block-option" data-action="help_toggle">Help</button>
+                    </li>
+                </ul>
+                <h3 class="block-title">Location Preferences</h3>
+            </div>
+            <div class="block-content">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label>Location</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="report-vehicle-activity" name="report-vehicle-activity"><span></span> Report vehicle activity
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="include-coordinates" name="include-coordinates"><span></span> Include coordinates
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label>Interval between location moves</label>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input class="form-control" type="number" id="interval-beetwen-locations" name="interval-beetwen-locations">
+                            <span class="input-group-addon">minutes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Notifications Widget -->
+    </div>
+    <div class="col-lg-4">
+        <!-- Friends Widget -->
+        <div class="block block-bordered">
+            <div class="block-header">
+                <ul class="block-options">
+                    <li>
+                        <button type="button" data-toggle="block-option" data-action="help_toggle">Help</button>
+                    </li>
+                </ul>
+                <h3 class="block-title">Alert and Allowed Phones</h3>
+            </div>
+            <div class="block-content">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label>Alerts will be sent</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="enable-administrator" name="enable-administrator"><span></span> Enable Text Alerts to Administrator
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="form-material form-material-primary">
+                            <label for="profile-phone">Phone</label>
+                            <input class="form-control input-lg" type="text" id="alert-phone" name="alert-phone" placeholder="Enter your Phone">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="enable-email-administrator" name="enable-email-administrator"><span></span>Enable Email Alerts to Administrator
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="form-material form-material-primary">
+                            <label for="profile-email">Email</label>
+                            <input class="form-control input-lg" type="email" id="settings-email" name="settings-email" placeholder="Enter your email..">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label>Allowed Emergency Contacts</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="form-material form-material-primary">
+                            <input class="form-control input-lg" type="text" id="emergyncy-phone" name="emergyncy-phone" disabled>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <div class="form-material form-material-primary">
+                            <input class="form-control input-lg" type="text" id="allowed-phone-one" name="allowed-phone-one" placeholder="Enter Phone 3">
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-material form-material-primary">
+                            <input class="form-control input-lg" type="text" id="owner-name-one" name="owner-name-one" placeholder="Owner Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-xs-6">
+                        <div class="form-material form-material-primary">
+                            <input class="form-control input-lg" type="text" id="allowed-phone-two" name="allowed-phone-two" placeholder="Enter Phone 4">
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-material form-material-primary">
+                            <input class="form-control input-lg" type="text" id="owner-name-two" name="owner-name-two" placeholder="Owner Name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Friends Widget -->
+    </div>
+</div>

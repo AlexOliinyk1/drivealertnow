@@ -1,61 +1,66 @@
-﻿<div class="row">
-    <div class="col-md-12">
-        Devices
-
-        <a class="btn btn-default" href="#!/add-device">Add device</a>
-    </div>
-</div>
+﻿<h2 class="content-heading">Manage Phones</h2>
 <div class="row">
-    <div class="col-md-2">
-        User							
-    </div>
-    <div class="col-md-2">
-        Phone Number
-    </div>
-    <div class="col-md-1">
-        Activation Code
-    </div>
-    <div class="col-md-1">
-        Last Activity Date
-    </div>
-    <div class="col-md-1">
-        Install Date
-    </div>
-    <div class="col-md-1">
-        Phone
-    </div>
-    <div class="col-md-2">
-        Version
-    </div>
-    <div class="col-md-2">
-        Options
+    <div class="col-xs-12">
+        <form class="form-inline" action="base_pages_search.html" method="post">
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Add phone</button>
+            </div>
+            <div class="form-material form-material-primary input-group remove-margin-t remove-margin-b pull-right">
+                <input class="form-control" type="text" id="base-material-text" name="base-material-text" placeholder="Search..">
+                <span class="input-group-addon"><i class="si si-magnifier"></i></span>
+            </div>
+        </form>
+        
     </div>
 </div>
+ 
+<div class="row">
+    <div class="col-sm-12">
+        <!-- Dynamic Table Full -->
+        <div class="block">
+            <!--<div class="block-header">
+                <h3 class="block-title">Dynamic Table <small>Full</small></h3>
+            </div>-->
 
-<div class="row" ng-repeat="phone in vm.phones">
-    <div class="col-md-2">
-        {{phone.User}}
-    </div>
-    <div class="col-md-2">
-        {{phone.PhoneNumber}}
-    </div>
-    <div class="col-md-1">
-        {{phone.ActivationCode}}
-    </div>
-    <div class="col-md-1">
-        {{phone.LastActivityDate}}
-    </div>
-    <div class="col-md-1">
-        {{phone.InstallDate}}
-    </div>
-    <div class="col-md-1">
-        {{phone.Phone}}
-    </div>
-    <div class="col-md-2">
-        {{phone.Version}}
-    </div>
-    <div class="col-md-2">
-        <button class="btn btn-primary">Edit</button>
-        <button class="btn btn-danger">Delete</button>
+            <div class="block-content">
+                <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+                <table class="table table-bordered table-striped js-dataTable-full">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Phone Number</th>
+                            <th>Activation Code</th>
+                            <th>Last Activity Date</th>
+                            <th>Install Date</th>
+                            <th>Phone</th>
+                            <th>Version</th>
+                            <th>Options</th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="phone in vm.phones">
+                        <tr>
+                            <td>{{phone.User}}</td>
+                            <td>{{phone.PhoneNumber}}</td>
+                            <td>{{phone.ActivationCode}}</td>
+                            <td>{{phone.LastActivityDate}}</td>
+                            <td>{{phone.InstallDate}}</td>
+                            <td>{{phone.Phone}}</td>
+                            <td>{{phone.Version}}</td>
+
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- END Dynamic Table Full -->
     </div>
 </div>

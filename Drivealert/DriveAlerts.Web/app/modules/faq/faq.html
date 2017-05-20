@@ -242,4 +242,36 @@
 </div>
 <!-- END Frequently Asked Questions -->
 
-<ng-include src="'/app/modules/video/video.html'"></ng-include>
+<!-- Normal Modal -->
+<div class="modal" id="modal-normal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent remove-margin-b">
+                <div class="block-header bg-primary-dark">
+                    <ul class="block-options">
+                        <li>
+                            <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">Videos</h3>
+                </div>
+                <div class="block-content">
+                    <label class="label-control">Select Video:</label>
+                    <select id="videos-select" class="form-control">
+                        <option value="AndroidInstall">Android Installation</option>
+                        <option value="AndroidDemo">Android Demo</option>
+                        <option value="iOSInstall">iOS Installation</option>
+                        <option value="iOSDemo">iOS Demo</option>
+                    </select>
+                    <iframe id="frame-video" src="//www.youtube.com/embed/ssrFw4VqJzs" class="video-popup-faq" frameborder="0" allowfullscreen=""></iframe>
+                    <div class="help-popup-faq">If viewing video in full screen mode, press ESC on your keyboard when done viewing</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- END Normal Modal -->
