@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Drive Alert Now</title>
-
-    <link href="Content/bootstrap.css" rel="stylesheet" />
+  
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/oneui.css" rel="stylesheet" />
-    <link href="Content/site.css" rel="stylesheet" />
+    <!--<link href="Content/site.css" rel="stylesheet" />-->
 
 </head>
 
@@ -30,7 +30,11 @@
                     <li ng-hide="!authentication.isAuth"><a href="#!/account">Account</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/video">Video</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/faq">FAQ</a></li>
-                    <li ng-hide="authentication.isAuth"><a href="#!/login">Login</a></li>
+                    <li ng-hide="authentication.isAuth"><a href="http://www.drivealertnow.com/drivealertnow-product/"><i class="fa fa-shopping-cart"></i> BUY NOW</a></li>
+                    <li ng-hide="authentication.isAuth"><a href="http://pg.drivealertnow.com/activation/signupwizard.aspx"><i class="fa fa-key"></i> ACTIVATE</a></li>
+                    <li ng-hide="authentication.isAuth"><a href="#!/login"><i class="fa fa-sign-in"></i> LOGIN</a></li>
+
+                   
                     <li ng-hide="!authentication.isAuth"><a href="" ng-click="logOut()">Logout</a></li>
                 </ul>
 
@@ -42,19 +46,28 @@
     </div>
 
     <!-- Scripts -->
-    <script src="Scripts/jquery-1.9.1.min.js"></script>
+
+    <script src="Scripts/jquery.min.js"></script>
+    <script src="Scripts/jquery.placeholder.min.js"></script>
+    <script src="Scripts/jquery.validate.min.js"></script>
+
     <script src="Scripts/bootstrap.min.js"></script>
+
     <script src="Scripts/angular.min.js"></script>
     <script src="Scripts/angular-route.min.js"></script>
     <script src="Scripts/angular-local-storage.min.js"></script>
+
+    <script src="Scripts/plugins.js"></script>
     <!-- Core -->
     <script src="app/core/app.js"></script>
     <script src="app/core/app.config.js"></script>
     <script src="app/core/app.controller.js"></script>
     <script src="app/core/app.run.js"></script>
+   
     <!-- Services -->
     <script src="app/services/authInterceptorService.js"></script>
     <script src="app/services/authService.js"></script>
+    
     <!-- Controllers -->
     <script src="app/modules/login/loginCtrl.js"></script>
     <script src="app/modules/alerts/alertsCtrl.js"></script>
@@ -63,5 +76,6 @@
     <script src="app/modules/faq/faqCtrl.js"></script>
     <script src="app/modules/settings/settingsCtrl.js"></script>
     <script src="app/modules/video/videoCtrl.js"></script>
+    <script src="app/modules/reminder/reminderCtrl.js"></script>
 </body>
 </html>
