@@ -1,10 +1,8 @@
  
 (function ($) {
     // Init form placeholder (for IE9)
-    jQuery('.form-control').placeholder();
-
-
-    $('#videos-select').change(function () {
+    $(document).on('change', '#videos-select', function () {
+        // Does some stuff and logs the event to the console
         if ($(this).val() == 'AndroidInstall') {
             $('#frame-video').attr('src', '//www.youtube.com/embed/ssrFw4VqJzs');
         }
@@ -18,6 +16,7 @@
             $('#frame-video').attr('src', '//www.youtube.com/embed/o7NS54-Swsc');
         }
     });
+    
 })(jQuery)
 
 
