@@ -68,6 +68,13 @@
         authorize: false
     });
 
+    $routeProvider.when('/add-device', {
+        controller: 'AddDeviceController',
+        templateUrl: '/app/modules/add-device/add-device.html',
+        controllerAs: 'vm',
+        authorize: true
+    });
+
     $routeProvider.otherwise({ redirectTo: '/' });
     //$locationProvider.html5Mode(true);
 });
