@@ -8,11 +8,10 @@
   
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/oneui.css" rel="stylesheet" />
-    <!--<link href="Content/site.css" rel="stylesheet" />-->
-
+    <link href="Content/drivealertnow.css" rel="stylesheet" />
 </head>
 
-<body ng-controller="DriveAlertNowCtrl">
+<body ng-controller="DriveAlertNowCtrl" ng-cloak>
     <div class="navbar navbar-static-top navbar-inverse">
         <div class="container">
             <div class="navbar-header">
@@ -67,6 +66,7 @@
     <!-- Services -->
     <script src="app/services/authInterceptorService.js"></script>
     <script src="app/services/authService.js"></script>
+    <script src="app/services/alertService.js"></script>
     
     <!-- Controllers -->
     <script src="app/modules/login/loginCtrl.js"></script>
