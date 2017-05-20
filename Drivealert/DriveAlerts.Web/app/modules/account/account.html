@@ -8,7 +8,7 @@
             <li>
                 <a href="#tab-profile-password"><i class="fa fa-fw fa-asterisk"></i> Password</a>
             </li>
-            
+
         </ul>
         <div class="block-content tab-content">
             <!-- Personal Tab -->
@@ -16,69 +16,46 @@
                 <div class="row items-push">
                     <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                         <div class="form-group">
-                            <div class="col-xs-6">
-                                <label>Username</label>
-                                <div class="form-control-static font-w700">Admin</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <div class="col-xs-12">
-                                <label for="profile-email">Email Address</label>
-                                <input class="form-control input-lg" type="email" id="profile-email" name="profile-email" placeholder="Enter your email.." value="admin@example.com">
+                                <label for="profile-email">Email</label>
+                                <input class="form-control input-lg" type="email" id="profile-email" name="profile-email" placeholder="Enter your email..">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="profile-firstname">Firstname</label>
-                                <input class="form-control input-lg" type="text" id="profile-firstname" name="profile-firstname" placeholder="Enter your firstname.." value="John">
+                                <label for="profile-firstname">First Name</label>
+                                <input class="form-control input-lg" type="text" id="profile-firstname" name="profile-firstname" placeholder="Enter your First Name..">
                             </div>
                             <div class="col-xs-6">
-                                <label for="profile-lastname">Lastname</label>
-                                <input class="form-control input-lg" type="text" id="profile-lastname" name="profile-lastname" placeholder="Enter your lastname.." value="Doe">
+                                <label for="profile-lastname">Last Name</label>
+                                <input class="form-control input-lg" type="text" id="profile-lastname" name="profile-lastname" placeholder="Enter your Last Name..">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <label for="profile-bio">Bio</label>
-                                <textarea class="form-control input-lg" id="profile-bio" name="profile-bio" rows="15" placeholder="Enter a few details about yourself..">Hi there, welcome to my profile! I'm a web designer and I love creating stuff that solve problems and make your life easier. Feel free to follow me to know more about me and my projects. Thanks for stopping by, wish you a great day!</textarea>
+                                <label for="profile-phone">Phone</label>
+                                <input class="form-control input-lg" type="text" id="profile-phone" name="profile-phone" placeholder="Enter your Phone">
+
+                                <div id="val-phoneus2-error" class="help-block text-right animated fadeInDown">Please enter a US phone!</div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <label for="profile-skills">Skills</label>
-                                <select class="form-control" id="profile-skills" name="profile-skills" size="8" multiple="">
-                                    <option value="1" selected>HTML</option>
-                                    <option value="2" selected>CSS</option>
-                                    <option value="3" selected>JavaScript</option>
-                                    <option value="4">PHP</option>
-                                    <option value="5">Ruby</option>
-                                    <option value="6" selected>Photoshop</option>
-                                    <option value="6" selected>Sketch</option>
-                                    <option value="7">Illustrator</option>
+                                <label for="profile-skills">Time Zone</label>
+                                <select class="form-control" id="time-zone" name="time-zone">
+                                    <option value="1">Atlantic Standard Time (AST)</option>
+                                    <option selected="selected" value="2">Eastern Standard Time (EST)</option>
+                                    <option value="3">Central Standard Time (CST)</option>
+                                    <option value="4">Mountain Standard Time (MST)</option>
+                                    <option value="5">Pacific Standard Time (PST)</option>
+                                    <option value="6">Alaskan Standard Time (AKST)</option>
+                                    <option value="7">Hawaiian Standard Time (HST)</option>
+                                    <option value="8">Samoa Standard Time</option>
+                                    <option value="9">West Pacific Standard Time (WPST)</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-6">
-                                <label for="profile-city">Where do you live?</label>
-                                <input class="form-control input-lg" type="text" id="profile-city" name="profile-city" placeholder="Enter your location..">
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="profile-age">Age</label>
-                                <input class="form-control input-lg" type="text" id="profile-age" name="profile-age" placeholder="Enter your age..">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-12">Gender</label>
-                            <div class="col-xs-12">
-                                <label class="css-input css-radio css-radio-primary push-10-r">
-                                    <input type="radio" name="profile-gender-group"><span></span> Female
-                                </label>
-                                <label class="css-input css-radio css-radio-primary">
-                                    <input type="radio" name="profile-gender-group" checked><span></span> Male
-                                </label>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -107,10 +84,11 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <!-- END Password Tab -->
-          
+
         </div>
         <div class="block-content block-content-full bg-gray-lighter text-center">
             <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
