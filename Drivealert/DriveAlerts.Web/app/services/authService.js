@@ -1,11 +1,13 @@
 ﻿app.factory('AuthService', ['$http', '$q', 'localStorageService', 'ngWebSettings',
     function ($http, $q, localStorageService, ngWebSettings) {
-        var serviceBase = ngWebSettings.apiServiceBaseUri;
+
+        var serviceBase = ngWebSettings.apiServiceBaseUri + ngWebSettings.apiVersion + '/';
         var authServiceFactory = {};
 
         var _authentication = {
             isAuth: false,
-            userName: ""
+            userName: "",
+            userId: 0
         };
 
         var _login = function (loginData) {
@@ -19,7 +21,8 @@
                     localStorageService.set('authorizationData', { token: response.data.access_token, userName: response.data.userName });
 
                     _authentication.isAuth = true;
-                    _authentication.userName = loginData.userName;
+                    _authentication.userName = response.data.userName;
+                    _authentication.userId = response.data.userId;
 
                     deferred.resolve(response);
                 }, function (err, status) {

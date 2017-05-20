@@ -1,25 +1,14 @@
-﻿app.factory('AlertService', ['$http', '$q', 'ngWebSettings',
-    function ($http, $q, ngWebSettings) {
-        var serviceBase = ngWebSettings.apiServiceBaseUri;
-
+﻿app.factory('AlertService', ['$http', '$q', 'ngWebSettings', 'AuthService',
+    function ($http, $q, ngWebSettings, authService) {
+        var serviceBase = ngWebSettings.apiServiceBaseUri + ngWebSettings.apiVersion + '/';
         var alertServiceFactory = {};
 
-        function _getAlerts() {
-            return $http.get(serviceBase + '???').then(function (results) {
-                return results;
-            });
+        function _getAlerts(phoneNumber, searchParams) {
+            return $http.post(serviceBase + '/alerts/phones/' + phoneNumber, searchParams, { headers: { 'Content-Type': 'application/json' } });
         }
 
         function _createAlert() {
-            var deferred = $q.defer();
-
-            $http.post(serviceBase + 'alerts').then(function (results) {
-                deferred.resolve(response.data);
-            }, function (error) {
-                deferred.reject(error.data);
-            });
-
-            return deferred.promise;
+            return $http.post(serviceBase + 'alerts');
         }
 
         alertServiceFactory.getAlerts = _getAlerts;

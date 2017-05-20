@@ -6,9 +6,7 @@
         password: ""
     };
 
-    self.message = "";
-
-    self.login = function () {
+    function _login() {
 
         AuthService.login(self.loginData).then(function (response) {
             $location.path('/');
@@ -18,4 +16,7 @@
         });
     };
 
+    self.message = "";
+
+    self.login = _login;
 }]);
