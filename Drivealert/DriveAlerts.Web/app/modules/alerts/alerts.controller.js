@@ -3,7 +3,7 @@
         var vm = this;
 
         vm.phones = [];//added phones : need to take this from api
-        vm.selectedPhone = '';
+        vm.selectedPhone = {};
         vm.alerts = [];
         vm.searchConfig = {
             DateStart: "2017-05-18T0:00:00.1Z",
@@ -14,26 +14,27 @@
             IsCallViolationAlerts: true
         };
         vm.searchAlerts = _searchAlerts;
-
+        vm.$onInit = _loadPhones;
         _loadPhones();
 
         $scope.$watch('vm.selectedPhone', function (current, original) {
-            if (current !== '') {
-                _searchAlerts();
-            }
+            //_searchAlerts();
+            _loadAlerts();
         });
+
+        function _loadAlerts() {
+            alertService.getAlerts(vm.selectedPhone)
+            .then(function (result) {
+                vm.alerts = result;
+            });
+        }
 
         //  get phones for user
         function _loadPhones() {
             devicesService.getDevices()
                 .then(function (result) {//success
-                    //  todo: optimise this when API will be ready
-                    for (var i = 0; i < result.length; i++) {
-                        vm.phones.push(result[i].PhoneNumber);
-                    }
-
+                    vm.phones = result;
                     vm.selectedPhone = vm.phones[0];
-                }, function () {//fail
                 });
         }
 
@@ -41,7 +42,6 @@
         function _searchAlerts() {
             alertService.getAlerts(vm.selectedPhone, vm.searchConfig)
                 .then(function (result) {//success
-                    debugger;
                     vm.alerts = result.data.Alerts;
                     if (vm.alerts.length == 0) {
                         _set_test_alerts();
