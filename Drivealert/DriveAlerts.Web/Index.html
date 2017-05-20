@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html ng-app="DriveAlertNow">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Drive Alert Now</title>
+
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/oneui.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+
+</head>
+
+<body ng-controller="DriveAlertNowCtrl">
+    <div class="navbar navbar-static-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li ng-hide="!authentication.isAuth"><a href="#">Alerts</a></li>
+                    <li ng-hide="!authentication.isAuth"><a href="#!/devices">Devices</a></li>
+                    <li ng-hide="!authentication.isAuth"><a href="#!/settings">Settings</a></li>
+                    <li ng-hide="!authentication.isAuth"><a href="#!/account">Account</a></li>
+                    <li ng-hide="!authentication.isAuth"><a href="#!/video">Video</a></li>
+                    <li ng-hide="!authentication.isAuth"><a href="#!/faq">FAQ</a></li>
+                    <li ng-hide="authentication.isAuth"><a href="#!/login">Login</a></li>
+                    <li ng-hide="!authentication.isAuth"><a href="" ng-click="logOut()">Logout</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <ng-view></ng-view>
+    </div>
+
+    <!-- Scripts -->
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-local-storage.min.js"></script>
+    <!-- Core -->
+    <script src="app/core/app.js"></script>
+    <script src="app/core/app.config.js"></script>
+    <script src="app/core/app.controller.js"></script>
+    <script src="app/core/app.run.js"></script>
+    <!-- Services -->
+    <script src="app/services/authInterceptorService.js"></script>
+    <script src="app/services/authService.js"></script>
+    <!-- Controllers -->
+    <script src="app/modules/login/loginCtrl.js"></script>
+    <script src="app/modules/alerts/alertsCtrl.js"></script>
+    <script src="app/modules/account/accountCtrl.js"></script>
+    <script src="app/modules/devices/devicesCtrl.js"></script>
+    <script src="app/modules/faq/faqCtrl.js"></script>
+    <script src="app/modules/settings/settingsCtrl.js"></script>
+    <script src="app/modules/video/videoCtrl.js"></script>
+</body>
+</html>
