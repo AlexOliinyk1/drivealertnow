@@ -1,3 +1,18 @@
 ﻿[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
+
+.video-popup-faq {
+    height: 300px;
+    width: 100%;
+    margin-top: 15px
+}
+
+.help-popup-faq {
+    margin-top: 15px;
+    background: black;
+    color: white;
+    margin-left: 25%;
+    text-align: center;
+    width: 50%
+}

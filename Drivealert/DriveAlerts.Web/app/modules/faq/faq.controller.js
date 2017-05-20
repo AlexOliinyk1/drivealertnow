@@ -2,4 +2,6 @@
     var self = this;
 
     self.text = "FAQ";
+
+    
 }]);

@@ -12,7 +12,7 @@
 </head>
 
 <body ng-controller="DriveAlertNowController" ng-cloak>
-    <div class="navbar navbar-static-top navbar-inverse">
+    <div class="navbar navbar-static-top navbar-inverse bg-primary-dark">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,7 +27,8 @@
                     <li ng-hide="!authentication.isAuth"><a href="#!/devices">Devices</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/settings">Settings</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/account">Account</a></li>
-                    <li ng-hide="!authentication.isAuth"><a href="#!/video">Video</a></li>
+
+                    <li ng-hide="!authentication.isAuth"><a data-toggle="modal" data-target="#modal-normal">Video</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/faq">FAQ</a></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/monthly-subscriptions"><i class="fa fa-shopping-cart"></i> BUY NOW</a></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/signup-wizard"><i class="fa fa-key"></i> ACTIVATE</a></li>
