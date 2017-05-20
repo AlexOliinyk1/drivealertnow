@@ -11,7 +11,6 @@
             var d = $q.defer();
             // imitate request
             setTimeout(function () {
-                //User	Phone Number	Activation Code	Last Activity Date	Install Date	Phone	Version	Options
                 d.resolve([
                     {
                         User: "Social Judo",

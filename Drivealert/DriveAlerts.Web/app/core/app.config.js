@@ -75,6 +75,13 @@
         authorize: true
     });
 
+    $routeProvider.when('/locations', {
+        controller: 'LocationsController',
+        templateUrl: '/app/modules/locations/locations.html',
+        controllerAs: 'vm',
+        authorize: true
+    });
+
     $routeProvider.otherwise({ redirectTo: '/' });
     //$locationProvider.html5Mode(true);
 });
