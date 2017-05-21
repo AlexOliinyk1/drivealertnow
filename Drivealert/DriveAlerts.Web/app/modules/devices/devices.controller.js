@@ -15,7 +15,6 @@
         }
 
         function _deleteDevice(id) {
-            debugger;
             devicesService.removeDevice(id)
                 .then(function (result) {
                     if (result == 200) {

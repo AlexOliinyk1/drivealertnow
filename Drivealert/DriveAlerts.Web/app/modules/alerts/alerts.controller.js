@@ -1,5 +1,5 @@
-﻿app.controller('AlertsController', ['$scope', 'AlertService', 'DevicesService',
-    function ($scope, alertService, devicesService) {
+﻿app.controller('AlertsController', ['$scope', 'AlertService', 'DevicesService', 'AuthService',
+    function ($scope, alertService, devicesService, authService) {
         var vm = this;
 
         vm.phones = [];//added phones : need to take this from api
@@ -31,7 +31,7 @@
 
         //  get phones for user
         function _loadPhones() {
-            devicesService.getDevices()
+            devicesService.getDevices(authService.authentication.userId)
                 .then(function (result) {//success
                     vm.phones = result;
                     vm.selectedPhone = vm.phones[0];
