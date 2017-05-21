@@ -1,5 +1,5 @@
-﻿app.controller('DevicesController', ['DevicesService',
-    function (devicesService) {
+﻿app.controller('DevicesController', ['DevicesService', 'AuthService',
+    function (devicesService, authService) {
         var vm = this;
         vm.text = "Devices";
         vm.phones = [];
@@ -8,18 +8,19 @@
         vm.$onInit = _loadDevices;
 
         function _loadDevices() {
-            devicesService.getDevices()
+            devicesService.getDevices(authService.authentication.userId)
                 .then(function (result) {//success
                     vm.phones = result;
                 });
         }
 
-        function _deleteDevice() {
+        function _deleteDevice(id) {
+            debugger;
             devicesService.removeDevice(id)
                 .then(function (result) {
                     if (result == 200) {
-
-                    } else { 
+                        _loadDevices();
+                    } else {
                         console.log(result);
                     }
                 });
@@ -29,13 +30,13 @@
             alert('need to implement Edit. id = ' + id);
         }
 
-        //  todo: move this to updata controller
+        //  todo: move this to update controller
         function _updataDevice(device) {
             devicesService.updateDevice(device.PhoneId, device)
                 .then(function (result) {
                     if (result == 200) {
 
-                    } else { 
+                    } else {
                         console.log(result);
                     }
                 });
