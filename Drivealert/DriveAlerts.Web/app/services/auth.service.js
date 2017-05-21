@@ -54,9 +54,27 @@
 
         }
 
+        var _setSpesialAuthData = function (token, userId) {
+
+            localStorageService.set('authorizationData', {
+                token: token,
+                userName: '',
+                userId: userId
+            });
+
+            var authData = localStorageService.get('authorizationData');
+            if (authData) {
+                _authentication.isAuth = true;
+                _authentication.userName = '';
+                _authentication.userId = userId;
+            }
+
+        }
+
         authServiceFactory.login = _login;
         authServiceFactory.logOut = _logOut;
         authServiceFactory.fillAuthData = _fillAuthData;
+        authServiceFactory.setSpesialAuthData = _setSpesialAuthData;
         authServiceFactory.authentication = _authentication;
 
         return authServiceFactory;

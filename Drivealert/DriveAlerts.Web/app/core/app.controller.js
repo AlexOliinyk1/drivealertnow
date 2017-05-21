@@ -1,5 +1,5 @@
-﻿app.controller('DriveAlertNowController', ['$scope', '$location', 'AuthService',
-    function ($scope, $location, AuthService) {
+﻿app.controller('DriveAlertNowController', ['$scope', '$location', 'AuthService', 'BufferService',
+    function ($scope, $location, AuthService, bufferService) {
 
         function _logout() {
             console.log('logout');
@@ -9,5 +9,6 @@
 
         $scope.logOut = _logout;
         $scope.authentication = AuthService.authentication;
+        $scope.isIFrame = bufferService.getIsIFrame;
     }
 ]);

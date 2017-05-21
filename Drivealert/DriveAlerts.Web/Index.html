@@ -14,7 +14,8 @@
 </head>
 
 <body ng-controller="DriveAlertNowController" ng-cloak>
-    <div class="navbar navbar-static-top navbar-inverse bg-primary-dark">
+    <!-- navbar-inverse bg-primary-dark -->
+    <div class="navbar navbar-static-top" ng-class="{ 'navbar-inverse': !isIFrame(), 'bg-primary-dark': !isIFrame() }">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -22,7 +23,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Drive Alert Now</a>
+                <a ng-hide="isIFrame()" class="navbar-brand" href="#">Drive Alert Now</a>
             </div>
             <div class="navbar-collapse collapse navbar-right">
                 <ul class="nav navbar-nav">
@@ -37,7 +38,7 @@
                     <li ng-hide="authentication.isAuth"><a href="#!/monthly-subscriptions"><i class="fa fa-shopping-cart"></i> BUY NOW</a></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/signup-wizard"><i class="fa fa-key"></i> ACTIVATE</a></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/login"><i class="fa fa-sign-in"></i> LOGIN</a></li>
-                    <li ng-hide="!authentication.isAuth"><a href="" ng-click="logOut()">Logout</a></li>
+                    <li ng-hide="(!authentication.isAuth || isIFrame())"><a href="" ng-click="logOut()">Logout</a></li>
                 </ul>
 
             </div>
@@ -74,6 +75,7 @@
     <script src="app/services/devices.service.js"></script>
     <script src="app/services/locations.service.js"></script>
     <script src="app/services/auth-interceptor.service.js"></script>
+    <script src="app/services/buffer.service.js"></script>
 
     <!-- Directives -->
     <script src="app/directives/show-tab.directive.js"></script>

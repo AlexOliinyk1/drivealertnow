@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Social Judo</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <img src="Content/judo.png" />
+        </div>
+        <iframe id="driveAlertNow" class="col-md-12" frameborder="0" height="600" ></iframe>
+    </div>
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            var srcRoot = "http://localhost:56842";
+            var token = "POOnbpLiCagqgB73Y8kcyaQllLDdRRaLpFcvsPF4ody6eYeHyC3PRiHN-G7N9KV7LjJM1wgZZiFITDrmsiTp0SZYBQtefLBQX_6ov8OHJZjINvjkAAY3bskRrgfDV4X4Xj3Te8jiO96hjweM7NlPqQcIqXybPMmnNzHsUuUuoo8bFf96Ju-ONh_kya7JgIBPyUZdO682c6mN636i8-KdLnhnqjsa_CSD_e75VhIUXZ2fuQUEvmzWRQrqX4zXmyxliZPttIHYrb37r9pFFyDWoUifiPljxfaLo-gPCqD1gFULRNopcuS15DEjxpB31RTKaNRcOa8yJd8vm4GM3M2foW0t39u_6ON5t7QNETRCMuPHB_6kedX0G1WcY5JPV9x6RXIE5XvAjP2E0Ht4jQpHP50OsSZSvJ1X3CKtjIywUZLR65RRT8m4RKePrAinjFwafN7AzbAH8GbTCbl4ihWPGSP8CMrmqZbSxTxUcp5wmtg";
+            var userId = "1";
+
+            var src = srcRoot + '#!/?token=' + token + '&userId=' + userId;
+            $('#driveAlertNow').attr('src', src);
+        })();
+    </script>
+</body>
+</html>

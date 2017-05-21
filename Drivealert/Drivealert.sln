@@ -21,6 +21,29 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DriveAlerts.Web", "DriveAle
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "56842"
+		SlnRelativePath = "DriveAlerts.Web\"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Drivealert.Judo", "..\Drivealert.Judo\", "{1FB24CF8-EA25-4592-AD64-07F067657BE8}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_53751"
+		Debug.AspNetCompiler.PhysicalPath = "..\Drivealert.Judo\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53751\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_53751"
+		Release.AspNetCompiler.PhysicalPath = "..\Drivealert.Judo\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53751\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "53751"
+		SlnRelativePath = "..\Drivealert.Judo\"
+		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
 Global
@@ -30,6 +53,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{06CD52AC-E8E6-4699-AF0C-A4DACE1CE55E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06CD52AC-E8E6-4699-AF0C-A4DACE1CE55E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FB24CF8-EA25-4592-AD64-07F067657BE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FB24CF8-EA25-4592-AD64-07F067657BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
