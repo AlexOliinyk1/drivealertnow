@@ -44,8 +44,8 @@
 
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" ng-click="vm.openEditor(phone.PhoneId)" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" ng-click="vm.deleteDevice(phone)" title="Remove Client"><i class="fa fa-times"></i></button>
                                 </div>
                             </td>
                         </tr>
