@@ -1,33 +1,35 @@
 ﻿<h2 class="content-heading">Alerts</h2>
-
-<div class="row">
-
-    <div class="col-xs-12">
-        <form class="form-inline">
-            <div class="form-group">
-                <button class="btn btn-primary" type="submit">Add phone</button>
-            </div>
-            <div class="form-material form-material-primary input-group remove-margin-t remove-margin-b pull-right">
-                <input class="form-control" type="text" id="base-material-text" name="base-material-text" placeholder="Search..">
-                <span class="input-group-addon"><i class="si si-magnifier"></i></span>
-            </div>
-            <div class="form-group">
-                <select class="form-control" ng-model="vm.selectedPhone"
-                        ng-init="vm.selectedPhone = vm.phones[0]"
-                        ng-options="phone.PhoneNumber for phone in vm.phones"></select>
-            </div>
-        </form>
-
-    </div>
-</div>
-
+ 
 <div class="row">
     <div class="col-sm-12">
         <!-- Dynamic Table Full -->
         <div class="block">
-            <!--<div class="block-header">
-                <h3 class="block-title">Dynamic Table <small>Full</small></h3>
-            </div>-->
+            <div class="block-header">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit">Add phone</button>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="example-daterange1">Date Range</label>
+                        <div class="col-md-8">
+                            <div class="input-daterange input-group" data-date-format="mm/dd/yyyy">
+                                <input class="form-control" type="text" id="example-daterange1" name="example-daterange1" placeholder="From">
+                                <span class="input-group-addon"><i class="fa fa-chevron-right"></i></span>
+                                <input class="form-control" type="text" id="example-daterange2" name="example-daterange2" placeholder="To">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-material form-material-primary input-group remove-margin-t remove-margin-b pull-right">
+                        <input class="form-control" type="text" id="base-material-text" name="base-material-text" placeholder="Search..">
+                        <span class="input-group-addon"><i class="si si-magnifier"></i></span>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" ng-model="vm.selectedPhone"
+                                ng-init="vm.selectedPhone = vm.phones[0]"
+                                ng-options="phone.PhoneNumber for phone in vm.phones"></select>
+                    </div>
+                </form>
+            </div>
 
             <div class="block-content">
                 <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->

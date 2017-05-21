@@ -2,48 +2,65 @@
 <h2 class="content-heading">Edit Phone</h2>
 <div class="row">
     <div class="col-xs-12">
-        <form class="form-horizontal">
+        <div class="block">
+            <div class="block-header bg-gray-light">
+                <ul class="block-options">
+                    <li>
+                        <button type="button" data-toggle="block-option" data-action="content_toggle">Help</button>
+                    </li>
+                </ul>
+                <h3 class="block-title">Edit</h3>
+            </div>
+            <div class="block-content">
+                <form class="form-horizontal push-10-t push-10">
 
-            <div class="form-group">
-                <div class="col-xs-12">
-                    <div class="form-material form-material-primary">
-                        <label for="profile-phone">Phone</label>
-                        <input class="form-control input-lg" type="text" id="device-phone" name="device-phone" ng-model="vm.phone.PhoneNumber" placeholder="Enter your Phone">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="form-material form-material-primary">
+                                <label for="profile-phone">Phone</label>
+                                <input class="form-control input-lg" type="text" id="device-phone" name="device-phone" ng-model="vm.phone.PhoneNumber" placeholder="Enter your Phone">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-6">
-                    <div class="form-material form-material-primary">
-                        <label for="profile-firstname">First Name</label>
-                        <input class="form-control input-lg" type="text" id="device-firstname" name="device-firstname" ng-model="vm.phone.FirstName" placeholder="Enter your First Name..">
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <div class="form-material form-material-primary">
+                                <label for="profile-firstname">First Name</label>
+                                <input class="form-control input-lg" type="text" id="device-firstname" name="device-firstname" ng-model="vm.phone.FirstName" placeholder="Enter your First Name..">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-material form-material-primary">
+                                <label for="profile-lastname">Last Name</label>
+                                <input class="form-control input-lg" type="text" id="device-lastname" name="device-lastname" ng-model="vm.phone.LastName" placeholder="Enter your Last Name..">
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="form-material form-material-primary">
-                        <label for="profile-lastname">Last Name</label>
-                        <input class="form-control input-lg" type="text" id="device-lastname" name="device-lastname" ng-model="vm.phone.LastName" placeholder="Enter your Last Name..">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="form-material form-material-primary">
+                                <label for="device-os-type">Time Zone</label>
+                                <select class="form-control" id="device-os-typ" name="device-os-typ" ng-model="vm.phone.OsType"
+                                        ng-init="vm.phone.OsType = vm.deviceTypes[0]"
+                                        ng-options="option.name for option in vm.deviceTypes"></select>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-12">
-                    <div class="form-material form-material-primary">
-                        <label for="device-os-type">Time Zone</label>
-                        <select class="form-control" id="device-os-typ" name="device-os-typ" ng-model="vm.phone.OsType"
-                                ng-init="vm.phone.OsType = vm.deviceTypes[0]"
-                                ng-options="option.name for option in vm.deviceTypes"></select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-12">
-                    <button class="btn btn-sm btn-primary" type="submit" ng-click="vm.saveDevice()"><i class="fa fa-check push-5-r"></i> Save Changes</button>
-                    <button class="btn btn-sm btn-warning" type="reset" ng-click="vm.cancel()"><i class="fa fa-refresh push-5-r"></i> Reset</button>
-                </div>
-            </div>
+                    <!--<div class="form-group">
+                        <div class="col-xs-12">
+                            <button class="btn btn-sm btn-primary" type="submit" ><i class="fa fa-check push-5-r"></i> Save Changes</button>
+                            <button class="btn btn-sm btn-warning" type="reset" ><i class="fa fa-refresh push-5-r"></i> Reset</button>
+                        </div>
+                    </div>-->
 
-        </form>
+                </form>
+            </div>
+            <div class="block-content block-content-full bg-gray-lighter text-center">
+                <button class="btn btn-sm btn-primary" type="submit" ng-click="vm.saveDevice()"><i class="fa fa-check push-5-r"></i> Save Changes</button>
+                <button class="btn btn-sm btn-warning" type="reset" ng-click="vm.cancel()"><i class="fa fa-refresh push-5-r"></i> Reset</button>
+            </div>
+        </div>
+
 
     </div>
 </div>
