@@ -18,7 +18,7 @@
 
             $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).then(
                 function (response) {
-                    localStorageService.set('authorizationData', { token: response.data.access_token, userName: response.data.userName });
+                    localStorageService.set('authorizationData', { token: response.data.access_token, userName: response.data.userName, userId: response.data.userId });
 
                     _authentication.isAuth = true;
                     _authentication.userName = response.data.userName;
@@ -49,6 +49,7 @@
             if (authData) {
                 _authentication.isAuth = true;
                 _authentication.userName = authData.userName;
+                _authentication.userId = authData.userId;
             }
 
         }
