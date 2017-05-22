@@ -1,5 +1,5 @@
-﻿app.controller('DevicesController', ['DevicesService', 'AuthService',
-    function (devicesService, authService) {
+﻿app.controller('DevicesController', ['DevicesService', 'AuthService', 'BufferService', '$location',
+    function (devicesService, authService, bufferService, $location) {
         var vm = this;
         vm.text = "Devices";
         vm.phones = [];
@@ -26,6 +26,8 @@
         }
 
         function _openEditor(id) {
+            bufferService.editorDeviceId = id;
+            $location.path("/edit-device");
             alert('need to implement Edit. id = ' + id);
         }
 
