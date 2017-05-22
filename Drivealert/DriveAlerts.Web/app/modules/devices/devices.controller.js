@@ -1,11 +1,9 @@
 ﻿app.controller('DevicesController', ['DevicesService', 'AuthService', 'BufferService', '$location',
     function (devicesService, authService, bufferService, $location) {
         var vm = this;
-        vm.text = "Devices";
         vm.phones = [];
         vm.deleteDevice = _deleteDevice;
         vm.openEditor = _openEditor;
-        vm.$onInit = _loadDevices;
 
         function _loadDevices() {
             devicesService.getDevices(authService.authentication.userId)
@@ -25,10 +23,9 @@
                 });
         }
 
-        function _openEditor(id) {
-            bufferService.editorDeviceId = id;
+        function _openEditor(phone) {
+            bufferService.editorDevice = phone;
             $location.path("/edit-device");
-            alert('need to implement Edit. id = ' + id);
         }
 
         //  todo: move this to update controller

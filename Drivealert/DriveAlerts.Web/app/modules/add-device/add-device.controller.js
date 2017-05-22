@@ -1,8 +1,8 @@
-﻿app.controller('AddDeviceController', ['$location', 'DevicesService', 'AuthService',
-    function ($location, devicesService, authService) {
+﻿app.controller('AddDeviceController', ['$location', 'DevicesService', 'AuthService', 'ngWebSettings',
+    function ($location, devicesService, authService, ngWebSettings) {
         var vm = this;
 
-        vm.deviceTypes = [{ name: "Android", id: 1 }, { name: "IOS", id: 2 }];
+        vm.deviceTypes = ngWebSettings.deviceTypes;
         vm.phone = {
             PhoneId: 0,
             PhoneNumber: "",

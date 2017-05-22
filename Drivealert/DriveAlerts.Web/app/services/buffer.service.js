@@ -3,7 +3,7 @@
         var service = {};
         var _isInFrame = false;
 
-        service.editorDeviceId = '';
+        service.editorDevice = null;
         service.setIsIFrame = _setIsIFrame;
         service.getIsIFrame = _getIsIFrame;
 

@@ -97,7 +97,8 @@
 app.constant('ngWebSettings', {
     apiServiceBaseUri: 'http://api.drivealertapi.usa.cc/',
     apiVersion: 'v1',
-    clientId: 'C35E917F-8B62-41E0-896E-A4A625C15C4D'
+    clientId: 'C35E917F-8B62-41E0-896E-A4A625C15C4D',
+    deviceTypes: [{ name: "Android", id: 1 }, { name: "IOS", id: 2 }]
 });
 
 app.config(function ($httpProvider) {
