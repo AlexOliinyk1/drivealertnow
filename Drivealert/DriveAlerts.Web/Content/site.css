@@ -16,3 +16,24 @@
     text-align: center;
     width: 50%
 }
+
+/*Centralize menu in IFrame*/
+.navbar-nav.is-iframe {
+  width: 100%;
+  text-align: center;
+}
+.navbar-nav.is-iframe li {
+  float: none;
+  display: inline-block;
+  color:#000000;
+}
+
+/*Fix margins for iframe*/
+.navbar.no-margin{
+    margin-bottom: 0;
+}
+
+.content-heading{
+    margin-top: 0;
+    text-align:center;
+}

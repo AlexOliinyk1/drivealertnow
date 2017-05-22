@@ -15,7 +15,7 @@
 
 <body ng-controller="DriveAlertNowController" ng-cloak>
     <!-- navbar-inverse bg-primary-dark -->
-    <div class="navbar navbar-static-top" ng-class="{ 'navbar-inverse': !isIFrame(), 'bg-primary-dark': !isIFrame() }">
+    <div class="navbar navbar-static-top" ng-class="{ 'navbar-inverse': !isIFrame(), 'bg-primary-dark': !isIFrame(), 'no-margin': isIFrame() }">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -25,8 +25,8 @@
                 </button>
                 <a ng-hide="isIFrame()" class="navbar-brand" href="#">Drive Alert Now</a>
             </div>
-            <div class="navbar-collapse collapse navbar-right">
-                <ul class="nav navbar-nav">
+            <div class="navbar-collapse collapse" ng-class="{ 'navbar-right': !isIFrame() }">
+                <ul class="nav navbar-nav" ng-class="{ 'is-iframe': isIFrame() }">
                     <li ng-hide="!authentication.isAuth"><a href="#">Alerts</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/locations">Locations</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/devices">Devices</a></li>
@@ -90,6 +90,7 @@
     <script src="app/modules/video/video.controller.js"></script>
     <script src="app/modules/reminder-password/reminder-password.controller.js"></script>
     <script src="app/modules/add-device/add-device.controller.js"></script>
+    <script src="app/modules/edit-device/edit-device.controller.js"></script>
     <script src="app/modules/locations/locations.controller.js"></script>
 </body>
 </html>
