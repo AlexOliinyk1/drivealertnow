@@ -14,7 +14,6 @@
             IsCallViolationAlerts: true
         };
         vm.searchAlerts = _searchAlerts;
-        vm.$onInit = _loadPhones;
         _loadPhones();
 
         $scope.$watch('vm.selectedPhone', function (current, original) {

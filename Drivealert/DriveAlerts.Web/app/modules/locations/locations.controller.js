@@ -1,13 +1,14 @@
 ﻿app.controller('LocationsController', ['$scope', 'LocationService', 'DevicesService', 'AuthService',
     function ($scope, locationService, devicesService, authService) {
         var vm = this;
+
         vm.phones = [];
         vm.selectedPhone = {};
         vm.locations = [];
-        vm.$onInit = _loadPhones;
         vm.showOnMap = _showOnMap;
 
         function _loadPhones() {
+            debugger;
             devicesService.getDevices(authService.authentication.userId)
                 .then(function (result) {
                     vm.phones = result;
