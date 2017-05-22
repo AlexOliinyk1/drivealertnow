@@ -28,7 +28,7 @@
 
         $scope.$watch('vm.selectedPhone', function (current, original) {
             if (current != original) {
-                _loadLocations();
+                _loadLocations(current.PhoneId);
             }
         });
 
