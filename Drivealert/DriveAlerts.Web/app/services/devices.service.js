@@ -1,9 +1,9 @@
 ﻿app.factory('DevicesService', ['$http', '$q', 'ngWebSettings',
     function ($http, $q, ngWebSettings) {
-        var serviceBase = ngWebSettings.apiServiceBaseUri;
+        var serviceBase = ngWebSettings.apiServiceBaseUri + ngWebSettings.apiVersion + '/';
         var service = {};
 
-        service.getDevices = _getFakeDevices;
+        service.getDevices = _getDevices;
         service.createDevice = _createDevice;
         service.updateDevice = _updateDevice;
         service.removeDevice = _removeDevice;

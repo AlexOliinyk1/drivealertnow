@@ -31,7 +31,7 @@
                     <li ng-hide="!authentication.isAuth"><a href="#!/locations">Locations</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/devices">Devices</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/settings">Settings</a></li>
-                    <li ng-hide="!authentication.isAuth"><a href="#!/account">Account</a></li>
+                    <li ng-hide="(!authentication.isAuth || isIFrame())"><a href="#!/account">Account</a></li>
 
                     <li ng-hide="!authentication.isAuth"><a href="#!/video">Video</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/faq">FAQ</a></li>
