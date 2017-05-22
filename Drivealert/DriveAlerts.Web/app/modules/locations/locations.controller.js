@@ -8,7 +8,6 @@
         vm.showOnMap = _showOnMap;
 
         function _loadPhones() {
-            debugger;
             devicesService.getDevices(authService.authentication.userId)
                 .then(function (result) {
                     vm.phones = result;
