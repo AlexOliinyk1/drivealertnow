@@ -35,7 +35,7 @@
 
         //  DELETE /phones
         function _removeDevice(id) {
-            return $http.delete(serviceBase + 'phones/', { params: { phoneId: id }, headers: { 'Content-Type': 'application/json' } })
+            return $http.delete(serviceBase + 'phones/' + id, { headers: { 'Content-Type': 'application/json' } })
                 .then(function (result) {
                     return result.status
                 }).catch(function (error) {

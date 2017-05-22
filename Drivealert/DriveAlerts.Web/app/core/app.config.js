@@ -26,6 +26,20 @@
         authorize: true
     });
 
+    $routeProvider.when('/add-device', {
+        controller: 'AddDeviceController',
+        templateUrl: '/app/modules/add-device/add-device.html',
+        controllerAs: 'vm',
+        authorize: true
+    });
+
+    $routeProvider.when('/edit-device', {
+        controller: 'EditDeviceController',
+        templateUrl: '/app/modules/add-device/add-device.html',
+        controllerAs: 'vm',
+        authorize: true
+    });
+
     $routeProvider.when('/faq', {
         controller: 'FaqController',
         templateUrl: '/app/modules/faq/faq.html',
@@ -66,13 +80,6 @@
         templateUrl: '/app/modules/monthly-subscriptions/monthly-subscriptions.html',
         controllerAs: 'vm',
         authorize: false
-    });
-
-    $routeProvider.when('/add-device', {
-        controller: 'AddDeviceController',
-        templateUrl: '/app/modules/add-device/add-device.html',
-        controllerAs: 'vm',
-        authorize: true
     });
 
     $routeProvider.when('/locations', {
