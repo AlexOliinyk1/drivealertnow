@@ -5,6 +5,10 @@
         vm.phones = [];
         vm.selectedPhone = {};
         vm.locations = [];
+        vm.searchOptions = {
+            DateStart: "2017-01-23T06:42:07.872Z",
+            DateEnd: "2017-05-23T06:42:07.872Z"
+        };
         vm.showOnMap = _showOnMap;
 
         function _loadPhones() {
@@ -16,9 +20,14 @@
         }
 
         function _loadLocations() {
-            locationService.getLocations(vm.selectedPhone.PhoneNumber)
+            locationService.getLocations(vm.selectedPhone.PhoneNumber, vm.searchOptions)
                 .then(function (result) {
-                    vm.locations = result;
+                    if (!result.status) {
+                        vm.locations = result;
+                    }
+                    else {
+                        console.log(result);
+                    }
                 });
         }
 

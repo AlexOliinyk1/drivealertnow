@@ -11,7 +11,7 @@
             PhoneOs: 0
         };
         vm.saveDevice = _saveDevice;
-        vm.cancel = _cancel;
+        vm.cancel = _goToDevices;
 
         function _goToDevices() {
             $location.path("/devices");
@@ -19,18 +19,11 @@
 
         function _saveDevice() {
             devicesService.createDevice(authService.authentication.userId, vm.phone)
-                .then(function (result) {//success
-                    if (result == 200) {
+                .then(function (result) {
+                    if (result) {
                         _goToDevices();
-                    } else {
-                        alert("Failed");
-                        console.log(result);
                     }
                 });
-        }
-
-        function _cancel() {
-            _goToDevices();
         }
     }
 ]);

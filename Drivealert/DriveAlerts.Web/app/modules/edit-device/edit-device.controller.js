@@ -16,7 +16,7 @@
         function _save() {
             devicesService.updateDevice(vm.phone.PhoneId, vm.phone)
                 .then(function (result) {
-                    if (result == 200) {
+                    if (result) {
                         $location.path("/devices");
                     }
                     else {

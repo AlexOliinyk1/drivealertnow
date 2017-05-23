@@ -12,7 +12,8 @@
                 .then(function (result) {
                     return result.data;
                 }).catch(function (error) {
-                    return error;
+                    console.log(error);
+                    return [];
                 });
         }
 
@@ -21,9 +22,10 @@
             var url = baseService + 'settings/phones/' + phoneId;
             return $http.post(url, settings, { headers: { 'Content-Type': 'application/json' } })
                 .then(function (result) {
-
+                    return true;
                 }).catch(function (error) {
-
+                    console.log(error);
+                    return false;
                 });
         }
 

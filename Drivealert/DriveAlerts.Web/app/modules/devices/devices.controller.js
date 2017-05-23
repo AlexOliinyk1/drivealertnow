@@ -15,7 +15,7 @@
         function _deleteDevice(id) {
             devicesService.removeDevice(id)
                 .then(function (result) {
-                    if (result == 200) {
+                    if (result) {
                         _loadDevices();
                     } else {
                         console.log(result);
@@ -26,18 +26,6 @@
         function _openEditor(phone) {
             bufferService.editorDevice = phone;
             $location.path("/edit-device");
-        }
-
-        //  todo: move this to update controller
-        function _updataDevice(device) {
-            devicesService.updateDevice(device.PhoneId, device)
-                .then(function (result) {
-                    if (result == 200) {
-
-                    } else {
-                        console.log(result);
-                    }
-                });
         }
 
         _loadDevices();
