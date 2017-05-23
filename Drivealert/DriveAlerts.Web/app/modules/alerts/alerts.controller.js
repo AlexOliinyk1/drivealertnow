@@ -1,9 +1,8 @@
-﻿app.controller('AlertsController', ['$scope', 'AlertService', 'DevicesService', 'AuthService',
-    function ($scope, alertService, devicesService, authService) {
+﻿app.controller('AlertsController', ['$scope', 'AlertService', 'DevicesService', 'AuthService', 'BufferService',
+    function ($scope, alertService, devicesService, authService, bufferService) {
         var vm = this;
+        var selectedPhone = {};
 
-        vm.phones = [];//added phones : need to take this from api
-        vm.selectedPhone = {};
         vm.alerts = [];
         vm.searchWord = "";
         vm.searchConfig = {
@@ -15,29 +14,30 @@
             IsCallViolationAlerts: true,
         };
         vm.searchAlerts = _searchAlerts;
-        _loadPhones();
 
-        $scope.$watch('vm.selectedPhone', function (current, original) {
-            if (current) {
-                _searchAlerts();
-            }
+        $scope.$on('phoneNumber.changed', function (evnt, phone) {
+            _changePhone(phone);
         });
 
-        //  get phones for user
-        function _loadPhones() {
-            devicesService.getDevices(authService.authentication.userId)
-                .then(function (result) {
-                    vm.phones = result;
-                    vm.selectedPhone = vm.phones[0];
-                });
+        function _init() {
+            if (bufferService.activePhone !== null) {
+                _changePhone(bufferService.activePhone);
+            }
         }
 
         //  get alerts for selected phone
         function _searchAlerts() {
-            alertService.getAlerts(vm.selectedPhone.PhoneNumber, vm.searchConfig)
+            alertService.getAlerts(selectedPhone.PhoneNumber, vm.searchConfig)
                 .then(function (result) {
                     vm.alerts = result;
                 });
         }
+
+        function _changePhone(phone) {
+            selectedPhone = phone;
+            _searchAlerts();
+        }
+
+        _init();
     }
 ]);

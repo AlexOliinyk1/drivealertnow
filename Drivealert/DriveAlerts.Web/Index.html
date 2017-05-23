@@ -34,6 +34,7 @@
                     <li ng-hide="(!authentication.isAuth || isIFrame())"><a href="#!/account">Account</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/video">Video</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="#!/faq">FAQ</a></li>
+                    <li ng-hide="!authentication.isAuth"><phone-select class="navbar-text"></phone-select></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/monthly-subscriptions"><i class="fa fa-shopping-cart"></i> BUY NOW</a></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/signup-wizard"><i class="fa fa-key"></i> ACTIVATE</a></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/login"><i class="fa fa-sign-in"></i> LOGIN</a></li>
@@ -89,6 +90,7 @@
     <!-- Directives -->
     <script src="app/directives/show-tab.directive.js"></script>
     <script src="app/directives/date-picker.directive.js"></script>
+    <script src="app/directives/phone-select/phone-select.directive.js"></script>
 
     <!-- Controllers -->
     <script src="app/modules/login/login.controller.js"></script>

@@ -7,6 +7,10 @@
             $location.path('/home');
         }
 
+        $scope.$on('phoneNumber.changed', function (evnt, phone) {
+            bufferService.activePhone = phone;
+        });
+
         $scope.logOut = _logout;
         $scope.authentication = AuthService.authentication;
         $scope.isIFrame = bufferService.getIsIFrame;

@@ -1,5 +1,5 @@
-﻿app.controller('LocationsController', ['$scope', 'LocationService', 'DevicesService', 'AuthService',
-    function ($scope, locationService, devicesService, authService) {
+﻿app.controller('LocationsController', ['$scope', 'LocationService', 'DevicesService', 'AuthService', 'BufferService',
+    function ($scope, locationService, devicesService, authService, bufferService) {
         var vm = this;
 
         vm.phones = [];
@@ -12,12 +12,14 @@
         vm.showOnMap = _showOnMap;
         vm.searchLocations = _loadLocations
 
-        function _loadPhones() {
-            devicesService.getDevices(authService.authentication.userId)
-                .then(function (result) {
-                    vm.phones = result;
-                    vm.selectedPhone = result[0];
-                });
+        $scope.$on('phoneNumber.changed', function (evnt, phone) {
+            _changePhoneNumber(phone);
+        });
+
+        function _init() {
+            if (bufferService.activePhone !== null) {
+                _changePhoneNumber(bufferService.activePhone);
+            }
         }
 
         function _loadLocations() {
@@ -36,12 +38,11 @@
 
         }
 
-        $scope.$watch('vm.selectedPhone', function (current, original) {
-            if (current != original) {
-                _loadLocations(current.PhoneId);
-            }
-        });
+        function _changePhoneNumber(phone) {
+            vm.selectedPhone = phone;
+            _loadLocations();
+        }
 
-        _loadPhones();
+        _init();
     }
 ]);

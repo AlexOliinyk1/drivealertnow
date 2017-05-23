@@ -4,9 +4,10 @@
         var _isInFrame = false;
 
         service.editorDevice = null;
+        service.activePhone = null;
         service.setIsIFrame = _setIsIFrame;
         service.getIsIFrame = _getIsIFrame;
-
+        
         function _setIsIFrame(val) {
             _isInFrame = val;
         }

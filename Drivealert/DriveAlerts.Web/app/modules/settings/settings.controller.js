@@ -1,5 +1,5 @@
-﻿app.controller('SettingsController', ['$scope', 'SettingsService', 'DevicesService', 'AuthService',
-    function ($scope, settingsService, devicesService, authService) {
+﻿app.controller('SettingsController', ['$scope', 'SettingsService', 'DevicesService', 'AuthService', 'BufferService',
+    function ($scope, settingsService, devicesService, authService, bufferService) {
         var vm = this;
 
         vm.phones = [];
@@ -39,23 +39,16 @@
         vm.saveSettings = _saveSettings;
         vm.saveAllSettings = _saveAllSettings;
 
-        _loadPhones();
-
-        $scope.$watch('vm.activePhone', function (current, original) {
-            if (current) {
-                _getSettings(current.PhoneId);
-            }
+        $scope.$on('phoneNumber.changed', function (evnt, phone) {
+            _changePhone(phone);
         });
 
-        function _loadPhones() {
-            devicesService.getDevices(authService.authentication.userId)
-                .then(function (result) {
-                    vm.phones = result;
-                    vm.activePhone = vm.phones[0];
-                    vm.setting.PhoneNumber = vm.activePhone.PhoneNumber;
-                });
+        function _init() {
+            if (bufferService.activePhone !== null) {
+                _changePhone(bufferService.activePhone);
+            }
         }
-
+        
         function _getSettings(phoneId) {
             settingsService.getSettings(phoneId)
                 .then(function (result) {
@@ -79,5 +72,12 @@
         function _saveAllSettings() {
             console.log('Not Implemented Yet');
         }
+
+        function _changePhone(phone) {
+            vm.activePhone = phone;
+            _getSettings(vm.activePhone.PhoneId);
+        }
+
+        _init();
     }
 ]);
