@@ -13,7 +13,7 @@
                     return result.data;
                 }).catch(function (error) {
                     console.log(error);
-                    return [];
+                    return undefined;
                 });
         }
 

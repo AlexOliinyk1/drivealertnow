@@ -5,10 +5,10 @@
             <div class="block-content block-content-full block-content-narrow">
                 <form class="form-inline" action="base_forms_elements.html" method="post" onsubmit="return false;">
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Save</button>
+                        <button class="btn btn-primary" ng-click="vm.saveSettings()" type="submit">Save</button>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Save All</button>
+                        <button class="btn btn-primary" ng-click="vm.saveAllSettings()" type="submit">Save All</button>
                     </div>
                     <div class="form-group pull-right">
                         <div class="col-xs-12">
@@ -26,7 +26,7 @@
 </div>
 <div class="row">
     <div class="col-lg-4">
-        <!-- Email Center Widget -->
+        <!-- Speed Alerts Widget -->
         <div class="block block-bordered">
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
@@ -45,7 +45,7 @@
                 <div class="form-group">
                     <div class="col-md-12">
                         <div class="input-group">
-                            <input class="form-control" type="number" min="0" step="1" id="interval-beetwen-alerts" name="interval-beetwen-alerts">
+                            <input class="form-control" type="number" min="0" step="1" id="interval-beetwen-alerts" name="interval-beetwen-alerts" ng-model="vm.setting.AlertSpeedFrame">
                             <span class="input-group-addon">minutes</span>
                         </div>
                     </div>
@@ -58,34 +58,32 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <label class="css-input switch switch-sm switch-primary">
-                            <input type="checkbox" id="enable-speed-alerts" name="enable-speed-alerts"><span></span> Enable Speed Alerts
+                            <input type="checkbox" id="enable-speed-alerts" name="enable-speed-alerts" ng-model="vm.setting.EnableSpeedAlerts"><span></span> Enable Speed Alerts
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
-
                     <div class="col-xs-12">
                         <div class="radio">
                             <label class="css-input css-radio css-radio-primary push-10-r">
-                                <input type="radio" name="speed" checked=""><span></span> 60MPH
+                                <input type="radio" ng-model="vm.setting.AlertSpeed" name="speed" ng-value="60"><span></span> 60MPH
                             </label>
                         </div>
                         <div class="radio">
                             <label class="css-input css-radio css-radio-primary push-10-r">
-                                <input type="radio" name="speed"><span></span> 65MPH
+                                <input type="radio" ng-model="vm.setting.AlertSpeed" name="speed" ng-value="65"><span></span> 65MPH
                             </label>
                         </div>
                         <div class="radio">
                             <label class="css-input css-radio css-radio-primary push-10-r">
-                                <input type="radio" name="speed"><span></span> 75MPH
+                                <input type="radio" ng-model="vm.setting.AlertSpeed" name="speed" ng-value="75"><span></span> 75MPH
                             </label>
                         </div>
                         <div class="radio">
                             <label class="css-input css-radio css-radio-primary push-10-r">
-                                <input type="radio" name="speed"><span></span> 80MPH
+                                <input type="radio" ng-model="vm.setting.AlertSpeed" name="speed" ng-value="80"><span></span> 80MPH
                             </label>
                         </div>
-
                     </div>
                 </div>
                 <div class="form-group">
@@ -96,17 +94,17 @@
                 <div class="form-group clearfix">
                     <div class="col-xs-12">
                         <label class="css-input switch switch-sm switch-primary">
-                            <input type="checkbox" id="make-calls" name="make-calls"><span></span> Recieve/Make Calls
+                            <input type="checkbox" id="make-calls" name="make-calls" ng-model="vm.setting.AllowHeadset"><span></span> Recieve/Make Calls
                         </label>
                     </div>
                 </div>
 
             </div>
         </div>
-        <!-- END Email Center Widget -->
+        <!-- END Speed Alerts Widget -->
     </div>
     <div class="col-lg-4">
-        <!-- Notifications Widget -->
+        <!-- Preferences Widget -->
         <div class="block block-bordered">
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
@@ -125,21 +123,21 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <label class="css-input switch switch-sm switch-primary">
-                            <input type="checkbox" id="notify-location" name="notify-location"><span></span> Notify if Location Services are disabled
+                            <input type="checkbox" ng-model="vm.setting.GpsNotify" id="notify-location" name="notify-location"><span></span> Notify if Location Services are disabled
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-12">
                         <label class="css-input switch switch-sm switch-primary">
-                            <input type="checkbox" id="notify-bluetooth" name="notify-bluetooth"><span></span> Notify if Bluetooth is off
+                            <input type="checkbox" ng-model="vm.setting.BluetoothNotify" id="notify-bluetooth" name="notify-bluetooth"><span></span> Notify if Bluetooth is off
                         </label>
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <div class="col-xs-12">
                         <label class="css-input switch switch-sm switch-primary">
-                            <input type="checkbox" id="notify-uninstalled" name="notify-uninstalled"><span></span> Notify if Uninstalled
+                            <input type="checkbox" ng-model="vm.setting.UninstalledNotify" id="notify-uninstalled" name="notify-uninstalled"><span></span> Notify if Uninstalled
                         </label>
                     </div>
                 </div>
@@ -163,14 +161,14 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <label class="css-input switch switch-sm switch-primary">
-                            <input type="checkbox" id="report-vehicle-activity" name="report-vehicle-activity"><span></span> Report vehicle activity
+                            <input type="checkbox" ng-model="vm.setting.EnableReportMovements" id="report-vehicle-activity" name="report-vehicle-activity"><span></span> Report vehicle activity
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-12">
                         <label class="css-input switch switch-sm switch-primary">
-                            <input type="checkbox" id="include-coordinates" name="include-coordinates"><span></span> Include coordinates
+                            <input type="checkbox" ng-model="vm.setting.EnableReportCoordinates" id="include-coordinates" name="include-coordinates"><span></span> Include coordinates
                         </label>
                     </div>
                 </div>
@@ -182,17 +180,17 @@
                 <div class="form-group clearfix">
                     <div class="col-md-12">
                         <div class="input-group">
-                            <input class="form-control" ype="number" min="0" step="1" id="interval-beetwen-locations" name="interval-beetwen-locations">
+                            <input class="form-control" ng-model="vm.setting.EnableReportTrackFrame" ype="number" min="0" step="1" id="interval-beetwen-locations" name="interval-beetwen-locations">
                             <span class="input-group-addon">minutes</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- END Notifications Widget -->
+        <!-- END Preferences Widget -->
     </div>
     <div class="col-lg-4">
-        <!-- Friends Widget -->
+        <!-- Allowed Phones Widget -->
         <div class="block block-bordered">
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
@@ -211,7 +209,7 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <label class="css-input switch switch-sm switch-primary">
-                            <input type="checkbox" id="enable-administrator" name="enable-administrator"><span></span> Enable Text Alerts to Administrator
+                            <input type="checkbox" id="enable-administrator" ng-model="vm.setting.EnableAdminTextAlerts" name="enable-administrator"><span></span> Enable Text Alerts to Administrator
                         </label>
                     </div>
                 </div>
@@ -219,14 +217,14 @@
                     <div class="col-xs-12">
                         <div class="form-material form-material-primary">
                             <label for="profile-phone">Phone</label>
-                            <input class="form-control input-lg" type="text" id="alert-phone" name="alert-phone" placeholder="Enter your Phone">
+                            <input class="form-control input-lg" type="text" id="alert-phone" ng-model="vm.setting.AdminMobilePhoneNumber" name="alert-phone" placeholder="Enter your Phone">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-12">
                         <label class="css-input switch switch-sm switch-primary">
-                            <input type="checkbox" id="enable-email-administrator" name="enable-email-administrator"><span></span>Enable Email Alerts to Administrator
+                            <input type="checkbox" id="enable-email-administrator"  ng-model="vm.setting.EnableAdminEmailAlerts" name="enable-email-administrator"><span></span>Enable Email Alerts to Administrator
                         </label>
                     </div>
                 </div>
@@ -234,7 +232,7 @@
                     <div class="col-xs-12">
                         <div class="form-material form-material-primary">
                             <label for="profile-email">Email</label>
-                            <input class="form-control input-lg" type="email" id="settings-email" name="settings-email" placeholder="Enter your email..">
+                            <input class="form-control input-lg" type="email" id="settings-email"  ng-model="vm.setting.AdminEmailAddress" name="settings-email" placeholder="Enter your email">
                         </div>
                     </div>
                 </div>
@@ -246,7 +244,7 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-material form-material-primary">
-                            <input class="form-control input-lg" type="text" id="emergyncy-phone" name="emergyncy-phone" disabled>
+                            <input class="form-control input-lg" type="text" id="emergyncy-phone"  ng-model="vm.setting.AllowedPhone1" name="emergyncy-phone" disabled>
                         </div>
                     </div>
 
@@ -254,29 +252,29 @@
                 <div class="form-group">
                     <div class="col-xs-6">
                         <div class="form-material form-material-primary">
-                            <input class="form-control input-lg" type="text" id="allowed-phone-one" name="allowed-phone-one" placeholder="Enter Phone 3">
+                            <input class="form-control input-lg" type="text" id="allowed-phone-one" ng-model="vm.setting.AllowedPhone3" name="allowed-phone-one" placeholder="Enter Phone 3">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-material form-material-primary">
-                            <input class="form-control input-lg" type="text" id="owner-name-one" name="owner-name-one" placeholder="Owner Name">
+                            <input class="form-control input-lg" type="text" id="owner-name-one" ng-model="vm.setting.AllowedPhoneOwner3" name="owner-name-one" placeholder="Owner Name">
                         </div>
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <div class="col-xs-6">
                         <div class="form-material form-material-primary">
-                            <input class="form-control input-lg" type="text" id="allowed-phone-two" name="allowed-phone-two" placeholder="Enter Phone 4">
+                            <input class="form-control input-lg" type="text" id="allowed-phone-two" ng-model="vm.setting.AllowedPhone4" name="allowed-phone-two" placeholder="Enter Phone 4">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-material form-material-primary">
-                            <input class="form-control input-lg" type="text" id="owner-name-two" name="owner-name-two" placeholder="Owner Name">
+                            <input class="form-control input-lg" type="text" id="owner-name-two" ng-model="vm.setting.AllowedPhoneOwner4" name="owner-name-two" placeholder="Owner Name">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- END Friends Widget -->
+        <!-- END Allowed Phones Widget -->
     </div>
 </div>
