@@ -2,10 +2,14 @@
     display: none !important;
 }
 
+body {
+    background-color: white !important;
+}
+
 .video-popup-faq {
     height: 400px;
     width: 100%;
-    margin-top: 15px
+    margin-top: 15px;
 }
 
 .help-popup-faq {
@@ -14,26 +18,27 @@
     color: white;
     margin-left: 25%;
     text-align: center;
-    width: 50%
+    width: 50%;
 }
 
 /*Centralize menu in IFrame*/
 .navbar-nav.is-iframe {
-  width: 100%;
-  text-align: center;
-}
-.navbar-nav.is-iframe li {
-  float: none;
-  display: inline-block;
-  color:#000000;
+    width: 100%;
+    text-align: center;
 }
 
+    .navbar-nav.is-iframe li {
+        float: none;
+        display: inline-block;
+        color: #000000;
+    }
+
 /*Fix margins for iframe*/
-.navbar.no-margin{
+.navbar.no-margin {
     margin-bottom: 0;
 }
 
-.content-heading{
+.content-heading {
     margin-top: 0;
-    text-align:center;
+    text-align: center;
 }

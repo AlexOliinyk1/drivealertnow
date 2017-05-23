@@ -12,8 +12,36 @@
                     return [];
                 });
         }
+        function _getFakeAlerts() {
+            var d = $q.defer();
+            // imitate request
+            setTimeout(function () {
+                d.resolve([
+                    {
+                        User: "Social Judo",
+                        Date: "5/17/2017 3:19 PM",
+                        ViolationType: "Speed alerts",
+                        ViolationDescription: "Some deription"
+                    },
+                    {
+                        User: "Another User",
+                        Date: "5/17/2017 3:19 PM",
+                        ViolationType: "Emergency calls",
+                        ViolationDescription: "This is test decription"
+                    },
+                    {
+                        User: "Social Judo",
+                        Date: "5/17/2017 3:19 PM",
+                        ViolationType: "Connection Violations",
+                        ViolationDescription: "Lorem ipsum"
+                    }
+                ]);
+            }, 1000);
 
-        alertServiceFactory.getAlerts = _getAlerts;
+            return d.promise;
+        }
+
+        alertServiceFactory.getAlerts = _getFakeAlerts;
         return alertServiceFactory;
     }
 ]);
