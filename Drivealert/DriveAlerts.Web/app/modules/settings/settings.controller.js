@@ -10,13 +10,14 @@
         _loadPhones();
 
         $scope.$watch('vm.activePhone', function (current, original) {
-            _getSettings(current.PhoneId);
+            if (current) {
+                _getSettings(current.PhoneId);
+            }
         });
 
         function _loadPhones() {
             devicesService.getDevices(authService.authentication.userId)
                 .then(function (result) {
-                    debugger;
                     vm.phones = result;
                     vm.activePhone = vm.phones[0];
                 });
