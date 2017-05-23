@@ -7,8 +7,8 @@
         vm.alerts = [];
         vm.searchWord = "";
         vm.searchConfig = {
-            DateStart: "2017-05-18",
-            DateEnd: "2017-05-23",
+            DateStart: new Date(),
+            DateEnd: new Date(),
             IsSpeedAlerts: true,
             IsEmergencyCalls: true,
             IsConnectionViolations: true,

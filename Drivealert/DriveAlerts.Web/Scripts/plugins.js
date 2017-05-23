@@ -15,11 +15,7 @@
         else {
             $('#frame-video').attr('src', '//www.youtube.com/embed/o7NS54-Swsc');
         }
-    });
-
-
-    $('input[name="daterange"]').daterangepicker();
-    
+    });  
 })(jQuery)
 
 

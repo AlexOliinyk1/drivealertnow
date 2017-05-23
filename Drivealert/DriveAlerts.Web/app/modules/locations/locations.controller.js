@@ -6,10 +6,11 @@
         vm.selectedPhone = {};
         vm.locations = [];
         vm.searchOptions = {
-            DateStart: "2017-01-23T06:42:07.872Z",
-            DateEnd: "2017-05-23T06:42:07.872Z"
+            DateStart: new Date(),
+            DateEnd: new Date()
         };
         vm.showOnMap = _showOnMap;
+        vm.searchLocations = _loadLocations
 
         function _loadPhones() {
             devicesService.getDevices(authService.authentication.userId)
