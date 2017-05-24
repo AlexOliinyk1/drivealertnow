@@ -7,7 +7,7 @@
             <div class="block-header">
                 <form class="form-inline">
                     <div class="form-group">
-                        <a class="btn btn-primary" href="#!/add-device">Add phone</a>
+                        <a ng-hide="isIFrame()" class="btn btn-primary" href="#!/add-device">Add phone</a>
                     </div>
                     <div class="form-material form-material-primary input-group remove-margin-t remove-margin-b pull-right">
                         <input class="form-control" type="text" id="base-material-text" name="base-material-text" placeholder="Search..">
@@ -21,14 +21,14 @@
                 <table class="table table-bordered table-striped js-dataTable-full  bg-gray-light">
                     <thead>
                         <tr>
-                            <th>User</th>
+                            <th>Driver Name</th>
                             <th>Phone Number</th>
                             <!--<th>Activation Code</th>-->
                             <th>Last Activity Date</th>
                             <th>Install Date</th>
-                            <th>Phone</th>
-                            <th>Version</th>
-                            <th>Options</th>
+                            <th class="text-center">Phone</th>
+                            <th  class="text-center">Version</th>
+                            <th  class="text-center">Options</th>
 
                         </tr>
                     </thead>
@@ -39,13 +39,13 @@
                             <!--<td>{{phone.PhoneId}}</td>-->
                             <td>{{phone.LastActivityDate}}</td>
                             <td>{{phone.InstallDate}}</td>
-                            <td>{{phone.PhoneOs}}</td>
-                            <td>{{phone.Version}}</td>
+                            <td  class="text-center">{{phone.PhoneOs}}</td>
+                            <td  class="text-center">{{phone.Version}}</td>
 
                             <td class="text-center">
                                 <div class="btn-group">
                                     <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" ng-click="vm.openEditor(phone)" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" ng-click="vm.deleteDevice(phone.PhoneId)" title="Remove Client"><i class="fa fa-times"></i></button>
+                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip"  ng-click="vm.deleteDevice(phone.PhoneId, phone.PhoneNumber)" title="Remove Client"><i class="fa fa-times"></i></button>
                                 </div>
                             </td>
                         </tr>

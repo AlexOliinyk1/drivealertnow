@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="block">
-           
+            
                 <form class="form-inline">
                     <div class="form-group">
                         <button class="btn btn-primary" ng-click="vm.saveSettings()" type="submit">Save</button>
@@ -10,10 +10,7 @@
                     <div class="form-group">
                         <button class="btn btn-primary" ng-click="vm.saveAllSettings()" type="submit">Save All</button>
                     </div>
-                    <div class="form-material form-material-primary input-group remove-margin-t remove-margin-b pull-right">
-                        <input class="form-control" type="text" id="base-material-text" name="base-material-text" placeholder="Search..">
-                        <span class="input-group-addon"><i class="si si-magnifier"></i></span>
-                    </div>
+                   
                 </form>
        
         </div>
@@ -26,7 +23,7 @@
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
                     <li>
-                        <button type="button" data-toggle="block-option" data-action="help_toggle">Help</button>
+                        <button type="button"  data-toggle="modal" data-target="#modal-normal" >Help</button>
                     </li>
                 </ul>
                 <h3 class="block-title">Alert Features</h3>
@@ -104,7 +101,7 @@
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
                     <li>
-                        <button type="button" data-toggle="block-option" data-action="help_toggle">Help</button>
+                        <button type="button" data-toggle="tooltip" data-placement="top" title=""  data-original-title="Help">Help</button>
                     </li>
                 </ul>
                 <h3 class="block-title">Overriding Preferences</h3>
@@ -136,13 +133,32 @@
                         </label>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label>Auto-Reply</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox"  id="enable-auto-reply" name="enable-auto-reply"><span></span> Enable auto-reply
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group  clearfix">
+                    <span class="col-xs-12" for="contact1-msg">Message</span>
+                    <div class="col-xs-12">
+                        <textarea class="form-control" id="setting-msg" name="setting-msg" rows="1" placeholder="Enter your message.."></textarea>
+                           </div>
+                </div>
             </div>
         </div>
         <div class="block block-bordered">
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
                     <li>
-                        <button type="button" data-toggle="block-option" data-action="help_toggle">Help</button>
+                        <button type="button" data-toggle="tooltip" data-placement="top" title=""  data-original-title="Help">Help</button>
                     </li>
                 </ul>
                 <h3 class="block-title">Location Preferences</h3>
@@ -190,7 +206,7 @@
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
                     <li>
-                        <button type="button" data-toggle="block-option" data-action="help_toggle">Help</button>
+                        <button type="button" data-toggle="tooltip" data-placement="top" title=""  data-original-title="Help">Help</button>
                     </li>
                 </ul>
                 <h3 class="block-title">Alert and Allowed Phones</h3>
@@ -211,8 +227,8 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-material form-material-primary">
-                            <label for="profile-phone">Phone</label>
-                            <input class="form-control input-lg" type="text" id="alert-phone" ng-model="vm.setting.AdminMobilePhoneNumber" name="alert-phone" placeholder="Enter your Phone">
+                            <!--<label for="profile-phone">Phone</label>-->
+                            <input class="form-control input-lg" type="text" id="alert-phone" ng-model="vm.setting.AdminMobilePhoneNumber" name="alert-phone" placeholder="Enter Administrators Phone Number">
                         </div>
                     </div>
                 </div>
@@ -226,8 +242,8 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="form-material form-material-primary">
-                            <label for="profile-email">Email</label>
-                            <input class="form-control input-lg" type="email" id="settings-email" ng-model="vm.setting.AdminEmailAddress" name="settings-email" placeholder="Enter your email">
+                            <!--<label for="profile-email">Email</label>-->
+                            <input class="form-control input-lg" type="email" id="settings-email" ng-model="vm.setting.AdminEmailAddress" name="settings-email" placeholder="Enter Administrators Email">
                         </div>
                     </div>
                 </div>
@@ -247,29 +263,53 @@
                 <div class="form-group">
                     <div class="col-xs-6">
                         <div class="form-material form-material-primary">
-                            <input class="form-control input-lg" type="text" id="allowed-phone-one" ng-model="vm.setting.AllowedPhone3" name="allowed-phone-one" placeholder="Enter Phone 3">
+                            <input class="form-control input-lg" type="text" id="allowed-phone-one" ng-model="vm.setting.AllowedPhone3" name="allowed-phone-one" placeholder="Enter Phone">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-material form-material-primary">
-                            <input class="form-control input-lg" type="text" id="owner-name-one" ng-model="vm.setting.AllowedPhoneOwner3" name="owner-name-one" placeholder="Owner Name">
+                            <input class="form-control input-lg" type="text" id="owner-name-one" ng-model="vm.setting.AllowedPhoneOwner3" name="owner-name-one" placeholder="Name of Owner">
                         </div>
                     </div>
                 </div>
                 <div class="form-group clearfix">
                     <div class="col-xs-6">
                         <div class="form-material form-material-primary">
-                            <input class="form-control input-lg" type="text" id="allowed-phone-two" ng-model="vm.setting.AllowedPhone4" name="allowed-phone-two" placeholder="Enter Phone 4">
+                            <input class="form-control input-lg" type="text" id="allowed-phone-two" ng-model="vm.setting.AllowedPhone4" name="allowed-phone-two" placeholder="Enter Phone">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-material form-material-primary">
-                            <input class="form-control input-lg" type="text" id="owner-name-two" ng-model="vm.setting.AllowedPhoneOwner4" name="owner-name-two" placeholder="Owner Name">
+                            <input class="form-control input-lg" type="text" id="owner-name-two" ng-model="vm.setting.AllowedPhoneOwner4" name="owner-name-two" placeholder="Name of Owner">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- END Allowed Phones Widget -->
+    </div>
+</div>
+<div class="modal" id="modal-normal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent remove-margin-b">
+                <div class="block-header bg-primary-dark">
+                    <ul class="block-options">
+                        <li>
+                            <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">Terms &amp; Conditions</h3>
+                </div>
+                <div class="block-content">
+                    <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                    <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+                <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal"><i class="fa fa-check"></i> Ok</button>
+            </div>
+        </div>
     </div>
 </div>
