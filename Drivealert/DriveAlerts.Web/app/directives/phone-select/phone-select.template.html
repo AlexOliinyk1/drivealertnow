@@ -1,3 +1,4 @@
-﻿<select class="" ng-model="activePhone" 
+﻿<select class="menu-select" 
+        ng-model="activePhone" 
         ng-init="activePhone = phones[0]" 
         ng-options="phone as format(phone.FirstName, phone.LastName, phone.PhoneNumber) for phone in phones"></select>

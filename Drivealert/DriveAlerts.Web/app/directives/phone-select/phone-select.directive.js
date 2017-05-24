@@ -21,7 +21,7 @@
             }
 
             function _format(firstName, lastName, phoneNumber) {
-                return firstName + " " + lastName + "|" + phoneNumber;
+                return firstName + " " + lastName + " | " + phoneNumber;
             }
 
             _loadPhones();
@@ -30,7 +30,7 @@
         return {
             scope: true,
             link: link,
-            restrict: 'E',
+            restrict: 'EA',
             templateUrl: '/app/directives/phone-select/phone-select.template.html'
             //templateUrl: '<select ng-model="activePhone" ng-init="activePhone = phones[0]" ng-options="phone.PhoneNumber for phone in phones"></select>'
         };
