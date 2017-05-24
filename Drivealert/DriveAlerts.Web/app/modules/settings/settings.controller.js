@@ -59,12 +59,12 @@
         }
 
         function _saveSettings() {
-            settingsService.saveSettings(vm.activePhone.phoneId, vm.setting)
+            settingsService.saveSettings(vm.activePhone.PhoneId, vm.setting)
                 .then(function (result) {
                     if (result) {
-                        alert("Success");
+                        console.log("Save successed");
                     } else {
-                        alert("Fail");
+                        console.log("Save failed");
                     }
                 });
         }

@@ -54,7 +54,7 @@ body {
 }
 
 /*Menu with active phone*/
-.navbar .menu-select {
+.navbar .menu-select > select {
     background: none;
     border: 0;
 }
