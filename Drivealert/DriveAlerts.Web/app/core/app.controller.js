@@ -7,6 +7,10 @@
             $location.path('/home');
         }
 
+        $scope.getClass = function (path) {
+            return ($location.path().substr(0, path.length) === path) ? 'active' : '';
+        }
+
         $scope.$on('phoneNumber.changed', function (evnt, phone) {
             bufferService.activePhone = phone;
         });

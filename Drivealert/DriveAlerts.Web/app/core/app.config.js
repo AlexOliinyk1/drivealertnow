@@ -1,5 +1,5 @@
 ﻿app.config(function ($routeProvider, $locationProvider) {
-    $routeProvider.when('/', {
+    $routeProvider.when('/alerts', {
         controller: 'AlertsController',
         templateUrl: 'app/modules/alerts/alerts.html',
         controllerAs: 'vm',
@@ -89,7 +89,7 @@
         authorize: true
     });
 
-    $routeProvider.otherwise({ redirectTo: '/' });
+    $routeProvider.otherwise({ redirectTo: '/alerts' });
 
     //$locationProvider.html5Mode(true);
 });

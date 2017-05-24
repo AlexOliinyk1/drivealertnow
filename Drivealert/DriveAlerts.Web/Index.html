@@ -27,15 +27,15 @@
             </div>
             <div class="navbar-collapse collapse" ng-class="{ 'navbar-right': !isIFrame() }">
                 <ul class="nav navbar-nav" ng-class="{ 'is-iframe': isIFrame() }">
-                    <li ng-hide="!authentication.isAuth"><a href="#">Alerts</a></li>
-                    <li ng-hide="!authentication.isAuth"><a href="#!/locations">Locations</a></li>
-                    <li ng-hide="!authentication.isAuth"><a href="#!/devices">Devices</a></li>
-                    <li ng-hide="!authentication.isAuth"><a href="#!/settings">Settings</a></li>
-                    <li ng-hide="(!authentication.isAuth || isIFrame())"><a href="#!/account">Account</a></li>
-                    <li ng-hide="!authentication.isAuth"><a href="#!/video">Video</a></li>
-                    <li ng-hide="!authentication.isAuth"><a href="#!/faq">FAQ</a></li>
-                    <li ng-hide="!authentication.isAuth"><phone-select class="navbar-text"></phone-select></li>
-                    <li ng-hide="authentication.isAuth"><a href="#!/monthly-subscriptions"><i class="fa fa-shopping-cart"></i> BUY NOW</a></li>
+                    <li ng-class="getClass('/alerts')" ng-hide="!authentication.isAuth"><a href="#!/alerts">Alerts</a></li>
+                    <li ng-class="getClass('/locations')" ng-hide="!authentication.isAuth"><a href="#!/locations">Locations</a></li>
+                    <li ng-class="getClass('/devices')" ng-hide="!authentication.isAuth"><a href="#!/devices">Devices</a></li>
+                    <li ng-class="getClass('/settings')" ng-hide="!authentication.isAuth"><a href="#!/settings">Settings</a></li>
+                    <li ng-class="getClass('/account')" ng-hide="(!authentication.isAuth || isIFrame())"><a href="#!/account">Account</a></li>
+                    <li ng-class="getClass('/video')" ng-hide="!authentication.isAuth"><a href="#!/video">Video</a></li>
+                    <li ng-class="getClass('/faq')" ng-hide="!authentication.isAuth"><a href="#!/faq">FAQ</a></li>
+                    <li ng-hide="(!authentication.isAuth || isIFrame())"><phone-select class="navbar-text"></phone-select></li>
+                    <li ng-class="getClass('/monthly-subscriptions')" ng-hide="authentication.isAuth"><a href="#!/monthly-subscriptions"><i class="fa fa-shopping-cart"></i> BUY NOW</a></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/signup-wizard"><i class="fa fa-key"></i> ACTIVATE</a></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/login"><i class="fa fa-sign-in"></i> LOGIN</a></li>
                     <li ng-hide="(!authentication.isAuth || isIFrame())"><a href="" ng-click="logOut()">Logout</a></li>
