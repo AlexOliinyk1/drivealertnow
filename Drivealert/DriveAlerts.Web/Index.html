@@ -35,7 +35,7 @@
                     <li ng-class="getClass('/video')" ng-hide="!authentication.isAuth"><a href="#!/video">Video</a></li>
                     <li ng-class="getClass('/faq')" ng-hide="!authentication.isAuth"><a href="#!/faq">FAQ</a></li>
 
-                    <li phone-select ng-hide="(!authentication.isAuth || isIFrame())"></li>
+                    <li phone-select class="navbar-text" ng-hide="(!authentication.isAuth || isIFrame())"></li>
                     
                     <li ng-class="getClass('/monthly-subscriptions')" ng-hide="authentication.isAuth"><a href="#!/monthly-subscriptions"><i class="fa fa-shopping-cart"></i> BUY NOW</a></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/signup-wizard"><i class="fa fa-key"></i> ACTIVATE</a></li>
