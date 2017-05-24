@@ -44,11 +44,16 @@ body {
     font-family: 'Maven Pro', sans-serif;
 }
 
+.navbar-iframe .navbar-nav > .active > a{
+    background-color: #eee;
+}
+
 .content-heading {
     margin-top: 0;
     text-align: center;
 }
 
+/**/
 .navbar .menu-select {
     background: none;
     border: 0;
