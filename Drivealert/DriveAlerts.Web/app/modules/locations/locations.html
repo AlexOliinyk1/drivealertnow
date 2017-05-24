@@ -8,15 +8,6 @@
             <div class="block-header">
 
                 <form class="form-inline">
-                    <!--<div class="form-group pull-right">
-                        <div class="col-xs-12 ">
-                            <div class="form-material form-material-primary">
-                                <select class="form-control" id="faq-contact-subject" name="faq-contact-subject" ng-model="vm.selectedPhone"
-                                        ng-init="vm.selectedPhone = vm.phones[0]"
-                                        ng-options="phone.PhoneNumber for phone in vm.phones"></select>
-                            </div>
-                        </div>
-                    </div>-->
                     <div class="form-group">
 
                         <label class="col-md-3 control-label push-5-t" for="date-start">Date Range</label>
@@ -29,31 +20,42 @@
                         </div>
 
                     </div>
+
                     <div class="form-group">
                         <div class="col-xs-12 ">
                             <button class="btn btn-primary" ng-click="vm.searchLocations()" type="submit">Search</button>
                         </div>
                     </div>
-                    <div class="form-group">
+
+                    <!--<div class="form-group">
                         <div class="col-xs-12">
                             <button class="btn btn-primary" type="submit">View Map</button>
                         </div>
-                    </div>
+                    </div>-->
 
+                    <div class="form-group">
+                        <ul class="nav nav-tabs nav-tabs-alt" data-toggle="tabs">
+                            <li class="active">
+                                <a show-tab href="#tab-locations-coordinates"><i class="fa fa-fw fa-globe"></i> Coordinates</a>
+                            </li>
+                            <li>
+                                <a show-tab href="#tab-locations-map"><i class="fa fa-fw fa-map"></i> Map</a>
+                            </li>
+                        </ul>
+                    </div>
 
                 </form>
 
             </div>
 
-            <div class="block-content">
+            <div class="block-content tab-content tab-pane fade in active" id="tab-locations-coordinates">
                 <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
                 <table class="table table-bordered table-striped js-dataTable-full  bg-gray-light">
-
                     <thead>
                         <tr>
                             <th class="text-center" style="width: 70px;">
                                 <label class="css-input css-checkbox css-checkbox-primary remove-margin-t remove-margin-b">
-                                    <input type="checkbox" id="check-all" name="check-all">
+                                    <input type="checkbox" id="check-all" ng-click="vm.selectAll()" ng-model="vm.allSelected" name="check-all"><span></span>
                                 </label>
                             </th>
                             <th>Date</th>
@@ -67,7 +69,7 @@
                         <tr ng-repeat="location in vm.locations">
                             <td class="text-center">
                                 <label class="css-input css-checkbox css-checkbox-primary">
-                                    <input type="checkbox" id="row_1" name="row_1"><span></span>
+                                    <input type="checkbox" id="row_1" name="row_1" ng-model="location.Selected"><span></span>
                                 </label>
                             </td>
                             <td>{{location.Date}}</td>
@@ -85,6 +87,12 @@
 
                     </tbody>
                 </table>
+            </div>
+
+            <div class="block-content tab-content tab-pane fade in active" id="tab-locations-map">
+                <div class="tab-pane fade">
+                    Here will be Google Map plugin
+                </div>
             </div>
         </div>
         <!-- END Dynamic Table Full -->

@@ -10,7 +10,9 @@
             DateEnd: new Date()
         };
         vm.showOnMap = _showOnMap;
-        vm.searchLocations = _loadLocations
+        vm.searchLocations = _loadLocations;
+        vm.selectAll = _selectAll;
+        vm.allSelected = false;
 
         $scope.$on('phoneNumber.changed', function (evnt, phone) {
             _changePhoneNumber(phone);
@@ -36,6 +38,12 @@
 
         function _showOnMap() {
 
+        }
+
+        function _selectAll() {
+            for (var i = 0; i < vm.locations.length; i++) {
+                vm.locations[i].Selected = vm.allSelected;
+            }
         }
 
         function _changePhoneNumber(phone) {

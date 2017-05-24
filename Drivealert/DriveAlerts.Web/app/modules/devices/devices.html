@@ -10,7 +10,7 @@
                         <a ng-hide="isIFrame()" class="btn btn-primary" href="#!/add-device">Add phone</a>
                     </div>
                     <div class="form-material form-material-primary input-group remove-margin-t remove-margin-b pull-right">
-                        <input class="form-control" type="text" id="base-material-text" name="base-material-text" placeholder="Search..">
+                        <input ng-model="vm.searchWord" ng-model-options="{debounce: 500}" class="form-control" type="text" id="base-material-text" name="base-material-text" placeholder="Search..">
                         <span class="input-group-addon"><i class="si si-magnifier"></i></span>
                     </div>
                 </form>
@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="phone in vm.phones">
+                        <tr ng-repeat="phone in vm.phones" ng-hide="phone.disabled">
                             <td>{{phone.FirstName}} {{phone.LastName}}</td>
                             <td>{{phone.PhoneNumber}}</td>
                             <!--<td>{{phone.PhoneId}}</td>-->

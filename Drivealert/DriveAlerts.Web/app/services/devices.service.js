@@ -13,7 +13,12 @@
             var url = serviceBase + 'phones/user/' + userId;
             return $http.get(url, { headers: { 'Content-Type': 'application/json' } })
                 .then(function (result) {
-                    return result.data;
+                    var phones = result.data;
+                    for (var i = 0; i < phones.length; i++) {
+                        phones.disabled = false;
+                    }
+
+                    return phones;
                 }).catch(function (error) {
                     console.log(error);
                     return [];
