@@ -1,5 +1,5 @@
-﻿app.factory('AuthService', ['$http', '$q', 'localStorageService', 'ngWebSettings',
-    function ($http, $q, localStorageService, ngWebSettings) {
+﻿app.factory('AuthService', ['$http', '$q', 'localStorageService', 'ngWebSettings', '$rootScope',
+    function ($http, $q, localStorageService, ngWebSettings, $rootScope) {
 
         var serviceBase = ngWebSettings.apiServiceBaseUri + ngWebSettings.apiVersion + '/';
         var authServiceFactory = {};
@@ -24,6 +24,7 @@
                     _authentication.userName = response.data.userName;
                     _authentication.userId = response.data.userId;
 
+                    $rootScope.$broadcast('user.authorized', {});
                     deferred.resolve(response);
                 }, function (err, status) {
                     _logOut();

@@ -20,7 +20,7 @@
         });
 
         function _init() {
-            if (bufferService.activePhone !== null) {
+            if (bufferService.activePhone) {
                 _changePhone(bufferService.activePhone);
             }
         }

@@ -16,6 +16,7 @@
                         if (AuthService.authentication.isAuth) {
                             return true;
                         }
+                        evt.preventDefault();
                         $location.path("/login");
                     }];
                 }

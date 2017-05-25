@@ -11,6 +11,10 @@
                 }
             });
 
+            $rootScope.$on('user.authorized', function (evnt, phone) {
+                _loadPhones();
+            });
+
             function _loadPhones() {
                 devicesService.getDevices(authService.authentication.userId)
                     .then(function (result) {
@@ -24,7 +28,9 @@
                 return firstName + " " + lastName + " | " + phoneNumber;
             }
 
-            _loadPhones();
+            if (authService.authentication.isAuth) {
+                _loadPhones();
+            }
         }
 
         return {
