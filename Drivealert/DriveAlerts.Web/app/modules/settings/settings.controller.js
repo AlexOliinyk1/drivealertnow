@@ -2,8 +2,6 @@
     function ($scope, settingsService, devicesService, authService, bufferService) {
         var vm = this;
 
-        vm.phones = [];
-        vm.activePhone = {};
         vm.setting = {
             PhoneNumber: "",
             AllowHeadset: false,             //Notify if Bluetooth is off
@@ -36,8 +34,11 @@
             AllowedPhoneOwner4: "",
             AllowedPhoneOwner5: ""
         };
+        vm.activePhone = {};
         vm.saveSettings = _saveSettings;
         vm.saveAllSettings = _saveAllSettings;
+        vm.modalContent = null;
+        vm.showModal = _showModal;
 
         $scope.$on('phoneNumber.changed', function (evnt, phone) {
             _changePhone(phone);
@@ -76,6 +77,11 @@
         function _changePhone(phone) {
             vm.activePhone = phone;
             _getSettings(vm.activePhone.PhoneId);
+        }
+
+        function _showModal(modalContentId) {
+            var content = document.getElementById(modalContentId).innerHTML;
+            vm.modalContent = content;
         }
 
         _init();

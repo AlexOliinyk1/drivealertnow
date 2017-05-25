@@ -23,7 +23,7 @@
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
                     <li>
-                        <button type="button"  data-toggle="modal" data-target="#modal-normal" >Help</button>
+                        <button type="button" data-toggle="modal" data-target="#help-modal" ng-click="vm.showModal('speed-aletr-help')">Help</button>
                     </li>
                 </ul>
                 <h3 class="block-title">Alert Features</h3>
@@ -101,7 +101,7 @@
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
                     <li>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title=""  data-original-title="Help">Help</button>
+                        <button type="button" data-toggle="modal" data-target="#help-modal" ng-click="vm.showModal('notifications-aletr-help')">Help</button>
                     </li>
                 </ul>
                 <h3 class="block-title">Overriding Preferences</h3>
@@ -158,7 +158,7 @@
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
                     <li>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title=""  data-original-title="Help">Help</button>
+                        <button type="button" data-toggle="modal" data-target="#help-modal" ng-click="vm.showModal('location-alert-help')">Help</button>
                     </li>
                 </ul>
                 <h3 class="block-title">Location Preferences</h3>
@@ -206,7 +206,7 @@
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
                     <li>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title=""  data-original-title="Help">Help</button>
+                        <button type="button" data-toggle="modal" data-target="#help-modal" ng-click="vm.showModal('phones-alert-help')" data-original-title="Help">Help</button>
                     </li>
                 </ul>
                 <h3 class="block-title">Alert and Allowed Phones</h3>
@@ -289,7 +289,92 @@
         <!-- END Allowed Phones Widget -->
     </div>
 </div>
-<div class="modal" id="modal-normal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+
+<script type="text/html" id="speed-aletr-help">
+    <ol>
+        <li>
+            <p>Interval Between Alerts</p>
+            Instead of receiving alerts in real-time, you can select to receive alerts (if any) based upon how often you wish to be informed of them.
+            For example, if you enter 60 minute intervals, you will receive text and or email alerts, if you enabled either or both, every 60 minutes.
+            You select the alert frequency.
+        </li>
+        <li>
+            <p>Speed Alerts</p>
+            If you want to know if your child or driver exceeds certain speeds, you can select a certain speed. If you select 70 mph, you will be alerted
+            every time the driver exceed 70 mph. If you select a 10 minute interval between alerts, per the interval between alerts section and the driver
+            exceeds the speed you set, you will receive the highest speed they reached over that 10 minute interval.
+        </li>
+        <li>
+            <p>Allow Hands-Free Bluetooth</p>
+            If you allow your child or driver to make and receive calls via the vehicle’s hands free Bluetooth or another hands-free BT device, just check off the
+            box to enable this feature. Important Note: to use a hands free Bluetooth device, the driver or administrator has to pair that device with the phone’s
+            Bluetooth. To do this, go to the phone’s Settings icon&gt;Bluetooth and you should see the vehicle’s built-in hands free Bluetooth. If you’re using another
+            hands free device, that device needs to be in the vehicle, connected, and you should know the sync instructions for that device.
+
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" id="notifications-aletr-help">
+    <ol>
+        <li>
+            <p>Overriding Preferences</p>
+            The 4 check boxes, especially Bluetooth, Dongle or Trigger pulled out and Uninstalled need to be checked off. If they are not checked off,
+            the driver will be able to get around the system. If they are checked off and the driver somehow shuts off Bluetooth, you will be notified
+            via an alert. In addition, the driver’s phone will receive constant alerts on every screen they go to annoy and interrupt their use of the phone.
+        </li>
+        <li>
+            <p>Auto Reply</p>
+            The message in this box will be sent to all individuals that text your driver, letting them know that they are driving and will get in touch
+            with them when they reach their destination.
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" id="location-alert-help">
+    <ol>
+        <li>
+            If you wish to see where your vehicle has traveled during any given day, check off both boxes.
+        </li>
+        <li>
+            If you just want to know if your vehicle is in use, but not see the location, check off "report vehicle movements" only.
+        </li>
+        <li>
+            Lastly, insert the number of minutes you wish between notification logging in your back end.
+        </li>
+        <li>
+            Note: We recommend a setting between 10-30 minutes or higher, especially when "include coordinates" is checked, as this setting utilizes Location Services.
+        </li>
+    </ol>
+</script>
+
+<script type="text/html" id="phones-alert-help">
+    <ol>
+        <li>
+            <p>Alert and Allowed Phones</p>
+            <p>
+            </p><ol style="list-style-type: circle">
+                <li>Enabled Text Alerts</li>
+                <li>Enable email Alerts</li>
+            </ol>
+            <p></p>
+            Your dashboard section has an Alerts tab where you will find all alerts for a specific driver being monitored.
+            You can view alerts by driver, type of alert and over a specific date range. If you wish to view these alerts in
+            real-time, simply check off the appropriate box and enter your cell phone number and or your email address and a copy
+            will be sent there as well. Please note that having copies sent to your phone via text messages and email could be annoying
+            because the alerts are being sent in real-time. We recommend enabling Text and or Email alerts if you will not have access to your
+            dashboard for more than 24 hours or you have someone that needs to be monitored closely.
+        </li>
+        <li>
+            <p>Allowed Phones</p>
+            DriveAlertNow provides the driver with access to call up to 3 phone numbers in case of an emergency, one being 911,  where the driver
+            is unable to pull over to the side of the road. Though this feature allows these calls, an alert will be sent to the dashboard even when
+            an emergency number is called while the vehicle is moving.
+        </li>
+    </ol>
+</script>
+
+<div class="modal" id="help-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="block block-themed block-transparent remove-margin-b">
@@ -299,16 +384,14 @@
                             <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
                         </li>
                     </ul>
-                    <h3 class="block-title">Terms &amp; Conditions</h3>
+                    <h3 class="block-title">Help</h3>
                 </div>
                 <div class="block-content">
-                    <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
-                    <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
-                </div>
+                    <p ng-bind-html="vm.modalContent"></p>
+                 </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
-                <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal"><i class="fa fa-check"></i> Ok</button>
             </div>
         </div>
     </div>

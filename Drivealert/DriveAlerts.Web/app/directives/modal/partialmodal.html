@@ -1,8 +1,9 @@
-﻿<div class='ng-modal' ng-show='modalContent != null && modalContent != ""'>
-    <div class='ng-modal-overlay' ng-click='hideModal()'></div>
-    <div class='ng-modal-dialog' ng-style='dialogStyle'>
-        <div class='ng-modal-close' ng-click='hideModal()'>X</div>
-        <div class='ng-modal-dialog-content' ng-transclude></div>
-        <p>{{ modalContent }}</p>
+﻿<div class="ng-modal" ng-show="vm.modalContent != null">
+    <div class="ng-modal-overlay" ng-click="hideModal()"></div>
+    <div class="ng-modal-dialog" ng-style="dialogStyle">
+        <div class="ng-modal-close" ng-click="hideModal()">X</div>
+        <div class="ng-modal-dialog-content" ng-transclude></div>
+        <p>{{ vm.modalContent }}</p>
     </div>
 </div>
+
