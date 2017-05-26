@@ -4,10 +4,23 @@
         var service = {};
 
         service.getLocations = _getFakeLocations;
-        service.showOnMap = _showOnMap;
+        service.toGoogleCoordinates = _toGoogleCoordinates;
 
-        function _showOnMap() {
+        function _toGoogleCoordinates(coordinates) {
+            var d = $q.defer();
+            var result = [];
 
+            angular.forEach(coordinates, function (value, key) {
+                if (value.Selected) {
+                    result.push([value.Latitude, value.Longitude]);
+                }
+
+                if (key == coordinates.length - 1) {
+                    d.resolve(result);
+                }
+            })
+
+            return d.promise;
         }
 
         function _getLocations(phoneNumber, searchParams) {
@@ -28,44 +41,32 @@
                     {
                         Selected: false,
                         Date: "5/20/2017 9:24:03 AM",
-                        Longitude: "40.887801675164",
-                        Latitude: "-73.424288593301"
+                        Longitude: "-74.18",
+                        Latitude: "40.74"
                     },
                     {
                         Selected: false,
                         Date: "5/19/2017 3:10:07 PM",
-                        Longitude: "40.8729421238853",
-                        Latitude: "-73.4210208237099"
+                        Longitude: "-73.42",
+                        Latitude: "40.87"
                     },
                     {
                         Selected: false,
                         Date: "5/19/2017 2:49:59 PM",
-                        Longitude: "40.7719467580698",
-                        Latitude: "-73.4222734161405"
+                        Longitude: "-74.10",
+                        Latitude: "40.64"
                     },
                     {
                         Selected: false,
                         Date: "5/19/2017 2:10:19 PM",
-                        Longitude: "40.8235885017",
-                        Latitude: "-73.4125429485677"
+                        Latitude: "40.54",
+                        Longitude: "-74.05"
                     },
                     {
                         Selected: false,
                         Date: "5/19/2017 1:50:14 PM",
-                        Longitude: "40.8855578815945",
-                        Latitude: "-73.417848022723"
-                    },
-                    {
-                        Selected: false,
-                        Date: "5/19/2017 12:46:34 PM",
-                        Longitude: "40.8454840863504",
-                        Latitude: "-73.4064258356331"
-                    },
-                    {
-                        Selected: false,
-                        Date: "5/19/2017 12:16:28 PM",
-                        Longitude: "40.8957626810678",
-                        Latitude: "-73.4298960027037"
+                        Latitude: "40.44",
+                        Longitude: "-74"
                     }
                 ]);
             }, 1000);

@@ -1,5 +1,5 @@
-﻿app.controller('LocationsController', ['$scope', 'LocationService', 'DevicesService', 'AuthService', 'BufferService',
-    function ($scope, locationService, devicesService, authService, bufferService) {
+﻿app.controller('LocationsController', ['$scope', 'LocationService', 'DevicesService', 'AuthService', 'BufferService', 'NgMap',
+    function ($scope, locationService, devicesService, authService, bufferService, NgMap) {
         var vm = this;
 
         vm.phones = [];
@@ -14,6 +14,9 @@
         vm.selectAll = _selectAll;
         vm.allSelected = false;
         vm.selectLocation = _selectLocation;
+        //  map
+        vm.path = [];
+        vm.mapCenter = [0, 0];
 
         $scope.$on('phoneNumber.changed', function (evnt, phone) {
             _changePhoneNumber(phone);
@@ -45,6 +48,7 @@
             for (var i = 0; i < vm.locations.length; i++) {
                 vm.locations[i].Selected = vm.allSelected;
             }
+            _selectLocation();
         }
 
         function _changePhoneNumber(phone) {
@@ -53,8 +57,20 @@
         }
 
         function _selectLocation() {
+            locationService.toGoogleCoordinates(vm.locations)
+                .then(function (result) {
+                    vm.path = result;
 
+                    if (vm.path.length) {
+                        vm.mapCenter = vm.path[0];
+                    }
+                    else {
+                        vm.mapCenter = [0, 0];
+                    }
+                });
         }
+
+        
 
         _init();
     }

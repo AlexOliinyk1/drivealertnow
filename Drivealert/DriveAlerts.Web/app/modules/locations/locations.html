@@ -61,7 +61,7 @@
                             <tr ng-repeat="location in vm.locations">
                                 <td class="text-center">
                                     <label class="css-input css-checkbox css-checkbox-primary">
-                                        <input type="checkbox" id="row_1" name="row_1" ng-model="location.Selected"><span></span>
+                                        <input type="checkbox" id="row_1" name="row_1" ng-click="vm.selectLocation()" ng-model="location.Selected"><span></span>
                                     </label>
                                 </td>
                                 <td>{{location.Date}}</td>
@@ -71,12 +71,21 @@
                         </tbody>
                     </table>
                 </div>
-                <map center="[40.71, -74.21]" class="tab-pane fade" id="tab-locations-map">
-                    <directions draggable="true"
-                                travel-mode="WALKING"
-                                suppress-markers="true">
-                    </directions>
-                </map>
+
+
+                <ng-map center="{{vm.mapCenter}}" 
+                        zoom="12" 
+                        zoom-to-include-markers="true"
+                        class="tab-pane fade" id="tab-locations-map">
+                    <shape ng-if="vm.path.length" name="polyline"
+                           path={{vm.path}}
+                           geodesic="true"
+                           stroke-color="#FF0000"
+                           stroke-opacity="1.0"
+                           stroke-weight="2">
+                    </shape>
+                    <marker ng-repeat="pos in vm.path" position="{{pos[0]}},{{pos[1]}}"></marker>
+                </ng-map>
             </div>
 
 
