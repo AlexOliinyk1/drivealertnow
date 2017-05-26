@@ -13,6 +13,7 @@
         vm.searchLocations = _loadLocations;
         vm.selectAll = _selectAll;
         vm.allSelected = false;
+        vm.selectLocation = _selectLocation;
 
         $scope.$on('phoneNumber.changed', function (evnt, phone) {
             _changePhoneNumber(phone);
@@ -49,6 +50,10 @@
         function _changePhoneNumber(phone) {
             vm.selectedPhone = phone;
             _loadLocations();
+        }
+
+        function _selectLocation() {
+
         }
 
         _init();

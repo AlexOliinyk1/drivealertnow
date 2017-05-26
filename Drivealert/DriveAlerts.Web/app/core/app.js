@@ -2,13 +2,14 @@
     'ngRoute',
     'LocalStorageModule',
     'oitozero.ngSweetAlert',
-    'ngSanitize'
-]);
+    'ngSanitize',
+    'ngMap'
+    ]);
 
 function AuthorizationError(description) {
     this.message = "Forbidden";
     this.description = description || "User authentication required.";
 }
 
-AuthorizationError.prototype = Object.create(Error.prototype);
+AuthorizationError.prototype = Object.create(AuthorizationError.prototype);
 AuthorizationError.prototype.constructor = AuthorizationError;
