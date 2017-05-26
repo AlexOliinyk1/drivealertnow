@@ -50,11 +50,21 @@ body {
 
 .content-heading {
     margin-top: 0;
-    text-align: center;
+}
+
+.content-heading > .icon {
+    margin-right: 25px;
+    margin-left: 25px;
+    vertical-align: middle;
 }
 
 /*Menu with active phone*/
 .navbar .menu-select > select {
     background: none;
     border: 0;
+}
+
+.map-height {
+    min-height: 40vw;
+    height: 40vw;
 }

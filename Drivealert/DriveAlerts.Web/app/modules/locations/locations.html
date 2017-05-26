@@ -1,5 +1,11 @@
-﻿<!--<h2 class="content-heading">Locaions</h2>-->
-
+﻿<div class="row">
+    <div class="col-md-12">
+        <h2 class="content-heading">
+            <i class="fa fa-2x fa-map-marker icon"></i>Locations
+        </h2>
+        <hr>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-sm-12">
@@ -73,10 +79,11 @@
                 </div>
 
 
-                <ng-map center="{{vm.mapCenter}}" 
+                <ng-map class="tab-pane fade map-height" id="tab-locations-map"
+                        center="{{vm.mapCenter}}" 
+                        default-style="false"
                         zoom="12" 
-                        zoom-to-include-markers="true"
-                        class="tab-pane fade" id="tab-locations-map">
+                        zoom-to-include-markers="true">
                     <shape ng-if="vm.path.length" name="polyline"
                            path={{vm.path}}
                            geodesic="true"
