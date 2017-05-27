@@ -102,6 +102,33 @@
             </div>
         </div>
         <!-- END Speed Alerts Widget -->
+        <!-- Auto Reply Widget -->
+        <div class="block block-bordered">
+            <div class="block-header bg-gray-light">
+                <ul class="block-options">
+                    <li>
+                        <button type="button" data-toggle="modal" data-target="#help-modal" ng-click="vm.showModal('auto-reply-help')">Help</button>
+                    </li>
+                </ul>
+                <h3 class="block-title">Auto Reply</h3>
+            </div>
+            <div class="block-content">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="enable-auto-reply" name="enable-auto-reply"><span></span> Enable auto-reply
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group  clearfix">
+                    <span class="col-xs-12" for="contact1-msg">Message</span>
+                    <div class="col-xs-12">
+                        <textarea class="form-control auto-reply-text" id="setting-msg" name="setting-msg" rows="1" placeholder="Enter your message.."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Auto Reply Widget -->
     </div>
     <div class="col-lg-4">
         <!-- Preferences Widget -->
@@ -140,25 +167,6 @@
                             <input type="checkbox" ng-model="vm.setting.UninstalledNotify" id="notify-uninstalled" name="notify-uninstalled"><span></span> Notify if Uninstalled
                         </label>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-xs-12">
-                        <label>Auto-Reply</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-xs-12">
-                        <label class="css-input switch switch-sm switch-primary">
-                            <input type="checkbox"  id="enable-auto-reply" name="enable-auto-reply"><span></span> Enable auto-reply
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group  clearfix">
-                    <span class="col-xs-12" for="contact1-msg">Message</span>
-                    <div class="col-xs-12">
-                        <textarea class="form-control" id="setting-msg" name="setting-msg" rows="1" placeholder="Enter your message.."></textarea>
-                           </div>
                 </div>
             </div>
         </div>
@@ -331,11 +339,6 @@
             the driver will be able to get around the system. If they are checked off and the driver somehow shuts off Bluetooth, you will be notified
             via an alert. In addition, the driver’s phone will receive constant alerts on every screen they go to annoy and interrupt their use of the phone.
         </li>
-        <li>
-            <p>Auto Reply</p>
-            The message in this box will be sent to all individuals that text your driver, letting them know that they are driving and will get in touch
-            with them when they reach their destination.
-        </li>
     </ol>
 </script>
 
@@ -381,6 +384,17 @@
         </li>
     </ol>
 </script>
+
+<script type="text/html" id="auto-reply-help">
+    <ol>
+        <li>
+            <p>Auto Reply</p>
+            The message in this box will be sent to all individuals that text your driver, letting them know that they are driving and will get in touch
+            with them when they reach their destination.
+        </li>
+    </ol>
+</script>
+
 
 <div class="modal" id="help-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
