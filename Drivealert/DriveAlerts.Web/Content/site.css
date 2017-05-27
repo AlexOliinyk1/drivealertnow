@@ -68,3 +68,18 @@ body {
     min-height: 40vw;
     height: 40vw;
 }
+
+/*Auto Reply input Settings page*/
+textarea.form-control.auto-reply-text {
+    height: 75px;
+}
+
+.logo-link{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+.logo-link .logo-image{
+    margin-left: 25px;
+    height: 50px;
+}
