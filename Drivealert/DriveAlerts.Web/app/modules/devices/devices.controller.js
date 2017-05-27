@@ -1,6 +1,8 @@
 ﻿app.controller('DevicesController', ['$scope', 'DevicesService', 'AuthService', 'BufferService', '$location', 'SweetAlert',
     function ($scope, devicesService, authService, bufferService, $location, SweetAlert) {
         var vm = this;
+
+        vm.isLoading = {};
         vm.phones = [];
         vm.deleteDevice = _deleteDevice;
         vm.openEditor = _openEditor;
@@ -8,7 +10,7 @@
         vm.isIFrame = bufferService.getIsIFrame;
 
         function _loadDevices() {
-            devicesService.getDevices(authService.authentication.userId)
+            vm.isLoading = devicesService.getDevices(authService.authentication.userId)
                 .then(function (result) {//success
                     vm.phones = result;
                 });
@@ -25,14 +27,14 @@
                 closeOnConfirm: true
             }, function (isConfirm) {
                 if (isConfirm) {
-                    devicesService.removeDevice(id)
-                    .then(function (result) {
-                        if (result) {
-                            _loadDevices();
-                        } else {
-                            console.log(result);
-                        }
-                    });
+                    vm.isLoading = devicesService.removeDevice(id)
+                        .then(function (result) {
+                            if (result) {
+                                _loadDevices();
+                            } else {
+                                console.log(result);
+                            }
+                        });
                 } else {
                 }
 

@@ -3,6 +3,7 @@
         var vm = this;
         var selectedPhone = {};
 
+        vm.isLoading = {};
         vm.alerts = [];
         vm.searchWord = "";
         vm.searchConfig = {
@@ -27,7 +28,7 @@
 
         //  get alerts for selected phone
         function _searchAlerts() {
-            alertService.getAlerts(selectedPhone.PhoneNumber, vm.searchConfig)
+            vm.isLoading = alertService.getAlerts(selectedPhone.PhoneNumber, vm.searchConfig)
                 .then(function (result) {
                     vm.alerts = result;
                 });

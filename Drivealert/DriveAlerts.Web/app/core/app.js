@@ -3,7 +3,8 @@
     'LocalStorageModule',
     'oitozero.ngSweetAlert',
     'ngSanitize',
-    'ngMap'
+    'ngMap',
+    'cgBusy'
     ]);
 
 function AuthorizationError(description) {

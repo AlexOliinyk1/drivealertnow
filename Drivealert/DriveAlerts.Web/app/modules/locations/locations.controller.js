@@ -2,6 +2,7 @@
     function ($scope, locationService, devicesService, authService, bufferService, NgMap) {
         var vm = this;
 
+        vm.isLoading = {};
         vm.phones = [];
         vm.selectedPhone = {};
         vm.locations = [];
@@ -9,7 +10,6 @@
             DateStart: new Date(),
             DateEnd: new Date()
         };
-        vm.showOnMap = _showOnMap;
         vm.searchLocations = _loadLocations;
         vm.selectAll = _selectAll;
         vm.allSelected = false;
@@ -29,7 +29,7 @@
         }
 
         function _loadLocations() {
-            locationService.getLocations(vm.selectedPhone.PhoneNumber, vm.searchOptions)
+            vm.isLoading = locationService.getLocations(vm.selectedPhone.PhoneNumber, vm.searchOptions)
                 .then(function (result) {
                     if (!result.status) {
                         vm.locations = result;
@@ -38,10 +38,6 @@
                         console.log(result);
                     }
                 });
-        }
-
-        function _showOnMap() {
-
         }
 
         function _selectAll() {
@@ -70,7 +66,7 @@
                 });
         }
 
-        
+
 
         _init();
     }
