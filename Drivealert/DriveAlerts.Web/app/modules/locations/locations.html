@@ -39,7 +39,7 @@
                                 <a show-tab href="#tab-locations-coordinates"><i class="fa fa-fw fa-globe"></i> Coordinates</a>
                             </li>
                             <li>
-                                <a show-tab href="#tab-locations-map"><i class="fa fa-fw fa-map"></i> Map</a>
+                                <a ng-hide="!vm.path.length" show-tab href="#tab-locations-map"><i class="fa fa-fw fa-map"></i> Map</a>
                             </li>
                         </ul>
                     </div>
@@ -89,9 +89,11 @@
                            geodesic="true"
                            stroke-color="#FF0000"
                            stroke-opacity="1.0"
-                           stroke-weight="2">
+                           stroke-weight="3">
                     </shape>
-                    <marker ng-repeat="pos in vm.path" position="{{pos[0]}},{{pos[1]}}"></marker>
+                    <marker ng-repeat="pos in vm.path" 
+                            position="{{pos[0]}},{{pos[1]}}">
+                    </marker>
                 </ng-map>
             </div>
 

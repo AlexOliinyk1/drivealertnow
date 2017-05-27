@@ -41,31 +41,31 @@
                     {
                         Selected: false,
                         Date: "5/20/2017 9:24:03 AM",
-                        Longitude: "-74.18",
-                        Latitude: "40.74"
+                        Longitude: "-74.181818181818",
+                        Latitude: "40.747474747474"
                     },
                     {
                         Selected: false,
                         Date: "5/19/2017 3:10:07 PM",
-                        Longitude: "-73.42",
-                        Latitude: "40.87"
+                        Longitude: "-73.424242424242",
+                        Latitude: "40.878787878787"
                     },
                     {
                         Selected: false,
                         Date: "5/19/2017 2:49:59 PM",
-                        Longitude: "-74.10",
-                        Latitude: "40.64"
+                        Longitude: "-74.101010101010",
+                        Latitude: "40.646464646464"
                     },
                     {
                         Selected: false,
                         Date: "5/19/2017 2:10:19 PM",
-                        Latitude: "40.54",
-                        Longitude: "-74.05"
+                        Latitude: "40.545454545454",
+                        Longitude: "-74.050505050505"
                     },
                     {
                         Selected: false,
                         Date: "5/19/2017 1:50:14 PM",
-                        Latitude: "40.44",
+                        Latitude: "40.444444444444",
                         Longitude: "-74"
                     }
                 ]);
