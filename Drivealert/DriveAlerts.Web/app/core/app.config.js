@@ -89,6 +89,13 @@
         authorize: true
     });
 
+    $routeProvider.when('/summary', {
+        controller: 'SummaryController',
+        templateUrl: '/app/modules/summary/summary.html',
+        controllerAs: 'vm',
+        authorize: true
+    });
+
     $routeProvider.otherwise({ redirectTo: '/alerts' });
 
     //$locationProvider.html5Mode(true);

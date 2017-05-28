@@ -1,7 +1,7 @@
 ﻿<div class="row">
     <!-- Validation Wizard (.js-wizard-validation class is initialized in js/pages/base_forms_wizard.js) -->
     <!-- For more examples you can check out http://vadimg.com/twitter-bootstrap-wizard-example/ -->
-    <div class="js-wizard-validation block">
+    <div class="js-wizard-simple block">
         <!-- Step Tabs -->
         <ul class="nav nav-tabs nav-tabs-alt nav-justified">
             <li class="active">
@@ -25,35 +25,66 @@
                 <div class="tab-pane fade fade-right in push-30-t push-50 active" id="validation-step1">
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
-                            <div class="form-material">
-                                <input class="form-control" type="text" id="validation-firstname" name="validation-firstname" placeholder="Please enter your firstname">
-                                <label for="validation-firstname">First Name</label>
-                            </div>
+                            <h3>Step 1</h3>
+
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
-                            <div class="form-material">
-                                <input class="form-control" type="text" id="validation-lastname" name="validation-lastname" placeholder="Please enter your lastname">
-                                <label for="validation-lastname">Last Name</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-8 col-sm-offset-2">
-                            <div class="form-material">
+                            <label for="validation-email">Please answer the following questions:</label><br>
+                            <span>Enter your email that was used during the purchase and your order number</span>
+                            <div class="form-material form-material-primary">
                                 <input class="form-control" type="email" id="validation-email" name="validation-email" placeholder="Please enter your email">
-                                <label for="validation-email">Email</label>
+                            </div>
+
+                            <div class="form-material form-material-primary">
+                                <input class="form-control" type="text" id="validation-order" name="validation-firstname" placeholder="Please enter your order">
+
                             </div>
                         </div>
                     </div>
+                    <div class="form-group" >
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <div class="form-material form-material-primary">
+                                <select class="form-control" id="validation-skills" name="validation-skills" size="1">
+                                    <option selected="selected" value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                                <label for="validation-skills">Do you have promotion code?</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <div class="form-material form-material-primary">
+                                <select class="form-control" id="validation-skills" name="validation-skills" size="1">
+                                    <option selected="selected" value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                                <label for="validation-skills">Are you part of any Court mandated County Distracted Driving Safety Program?</label>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <!-- END Step 1 -->
                 <!-- Step 2 -->
                 <div class="tab-pane fade fade-right push-30-t push-50" id="validation-step2">
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
-                            <div class="form-material">
+                            <h3>Step 2</h3>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <div class="form-material form-material-primary">
                                 <textarea class="form-control" id="validation-details" name="validation-details" rows="9" placeholder="Share something about yourself"></textarea>
                                 <label for="validation-details">Details</label>
                             </div>
@@ -65,7 +96,13 @@
                 <div class="tab-pane fade fade-right push-30-t push-50" id="validation-step3">
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
-                            <div class="form-material">
+                            <h3>Step 3</h3>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <div class="form-material form-material-primary">
                                 <input class="form-control" type="text" id="validation-city" name="validation-city" placeholder="Where do you live?">
                                 <label for="validation-city">City</label>
                             </div>
@@ -73,7 +110,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
-                            <div class="form-material">
+                            <div class="form-material form-material-primary">
                                 <select class="form-control" id="validation-skills" name="validation-skills" size="1">
                                     <option value="">Please select your best skill</option>
                                     <option value="1">Photoshop</option>
@@ -114,3 +151,48 @@
     </div>
     <!-- END Validation Wizard Wizard -->
 </div>
+
+<script>
+
+    (function ($) {
+
+        jQuery('.js-wizard-simple').bootstrapWizard({
+            'tabClass': '',
+            'firstSelector': '.wizard-first',
+            'previousSelector': '.wizard-prev',
+            'nextSelector': '.wizard-next',
+            'lastSelector': '.wizard-last',
+            'onTabShow': function ($tab, $navigation, $index) {
+                var $total = $navigation.find('li').length;
+                var $current = $index + 1;
+                var $percent = ($current / $total) * 100;
+
+                // Get vital wizard elements
+                var $wizard = $navigation.parents('.block');
+                var $progress = $wizard.find('.wizard-progress > .progress-bar');
+                var $btnPrev = $wizard.find('.wizard-prev');
+                var $btnNext = $wizard.find('.wizard-next');
+                var $btnFinish = $wizard.find('.wizard-finish');
+
+                // Update progress bar if there is one
+                if ($progress) {
+                    $progress.css({ width: $percent + '%' });
+                }
+
+                // If it's the last tab then hide the last button and show the finish instead
+                if ($current >= $total) {
+                    $btnNext.hide();
+                    $btnFinish.show();
+                } else {
+                    $btnNext.show();
+                    $btnFinish.hide();
+                }
+            }
+        });
+
+
+    })(jQuery)
+
+
+
+</script>

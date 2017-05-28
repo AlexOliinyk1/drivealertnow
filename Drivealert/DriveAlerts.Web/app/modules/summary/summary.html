@@ -1,0 +1,154 @@
+﻿<div class="block">
+    <div class="block-header">
+        <div class="block-options">
+            <code>.js-table-sections</code>
+        </div>
+        <h3 class="block-title">Table Sections</h3>
+    </div>
+    <div class="block-content">
+        <!--
+        Separate your table content with multiple tbody sections. Add one row and add the class .js-table-sections-header to a
+        tbody section to make it clickable. It will then toggle the next tbody section which can have multiple rows. Eg:
+
+        <tbody class="js-table-sections-header">One row</tbody>
+        <tbody>Multiple rows</tbody>
+        <tbody class="js-table-sections-header">One row</tbody>
+        <tbody>Multiple rows</tbody>
+        <tbody class="js-table-sections-header">One row</tbody>
+        <tbody>Multiple rows</tbody>
+
+        You can also add the class .open in your tbody.js-table-sections-header to make the next tbody section visible by default
+        -->
+        <table class="js-table-sections table table-hover">
+            <thead>
+                <tr>
+                    <th style="width: 30px;"></th>
+                    <th>Name</th>
+                    <th>Violation#</th>
+                    <th>Phone</th>
+                    <th>Install Date</th>
+                    <th>Last Activity Date</th>
+                    <th>Last Violation Date</th>
+                </tr>
+            </thead>
+            <tbody class="js-table-sections-header">
+                <tr>
+                    <td class="text-center">
+                        <i class="fa fa-angle-right"></i>
+                    </td>
+                    <td class="font-w600">Sara Holland</td>
+                    <td></td>
+                    <td>
+                        (832) 622-4609
+                    </td>
+                    <td>
+                        <em class="text-muted">June 7, 2015 12:16</em>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tbody>
+                  <table class="js-table-sections table table-hover">
+            <thead>
+                <tr>
+                    <th style="width: 30px;"></th>
+                    <th>Name</th>
+                    <th>Violation#</th>
+                    <th>Phone</th>
+                    <th>Install Date</th>
+                    <th>Last Activity Date</th>
+                    <th>Last Violation Date</th>
+                </tr>
+            </thead>
+            <tbody class="js-table-sections-header">
+                <tr>
+                    <td class="text-center">
+                        <i class="fa fa-angle-right"></i>
+                    </td>
+                    <td class="font-w600">Sara Holland</td>
+                    <td></td>
+                    <td>
+                        (832) 622-4609
+                    </td>
+                    <td>
+                        <em class="text-muted">June 7, 2015 12:16</em>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tbody class="js-table-sections-header">
+                <tr>
+                    <td class="text-center"></td>
+                    <td class="font-w60">+ Call and connection violations for Sara</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="text-center"></td>
+                    <td class="font-w60">+ Daily Trip Report for Sara </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+                <tr>
+                    <td class="text-center"></td>
+                    <td class="font-w60">+ Call and connection violations for Sara</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="text-center"></td>
+                    <td class="font-w60">+ Daily Trip Report for Sara </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<script>
+
+    (function ($) {
+
+
+        jQuery('.js-table-sections').each(function () {
+            var $table = jQuery(this);
+
+            // When a row is clicked in tbody.js-table-sections-header
+            jQuery('.js-table-sections-header > tr', $table).on('click', function (e) {
+                var $row = jQuery(this);
+                var $tbody = $row.parent('tbody');
+
+                if (!$tbody.hasClass('open')) {
+                    jQuery('tbody', $table).removeClass('open');
+                }
+
+                $tbody.toggleClass('open');
+            });
+        });
+
+    })(jQuery)
+
+
+
+</script>
