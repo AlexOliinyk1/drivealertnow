@@ -17,7 +17,9 @@
         vm.searchAlerts = _searchAlerts;
 
         $scope.$on('phoneNumber.changed', function (evnt, phone) {
-            _changePhone(phone);
+            if (phone) {
+                _changePhone(phone);
+            }
         });
 
         function _init() {
