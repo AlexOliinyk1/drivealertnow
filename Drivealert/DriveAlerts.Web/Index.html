@@ -14,7 +14,7 @@
     <link href="Content/angular-busy.min.css" rel="stylesheet" />
 </head>
 
-<body ng-controller="DriveAlertNowController" ng-cloak>
+<body ng-controller="DriveAlertNowController" ng-cloak class="container1">
     <!-- navbar-inverse bg-primary-dark -->
     <div class="navbar navbar-static-top" ng-class="{ 'navbar-inverse': !isIFrame(), 'bg-primary-dark': !isIFrame(), 'no-margin navbar-iframe': isIFrame() }">
         <div class="container">
@@ -30,7 +30,7 @@
             </div>
             <div class="navbar-collapse collapse" ng-class="{ 'navbar-right': !isIFrame() }">
                 <ul class="nav navbar-nav" ng-class="{ 'is-iframe': isIFrame() }">
-                    
+
                     <li ng-class="getClass('/summary')" ng-hide="(!authentication.isAuth || isIFrame())"><a href="#!/summary">Summary</a></li>
                     <li ng-class="getClass('/alerts')" ng-hide="!authentication.isAuth"><a href="#!/alerts">Alerts</a></li>
                     <li ng-class="getClass('/locations')" ng-hide="!authentication.isAuth"><a href="#!/locations">Locations</a></li>
@@ -41,7 +41,7 @@
                     <li ng-class="getClass('/faq')" ng-hide="!authentication.isAuth"><a href="#!/faq">FAQ</a></li>
 
                     <li phone-select class="navbar-text menu-select" ng-hide="(!authentication.isAuth || isIFrame())"></li>
-                    
+
                     <li ng-class="getClass('/monthly-subscriptions')" ng-hide="authentication.isAuth"><a href="#!/monthly-subscriptions"><i class="fa fa-shopping-cart"></i> BUY NOW</a></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/signup-wizard"><i class="fa fa-key"></i> ACTIVATE</a></li>
                     <li ng-hide="authentication.isAuth"><a href="#!/login"><i class="fa fa-sign-in"></i> LOGIN</a></li>
@@ -68,7 +68,6 @@
     </div>
 
     <!-- Scripts -->
-
     <script src="Scripts/jquery.min.js"></script>
     <script src="Scripts/jquery.validate.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>

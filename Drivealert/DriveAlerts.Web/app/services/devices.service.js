@@ -10,7 +10,7 @@
 
         //  GET /v1/phones/user/{userId}
         function _getDevices(userId) {
-            var url = serviceBase + 'phones/user/' + userId;
+            var url = serviceBase + 'phones/users/' + userId;
             return $http.get(url, { headers: { 'Content-Type': 'application/json' } })
                 .then(function (result) {
                     var phones = result.data;
