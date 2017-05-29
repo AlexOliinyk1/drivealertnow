@@ -1,5 +1,5 @@
-﻿app.run(['AuthService', '$rootScope', '$location', 'BufferService',
-    function (AuthService, $rootScope, $location, bufferService) {
+﻿app.run(['AuthService', '$rootScope', '$location', 'BufferService', '$http',
+    function (AuthService, $rootScope, $location, bufferService, $http) {
         if (window != window.top) {
             var res = $location.search();
             bufferService.setIsIFrame(true);
@@ -7,6 +7,8 @@
         }
         else { AuthService.fillAuthData(); }
         console.log(bufferService.getIsIFrame());
+
+        $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
         $rootScope.$on("$routeChangeStart", function (evt, to, from) {
             if (to.authorize === true) {
@@ -20,6 +22,14 @@
                         $location.path("/login");
                     }];
                 }
+            }
+
+            $rootScope.$broadcast('pageTitle.change.start', null);
+        });
+
+        $rootScope.$on("$routeChangeSuccess", function (evt, to, from) {
+            if (to.title) {
+                $rootScope.$broadcast('pageTitle.change.end', { title: to.title, icon: to.icon });
             }
         });
     }

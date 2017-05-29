@@ -3,14 +3,6 @@
         overflow-y:hidden;
     }
 </style>
-<div class="row">
-    <div class="col-md-12">
-        <h2 class="content-heading">
-            <i class="fa fa-2x fa-map-marker icon"></i>Locations
-        </h2>
-        <hr>
-    </div>
-</div>
 
 <div class="row">
     <div class="col-sm-12">
@@ -56,7 +48,7 @@
                             <tr>
                                 <th class="text-center" style="width: 70px;">
                                     <label class="css-input css-checkbox css-checkbox-primary remove-margin-t remove-margin-b">
-                                        <input type="checkbox" id="check-all" ng-click="vm.selectAll()" ng-model="vm.allSelected" name="check-all"><span></span>
+                                        <input type="checkbox" id="check-all" ng-disabled="!vm.locations.length" ng-click="vm.selectAll()" ng-model="vm.allSelected" name="check-all"><span></span>
                                     </label>
                                 </th>
                                 <th>Date</th>

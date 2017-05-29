@@ -48,11 +48,11 @@ body {
     background-color: #eee;
 }
 
-.content-heading {
+.drivealert.content-heading {
     margin-top: 0;
 }
 
-.content-heading > .icon {
+.drivealert.content-heading > .icon {
     margin-right: 25px;
     margin-left: 25px;
     vertical-align: middle;

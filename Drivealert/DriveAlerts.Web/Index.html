@@ -54,6 +54,16 @@
 
     <div class="container body-content">
         <route-loading-indicator></route-loading-indicator>
+
+        <div class="row" ng-if="!isRouteLoading" ng-hide="!pageTitle.text">
+            <div class="col-md-12">
+                <h2 class="drivealert content-heading">
+                    <i class="fa fa-2x {{pageTitle.icon}} icon"></i>{{pageTitle.text}}
+                </h2>
+                <hr class="drivealert content-heading">
+            </div>
+        </div>
+
         <ng-view ng-if="!isRouteLoading"></ng-view>
     </div>
 

@@ -3,7 +3,9 @@
         controller: 'AlertsController',
         templateUrl: 'app/modules/alerts/alerts.html',
         controllerAs: 'vm',
-        authorize: true
+        authorize: true,
+        title: 'Alerts',
+        icon: 'fa-phone'
     });
 
     $routeProvider.when('/login', {
@@ -16,49 +18,63 @@
         controller: 'AccountController',
         templateUrl: '/app/modules/account/account.html',
         controllerAs: 'vm',
-        authorize: true
+        authorize: true,
+        title: 'Account',
+        icon: 'fa-user'
     });
 
     $routeProvider.when('/devices', {
         controller: 'DevicesController',
         templateUrl: '/app/modules/devices/devices.html',
         controllerAs: 'vm',
-        authorize: true
+        authorize: true,
+        title: 'Devices',
+        icon: 'fa-mobile'
     });
 
     $routeProvider.when('/add-device', {
         controller: 'AddDeviceController',
         templateUrl: '/app/modules/add-device/add-device.html',
         controllerAs: 'vm',
-        authorize: true
+        authorize: true,
+        title: 'Add Device',
+        icon: 'fa-phone'
     });
 
     $routeProvider.when('/edit-device', {
         controller: 'EditDeviceController',
         templateUrl: '/app/modules/add-device/add-device.html',
         controllerAs: 'vm',
-        authorize: true
+        authorize: true,
+        title: 'Edit Device',
+        icon: 'fa-phone'
     });
 
     $routeProvider.when('/faq', {
         controller: 'FaqController',
         templateUrl: '/app/modules/faq/faq.html',
         controllerAs: 'vm',
-        authorize: true
+        authorize: true,
+        title: 'FAQ',
+        icon: 'fa-question'
     });
 
     $routeProvider.when('/settings', {
         controller: 'SettingsController',
         templateUrl: '/app/modules/settings/settings.html',
         controllerAs: 'vm',
-        authorize: true
+        authorize: true,
+        title: 'Settings',
+        icon: 'fa-gears'
     });
 
     $routeProvider.when('/video', {
         controller: 'VideoController',
         templateUrl: '/app/modules/video/video.html',
         controllerAs: 'vm',
-        authorize: true
+        authorize: true,
+        title: 'Videos',
+        icon: 'fa-play'
     });
 
     $routeProvider.when('/reminder-password', {
@@ -86,14 +102,18 @@
         controller: 'LocationsController',
         templateUrl: '/app/modules/locations/locations.html',
         controllerAs: 'vm',
-        authorize: true
+        authorize: true,
+        title: 'Locations',
+        icon: 'fa-map-marker'
     });
 
     $routeProvider.when('/summary', {
         controller: 'SummaryController',
         templateUrl: '/app/modules/summary/summary.html',
         controllerAs: 'vm',
-        authorize: true
+        authorize: true,
+        title: 'Summary',
+        icon: 'fa-table'
     });
 
     $routeProvider.otherwise({ redirectTo: '/alerts' });
