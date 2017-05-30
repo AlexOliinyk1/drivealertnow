@@ -36,7 +36,7 @@
 
                 <tr ng-repeat-start="user in vm.summaryReport">
                     <td style="width: 1px">
-                        <button class="btn btn-link" data-toggle="collapse" data-target=".main-{{vm.summaryReport.indexOf(user)}}">
+                        <button bootstrap-collapse-btn class="btn btn-link" data-toggle="collapse" data-target=".main-{{vm.summaryReport.indexOf(user)}}">
                             <i class="fa fa-plus"></i>
                         </button>
                     </td>
@@ -123,7 +123,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="trip in vm.dailyTripReports">
+                                    <tr ng-repeat="trip in user.dailyTripReports">
                                         <td>
                                             {{trip.day}}
                                         </td>
