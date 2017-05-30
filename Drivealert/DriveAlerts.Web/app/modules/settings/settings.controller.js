@@ -71,7 +71,14 @@
         }
 
         function _saveAllSettings() {
-            console.log('Not Implemented Yet');
+            settingsService.saveAllSettings(vm.setting)
+                .then(function () {
+                    if (result) {
+                        console.log("Save successed");
+                    } else {
+                        console.log("Save failed");
+                    }
+                });
         }
 
         function _changePhone(phone) {

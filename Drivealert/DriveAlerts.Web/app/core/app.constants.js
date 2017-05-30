@@ -12,7 +12,7 @@
             //LocationTracking
             locationsSearch: apiServiceBaseUri + apiVersion + '/location-trackings/phones/',//{phoneNumber},POST
             //Phone
-            getPhones: "" + apiServiceBaseUri + apiVersion + '/phones/users/',//{userId},GET
+            getPhones: apiServiceBaseUri + apiVersion + '/phones/users/',//{userId},GET
             addPhone: apiServiceBaseUri + apiVersion + '/phones/users/',//{userId},POST
             removePhone: apiServiceBaseUri + apiVersion + '/phones/',//{phoneId},DELETE
             updatePhone: apiServiceBaseUri + apiVersion + '/phones/',//{phoneId},PUT
