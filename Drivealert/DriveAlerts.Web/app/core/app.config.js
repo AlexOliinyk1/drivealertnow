@@ -43,7 +43,7 @@
 
     $routeProvider.when('/edit-device', {
         controller: 'EditDeviceController',
-        templateUrl: '/app/modules/add-device/add-device.html',
+        templateUrl: '/app/modules/edit-device/edit-device.html',
         controllerAs: 'vm',
         authorize: true,
         title: 'Edit Device',

@@ -7,6 +7,7 @@
         vm.cancel = _cancel;
         vm.phone = {
             PhoneId: 0,
+            ActivationCode: "",
             PhoneNumber: "",
             FirstName: "",
             LastName: "",
