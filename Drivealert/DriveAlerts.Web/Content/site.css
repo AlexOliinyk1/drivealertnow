@@ -92,3 +92,29 @@ textarea.form-control.auto-reply-text {
     width: 0;
     height: 0; 
 }
+
+/* Summary page table */
+/* speed up collapse transition */
+.table .collapsing{
+ 	-webkit-transition:height .01s ease;
+  	transition:height .01s ease
+}
+
+/* Customize summary table */
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+
+.table > tbody > tr > td.panel-group {
+    padding: 0;
+}
+
+.table > tbody > tr > td.panel-group .panel + .panel {
+    margin-top: 0;
+}
+
+.table > tbody > tr > td.panel-group > .panel > .table.collapse.in {
+    display: table !important;
+    border-top: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
+}

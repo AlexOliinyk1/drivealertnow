@@ -1,26 +1,30 @@
 ﻿<div class="block">
-    <!--<div class="block-header">
-        <h3 class="block-title">Table Sections</h3>
-    </div>-->
+
+    <!-- Header with filter -->
+    <div class="block-header">
+        <form class="form-inline">
+            <div class="form-group col-md-12  push-10-t">
+                <label class="col-md-2 control-label  push-5-t">Date Range</label>
+                <div class="col-md-5">
+                    <div class="input-daterange input-group col-xs-9" data-date-format="mm/dd/yyyy">
+                        <input date-picker ng-model="vm.filter.fromDate" class="form-control" type="text" id="date-start" name="date-start" placeholder="From">
+                        <span class="input-group-addon"><i class="fa fa-chevron-right"></i></span>
+                        <input date-picker ng-model="vm.filter.toDate" class="form-control" type="text" id="date-end" name="date-end" placeholder="To">
+                    </div>
+
+                    <button class="btn btn-primary pull-right " ng-click="vm.loadReport()" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- END Header with filter -->
+
+    <!-- Table -->
     <div class="block-content">
-        <!--
-        Separate your table content with multiple tbody sections. Add one row and add the class .js-table-sections-header to a
-        tbody section to make it clickable. It will then toggle the next tbody section which can have multiple rows. Eg:
-
-        <tbody class="js-table-sections-header">One row</tbody>
-        <tbody>Multiple rows</tbody>
-        <tbody class="js-table-sections-header">One row</tbody>
-        <tbody>Multiple rows</tbody>
-        <tbody class="js-table-sections-header">One row</tbody>
-        <tbody>Multiple rows</tbody>
-
-        You can also add the class .open in your tbody.js-table-sections-header to make the next tbody section visible by default
-        -->
-        <table class="js-table-sections table table-hover" cg-busy="vm.isLoading">
+        <table class="table table-bordered" cg-busy="vm.isLoading">
             <thead>
                 <tr>
-                    <th style="width: 30px;"></th>
-                    <th>Name</th>
+                    <th colspan="2">Name</th>
                     <th>Violation#</th>
                     <th>Phone</th>
                     <th>Install Date</th>
@@ -28,104 +32,119 @@
                     <th>Last Violation Date</th>
                 </tr>
             </thead>
+            <tbody>
 
-            <tbody class="js-table-sections-header">
-                <tr>
-                    <td class="text-center">
-                        <i class="fa fa-angle-right"></i>
+                <tr ng-repeat-start="user in vm.summaryReport">
+                    <td style="width: 1px">
+                        <button class="btn btn-link" data-toggle="collapse" data-target=".main-{{vm.summaryReport.indexOf(user)}}">
+                            <i class="fa fa-plus"></i>
+                        </button>
                     </td>
-                    <td class="font-w600">Sara Holland</td>
-                    <td></td>
-                    <td>
-                        (832) 622-4609
-                    </td>
-                    <td>
-                        <em class="text-muted">June 7, 2015 12:16</em>
-                    </td>
-                    <td></td>
-                    <td></td>
+                    <td class="align-middle">{{user.name}}</td>
+                    <td>{{user.violationType}}</td>
+                    <td>{{user.phoneNumber}}</td>
+                    <td>{{user.installDate}}</td>
+                    <td>{{user.lastActivityDate}}</td>
+                    <td>{{user.lastViolationDate}}</td>
                 </tr>
+                <tr id="collapseOne" class="collapse collapsed main-{{vm.summaryReport.indexOf(user)}}" ng-repeat-end>
+                    <td></td>
+                    <td colspan="6" class="panel-group">
+
+                        <!-- Call violations -->
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#call-alerts-{{vm.summaryReport.indexOf(user)}}">
+                                    Call Violations for {{user.name}}
+                                </button>
+                            </div>
+                            <table id="call-alerts-{{vm.summaryReport.indexOf(user)}}" class="table table-bordered collapse collapsed">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Violation Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="call in user.callViolations">
+                                        <td>
+                                            {{call.date}}
+                                        </td>
+                                        <td>
+                                            {{call.description}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END Call violations -->
+
+                        <!-- Connection Violations -->
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#connections-alerts-{{vm.summaryReport.indexOf(user)}}">
+                                    Connection Violations for {{user.name}}
+                                </button>
+                            </div>
+                            <table id="connections-alerts-{{vm.summaryReport.indexOf(user)}}" class="table table-bordered collapse collapsed">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Violation Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="connection in user.connectionViolations">
+                                        <td>
+                                            {{connection.date}}
+                                        </td>
+                                        <td>
+                                            {{connection.description}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END Connection Violations -->
+
+                        <!-- Dayly Trip Report -->
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#report-alerts-{{vm.summaryReport.indexOf(user)}}">
+                                    Dayly Trip Report for {{user.name}}
+                                </button>
+                            </div>
+                            <table id="report-alerts-{{vm.summaryReport.indexOf(user)}}" class="table table-bordered collapse collapsed">
+                                <thead>
+                                    <tr>
+                                        <th>Day</th>
+                                        <th>Trip Start Time</th>
+                                        <th>Trip End Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="trip in vm.dailyTripReports">
+                                        <td>
+                                            {{trip.day}}
+                                        </td>
+                                        <td>
+                                            {{trip.startTime}}
+                                        </td>
+                                        <td>
+                                            {{trip.endTime}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END Dayly Trip Report -->
+                    </td>
+                </tr>
+
             </tbody>
-
-            <!--<tbody>
-                <table class="js-table-sections table table-hover" cg-busy="vm.isLoading">
-                    <thead>
-                        <tr>
-                            <th style="width: 30px;"></th>
-                            <th>Name</th>
-                            <th>Violation#</th>
-                            <th>Phone</th>
-                            <th>Install Date</th>
-                            <th>Last Activity Date</th>
-                            <th>Last Violation Date</th>
-                        </tr>
-                    </thead>
-                    <tbody class="js-table-sections-header">
-                        <tr>
-                            <td class="text-center">
-                                <i class="fa fa-angle-right"></i>
-                            </td>
-                            <td class="font-w600">Sara Holland</td>
-                            <td></td>
-                            <td>
-                                (832) 622-4609
-                            </td>
-                            <td>
-                                <em class="text-muted">June 7, 2015 12:16</em>
-                            </td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                    <tbody class="js-table-sections-header">
-                        <tr>
-                            <td class="text-center"></td>
-                            <td class="font-w60">+ Call and connection violations for Sara</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td class="text-center"></td>
-                            <td class="font-w60">+ Daily Trip Report for Sara </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </tbody>-->
         </table>
     </div>
+    <!-- END Table -->
+
 </div>
 
-<script>
-
-    (function ($) {
-
-        jQuery('.js-table-sections').each(function () {
-            var $table = jQuery(this);
-
-            // When a row is clicked in tbody.js-table-sections-header
-            jQuery('.js-table-sections-header > tr', $table).on('click', function (e) {
-                var $row = jQuery(this);
-                var $tbody = $row.parent('tbody');
-
-                if (!$tbody.hasClass('open')) {
-                    jQuery('tbody', $table).removeClass('open');
-                }
-
-                $tbody.toggleClass('open');
-            });
-        });
-
-    })(jQuery)
-
-</script>
