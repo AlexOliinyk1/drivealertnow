@@ -1,5 +1,5 @@
-﻿app.factory('BufferService', ['$http', '$q', 'ngWebSettings',
-    function ($http, $q, ngWebSettings) {
+﻿app.factory('BufferService', ['$http', '$q',
+    function ($http, $q) {
         var service = {};
         var _isInFrame = false;
 

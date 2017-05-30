@@ -1,7 +1,6 @@
 ﻿app.factory('AuthService', ['$http', '$q', 'localStorageService', 'ngWebSettings', '$rootScope',
     function ($http, $q, localStorageService, ngWebSettings, $rootScope) {
 
-        var serviceBase = ngWebSettings.apiServiceBaseUri + ngWebSettings.apiVersion + '/';
         var authServiceFactory = {};
 
         var _authentication = {
@@ -16,7 +15,7 @@
 
             var deferred = $q.defer();
 
-            $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+            $http.post(ngWebSettings.api.authorize, data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .then(function (response) {
                     localStorageService.set('authorizationData', { token: response.data.access_token, userName: response.data.userName, userId: response.data.userId });
 

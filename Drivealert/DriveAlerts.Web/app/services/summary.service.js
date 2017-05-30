@@ -1,6 +1,5 @@
 ﻿app.factory('SummaryService', ['$http', '$q', 'ngWebSettings',
     function ($http, $q, ngWebSettings) {
-        var serviceBase = ngWebSettings.apiServiceBaseUri + ngWebSettings.apiVersion + '/';
         var service = {};
 
         service.getSummary = _getSummary;

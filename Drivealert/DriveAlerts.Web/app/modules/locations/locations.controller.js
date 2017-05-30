@@ -19,7 +19,9 @@
         vm.mapCenter = [0, 0];
 
         $scope.$on('phoneNumber.changed', function (evnt, phone) {
-            _changePhoneNumber(phone);
+            if (phone) {
+                _changePhoneNumber(phone);
+            }
         });
 
         function _init() {

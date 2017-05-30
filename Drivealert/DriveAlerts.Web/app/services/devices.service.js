@@ -1,6 +1,5 @@
 ﻿app.factory('DevicesService', ['$http', '$q', 'ngWebSettings',
     function ($http, $q, ngWebSettings) {
-        var serviceBase = ngWebSettings.apiServiceBaseUri + ngWebSettings.apiVersion + '/';
         var service = {};
 
         service.getDevices = _getDevices;
@@ -8,9 +7,9 @@
         service.updateDevice = _updateDevice;
         service.removeDevice = _removeDevice;
 
-        //  GET /v1/phones/user/{userId}
+        //  GET /v1/phones/users/{userId}
         function _getDevices(userId) {
-            var url = serviceBase + 'phones/users/' + userId;
+            var url = ngWebSettings.api.getPhones + userId;
             return $http.get(url, { headers: { 'Content-Type': 'application/json' } })
                 .then(function (result) {
                     var phones = result.data;
@@ -25,9 +24,9 @@
                 });
         }
 
-        //  POST /v1/phones/user/{userId}
+        //  POST /v1/phones/users/{userId}
         function _createDevice(userId, device) {
-            var url = serviceBase + 'phones/user/' + userId;
+            var url = ngWebSettings.api.addPhone + userId;
             return $http.post(url, device, { headers: { 'Content-Type': 'application/json' } })
                 .then(function (result) {
                     return true;
@@ -39,7 +38,7 @@
 
         //  PUT /v1/phones/{phoneId}
         function _updateDevice(id, device) {
-            return $http.put(serviceBase + 'phones/' + id, device, { headers: { 'Content-Type': 'application/json' } })
+            return $http.put(ngWebSettings.api.updatePhone + id, device, { headers: { 'Content-Type': 'application/json' } })
                 .then(function () {
                     return true;
                 }).catch(function (error) {
@@ -50,7 +49,7 @@
 
         //  DELETE /v1/phones/{phoneId}
         function _removeDevice(id) {
-            return $http.delete(serviceBase + 'phones/' + id, { headers: { 'Content-Type': 'application/json' } })
+            return $http.delete(ngWebSettings.api.removePhone + id, { headers: { 'Content-Type': 'application/json' } })
                 .then(function () {
                     return true;
                 }).catch(function (error) {
