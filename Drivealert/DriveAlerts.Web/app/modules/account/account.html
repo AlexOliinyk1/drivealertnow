@@ -3,23 +3,23 @@
     <div class="block">
         <ul class="nav nav-tabs nav-tabs-alt nav-justified push-20" data-toggle="tabs">
             <li class="active">
-                <a show-tab href="#tab-profile-personal"><i class="fa fa-fw fa-pencil"></i> Admin Profile</a>
+                <a show-tab href=".tab-profile-personal"><i class="fa fa-fw fa-pencil"></i> Admin Profile</a>
             </li>
             <li>
-                <a show-tab href="#tab-profile-password"><i class="fa fa-fw fa-asterisk"></i> Password</a>
+                <a show-tab href=".tab-profile-password"><i class="fa fa-fw fa-asterisk"></i> Password</a>
             </li>
 
         </ul>
         <div class="block-content tab-content">
             <!-- Personal Tab -->
-            <div class="tab-pane fade in active" id="tab-profile-personal">
+            <div class="tab-pane fade in active tab-profile-personal">
                 <div class="row items-push">
                     <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="form-material form-material-primary">
                                     <label for="profile-email">Email</label>
-                                    <input class="form-control input-lg" type="email" id="profile-email" name="profile-email" placeholder="Enter login Email..">
+                                    <input class="form-control input-lg" type="email" id="profile-email" name="profile-email" ng-model="vm.userData.EmailAddress" placeholder="Enter login Email..">
                                 </div>
                             </div>
                         </div>
@@ -27,13 +27,13 @@
                             <div class="col-xs-6">
                                 <div class="form-material form-material-primary">
                                     <label for="profile-firstname">First Name</label>
-                                    <input class="form-control input-lg" type="text" id="profile-firstname" name="profile-firstname" placeholder="Enter your First Name..">
+                                    <input class="form-control input-lg" type="text" id="profile-firstname" name="profile-firstname" ng-model="vm.userData.FirstName" placeholder="Enter your First Name..">
                                 </div>
                             </div>
                             <div class="col-xs-6">
                                 <div class="form-material form-material-primary">
                                     <label for="profile-lastname">Last Name</label>
-                                    <input class="form-control input-lg" type="text" id="profile-lastname" name="profile-lastname" placeholder="Enter your Last Name..">
+                                    <input class="form-control input-lg" type="text" id="profile-lastname" name="profile-lastname" ng-model="vm.userData.LastName" placeholder="Enter your Last Name..">
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                                 <div class="form-material form-material-primary">
 
                                     <label for="profile-skills">Time Zone</label>
-                                    <select class="form-control" id="time-zone" name="time-zone">
+                                    <select ng-model="vm.userData.TimeZone" class="form-control" id="time-zone" name="time-zone">
                                         <option value="1">Atlantic Standard Time (AST)</option>
                                         <option selected="selected" value="2">Eastern Standard Time (EST)</option>
                                         <option value="3">Central Standard Time (CST)</option>
@@ -59,10 +59,14 @@
 
                     </div>
                 </div>
+
+                <div class="row items-push block-content block-content-full bg-gray-lighter text-center">
+                    <button class="btn btn-sm btn-primary" type="submit" ng-click="vm.saveUserInfo()"><i class="fa fa-check push-5-r"></i> Save Changes</button>
+                </div>
             </div>
             <!-- END Personal Tab -->
             <!-- Password Tab -->
-            <div class="tab-pane fade" id="tab-profile-password">
+            <div class="tab-pane fade tab-profile-password">
                 <div class="row items-push">
                     <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                         <div class="form-group">
@@ -92,13 +96,15 @@
                     </div>
 
                 </div>
+
+                <div class="row items-push block-content block-content-full bg-gray-lighter text-center">
+                    <button class="btn btn-sm btn-primary" type="submit" ng-click="vm.changePassword()"><i class="fa fa-check push-5-r"></i> Change Password</button>
+                </div>
             </div>
             <!-- END Password Tab -->
 
         </div>
-        <div class="block-content block-content-full bg-gray-lighter text-center">
-            <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
-        </div>
+
     </div>
 </form>
 <!-- END Main Content -->

@@ -1,5 +1,52 @@
-﻿app.controller('AccountController', [function () {
-    var self = this;
+﻿app.controller('AccountController', ['AccountService', 'AuthService',
+    function (accountService, authService) {
+        var vm = this;
 
-    self.text = "account";
-}]);
+        vm.userData = {
+            EmailAddress: "",
+            FirstName: "",
+            LastName: "",
+            TimeZone: 2
+        };
+        vm.passwordData = {
+            currentPassword: '',
+            newPassword: '',
+            confirmPassword: ''
+        }
+        vm.saveUserInfo = _saveUserInfo;
+        vm.changePassword = _changePassword;
+
+        function _getUserData() {
+            accountService.getUserData(authService.authentication.userId)
+                .then(function (data) {
+                    if (!data) {
+                        vm.userData = data;
+                    } else {
+                        //  TODO: Notify about error
+                    }
+                });
+        }
+
+        function _saveUserInfo() {
+            accountService.updateUserData(vm.userData)
+                .then(function (result) {
+
+                });
+        }
+
+        function _changePassword() {
+            accountService.changeUserPassword(vm.passwordData)
+                .then(function (result) {
+                    _resetPasswordFields();
+                });
+        }
+
+        function _resetPasswordFields() {
+            vm.passwordData.currentPassword = '';
+            vm.passwordData.newPassword = '';
+            vm.passwordData.confirmPassword = '';
+        }
+
+        _resetPasswordFields();
+    }
+]);

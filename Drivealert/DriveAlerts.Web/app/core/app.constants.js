@@ -7,6 +7,13 @@
         deviceTypes: [{ name: "Android", id: 1 }, { name: "IOS", id: 2 }],
 
         api: {
+            //Account
+            getAccountInfo: apiServiceBaseUri + apiVersion + '/NONE/',//GET: Not implemented
+            createAccount: apiServiceBaseUri + apiVersion + '/accounts/',//POST: Create new account
+            updateAccountInfo: apiServiceBaseUri + apiVersion + '/accounts/',//PUT: Update user info
+            //  used 'addPhone' instead this
+            addPnoneNumberToAccount: apiServiceBaseUri + apiVersion + '/accounts/phones/',//POST: Add new child's phone number
+            changePasswordAccount: apiServiceBaseUri + apiVersion + '/accounts/passwords/',//PUT: Update password for user
             //Alert
             alertSearch: apiServiceBaseUri + apiVersion + '/alerts/phones/',//{phoneNumber},POST
             //LocationTracking
