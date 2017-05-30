@@ -47,6 +47,7 @@
             vm.passwordData.confirmPassword = '';
         }
 
+        _getUserData();
         _resetPasswordFields();
     }
 ]);
