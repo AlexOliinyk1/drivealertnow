@@ -107,7 +107,7 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <label class="css-input switch switch-sm switch-primary">
-                            <input type="checkbox" id="enable-auto-reply" name="enable-auto-reply"><span></span> Enable auto-reply
+                            <input type="checkbox" id="enable-auto-reply" name="enable-auto-reply" ng-model="vm.setting.EnableAutoReply"><span></span> Enable auto-reply
                         </label>
                     </div>
                 </div>
@@ -198,7 +198,7 @@
                 <div class="form-group clearfix">
                     <div class="col-md-12">
                         <div class="input-group">
-                            <input class="form-control" ng-model="vm.setting.EnableReportTrackFrame" ype="number" min="0" step="1" id="interval-beetwen-locations" name="interval-beetwen-locations">
+                            <input class="form-control" ng-model="vm.setting.ReportTrackFrame" ype="number" min="0" step="1" id="interval-beetwen-locations" name="interval-beetwen-locations">
                             <span class="input-group-addon">minutes</span>
                         </div>
                     </div>

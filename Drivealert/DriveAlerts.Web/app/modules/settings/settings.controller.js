@@ -22,7 +22,7 @@
             //END admin settings
             EnableReportMovements: false,    //Report vehicle activity
             EnableReportCoordinates: false,  // Include coordinates
-            EnableReportTrackFrame: '',       //Interval between location moves
+            ReportTrackFrame: '',       //Interval between location moves
             AllowedPhone1: "911",
             AllowedPhone2: "",
             AllowedPhone3: "",
