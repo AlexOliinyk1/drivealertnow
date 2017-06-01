@@ -4,7 +4,7 @@
 
     app.constant('ngWebSettings', {
         clientId: 'C35E917F-8B62-41E0-896E-A4A625C15C4D',
-        deviceTypes: [{ name: "Android", id: 1 }, { name: "IOS", id: 2 }],
+        deviceTypes: [{ name: "Android", id: 1 }, { name: "iOS", id: 2 }],
 
         api: {
             //Account
