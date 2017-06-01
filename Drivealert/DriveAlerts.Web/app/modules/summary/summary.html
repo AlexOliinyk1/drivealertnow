@@ -3,7 +3,7 @@
     <!-- Header with filter -->
     <div class="block-header">
         <form class="form-inline">
-            <div class="form-group col-md-12  push-10-t">
+            <!--<div class="form-group col-md-12  push-10-t">
                 <label class="col-md-2 control-label  push-5-t">Date Range</label>
                 <div class="col-md-5">
                     <div class="input-daterange input-group col-xs-9" data-date-format="mm/dd/yyyy">
@@ -14,6 +14,22 @@
 
                     <button class="btn btn-primary pull-right " ng-click="vm.loadReport()" type="submit">Update</button>
                 </div>
+            </div>-->
+
+            <div class="form-group col-md-12 push-10-t">
+                <label class="col-md-2 control-label push-5-t" for="date-start">Date Range</label>
+                <div class="col-md-8">
+                    <div class="input-daterange input-group col-xs-5" data-date-format="mm/dd/yyyy">
+                        <input date-picker="" class="form-control ng-untouched ng-valid ng-not-empty ng-dirty ng-valid-parse" type="text" id="date-start"
+                               ng-model="vm.filter.fromDate" name="date-start" placeholder="From">
+                        <span class="input-group-addon"><i class="fa fa-chevron-right"></i></span>
+                        <input date-picker="" class="form-control ng-untouched ng-valid ng-not-empty ng-dirty ng-valid-parse" type="text" id="date-end"
+                               ng-model="vm.filter.toDate" name="date-end" placeholder="To">
+                    </div>
+                    <button class="btn btn-primary" ng-click="vm.loadReport()" type="submit">Update</button>
+
+                </div>
+
             </div>
         </form>
     </div>

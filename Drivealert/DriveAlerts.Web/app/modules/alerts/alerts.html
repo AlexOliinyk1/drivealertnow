@@ -34,7 +34,7 @@
 
                 </form>
                 <form class="form-inline">
-                    <div class="form-group col-md-12  push-10-t">
+                    <!--<div class="form-group col-md-12  push-10-t">
                         <label class="col-md-2 control-label  push-5-t">Date Range</label>
                         <div class="col-md-5">
                             <div class="input-daterange input-group col-xs-9" data-date-format="mm/dd/yyyy">
@@ -42,9 +42,24 @@
                                 <span class="input-group-addon"><i class="fa fa-chevron-right"></i></span>
                                 <input date-picker ng-model="vm.searchConfig.DateEnd" class="form-control" type="text" id="date-end" name="date-end" placeholder="To">
                             </div>
-
                             <button class="btn btn-primary pull-right " ng-click="vm.searchAlerts()" type="submit">Update</button>
                         </div>
+
+                    </div>-->
+                    <div class="form-group col-md-12 push-10-t">
+                        <label class="col-md-2 control-label push-5-t" for="date-start">Date Range</label>
+                        <div class="col-md-8">
+                            <div class="input-daterange input-group col-xs-5" data-date-format="mm/dd/yyyy">
+                                <input date-picker="" class="form-control ng-untouched ng-valid ng-not-empty ng-dirty ng-valid-parse" type="text" id="date-start" 
+                                       ng-model="vm.searchConfig.DateStart" name="date-start" placeholder="From">
+                                <span class="input-group-addon"><i class="fa fa-chevron-right"></i></span>
+                                <input date-picker="" class="form-control ng-untouched ng-valid ng-not-empty ng-dirty ng-valid-parse" type="text" id="date-end" 
+                                       ng-model="vm.searchConfig.DateEnd" name="date-end" placeholder="To">
+                            </div>
+                            <button class="btn btn-primary" ng-click="vm.searchAlerts()" type="submit">Update</button>
+
+                        </div>
+
                     </div>
                 </form>
             </div>
