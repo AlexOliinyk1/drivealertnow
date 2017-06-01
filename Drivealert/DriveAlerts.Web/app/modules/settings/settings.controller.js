@@ -30,6 +30,7 @@
             AllowedPhone5: "",
             AllowedPhoneOwner1: "",
             AllowedPhoneOwner2: "",
+            //WHY why we used only numbers after 1 aand 2 ? 
             AllowedPhoneOwner3: "",
             AllowedPhoneOwner4: "",
             AllowedPhoneOwner5: ""
