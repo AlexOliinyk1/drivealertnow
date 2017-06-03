@@ -24,11 +24,12 @@
             removePhone: apiServiceBaseUri + apiVersion + '/phones/',//{phoneId},DELETE
             updatePhone: apiServiceBaseUri + apiVersion + '/phones/',//{phoneId},PUT
             //Setting
-            getPhoneSettings: apiServiceBaseUri + apiVersion + '/settings/phones/',//{phoneId}',GET
-            savePhoneSettings: apiServiceBaseUri + apiVersion + '/settings/phones/',//{phoneId}',POST
-            saveSettingsForAllPhones: apiServiceBaseUri + apiVersion + '/settings',//POST
+            getPhoneSettings: apiServiceBaseUri + apiVersion + '/settings/phones/',//{phoneId},GET
+            savePhoneSettings: apiServiceBaseUri + apiVersion + '/settings/phones/',//{phoneId},POST
+            saveSettingsForAllPhones: apiServiceBaseUri + apiVersion + '/settings/',//POST
             //Auth
             authorize: apiServiceBaseUri + apiVersion + '/token',//POST
+            report: apiServiceBaseUri + apiVersion + '/reports/phones/',//{phoneNumber},POST
         }
     });
 }());

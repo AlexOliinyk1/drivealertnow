@@ -3,20 +3,8 @@
     <!-- Header with filter -->
     <div class="block-header">
         <form class="form-inline">
-            <!--<div class="form-group col-md-12  push-10-t">
-                <label class="col-md-2 control-label  push-5-t">Date Range</label>
-                <div class="col-md-5">
-                    <div class="input-daterange input-group col-xs-9" data-date-format="mm/dd/yyyy">
-                        <input date-picker ng-model="vm.filter.fromDate" class="form-control" type="text" id="date-start" name="date-start" placeholder="From">
-                        <span class="input-group-addon"><i class="fa fa-chevron-right"></i></span>
-                        <input date-picker ng-model="vm.filter.toDate" class="form-control" type="text" id="date-end" name="date-end" placeholder="To">
-                    </div>
-
-                    <button class="btn btn-primary pull-right " ng-click="vm.loadReport()" type="submit">Update</button>
-                </div>
-            </div>-->
-
             <div class="form-group col-md-12 push-10-t">
+
                 <label class="col-md-2 control-label push-5-t" for="date-start">Date Range</label>
                 <div class="col-md-8">
                     <div class="input-daterange input-group col-xs-5" data-date-format="mm/dd/yyyy">
@@ -26,8 +14,7 @@
                         <input date-picker="" class="form-control ng-untouched ng-valid ng-not-empty ng-dirty ng-valid-parse" type="text" id="date-end"
                                ng-model="vm.filter.toDate" name="date-end" placeholder="To">
                     </div>
-                    <button class="btn btn-primary" ng-click="vm.loadReport()" type="submit">Update</button>
-
+                    <button class="btn btn-primary" ng-click="vm.updateData()" type="submit">Update</button>
                 </div>
 
             </div>
@@ -41,7 +28,7 @@
             <thead>
                 <tr>
                     <th colspan="2">Name</th>
-                    <th>Violation#</th>
+                    <th>Violation #</th>
                     <th>Phone</th>
                     <th>Install Date</th>
                     <th>Last Activity Date</th>
@@ -56,12 +43,12 @@
                             <i class="fa fa-plus"></i>
                         </button>
                     </td>
-                    <td class="align-middle">{{user.name}}</td>
-                    <td>{{user.violationType}}</td>
-                    <td>{{user.phoneNumber}}</td>
-                    <td>{{user.installDate}}</td>
-                    <td>{{user.lastActivityDate}}</td>
-                    <td>{{user.lastViolationDate}}</td>
+                    <td class="align-middle">{{user.FirstName}} {{user.LastName}}</td>
+                    <td>{{user.DailyTripReport.length + user.Violations.length}}</td>
+                    <td>{{user.PhoneNumber}}</td>
+                    <td>{{user.InstallDate}}</td>
+                    <td>{{user.LastActivityDate}}</td>
+                    <td>{{user.LastActivityDate}}</td>
                 </tr>
                 <tr id="collapseOne" class="collapse collapsed main-{{vm.summaryReport.indexOf(user)}}" ng-repeat-end>
                     <td></td>
@@ -71,7 +58,7 @@
                         <div class="panel">
                             <div class="panel-heading">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#call-alerts-{{vm.summaryReport.indexOf(user)}}">
-                                    Connection and Call Violations for {{user.name}}
+                                    Connection and Call Violations for {{user.FirstName}} {{user.LastName}}
                                 </button>
                             </div>
                             <table id="call-alerts-{{vm.summaryReport.indexOf(user)}}" class="table table-bordered collapse collapsed">
@@ -82,12 +69,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="call in user.callViolations">
+                                    <tr ng-repeat="call in user.Violations">
                                         <td>
-                                            {{call.date}}
+                                            {{call.CreationDate}}
                                         </td>
                                         <td>
-                                            {{call.description}}
+                                            {{call.ViolationDescription}}
                                         </td>
                                     </tr>
 
@@ -103,40 +90,12 @@
                             </table>
                         </div>
                         <!-- END Call violations -->
-
-                        <!-- Connection Violations -->
-                        <!--<div class="panel">
-                            <div class="panel-heading">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#connections-alerts-{{vm.summaryReport.indexOf(user)}}">
-                                    Connection Violations for {{user.name}}
-                                </button>
-                            </div>
-                            <table id="connections-alerts-{{vm.summaryReport.indexOf(user)}}" class="table table-bordered collapse collapsed">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Violation Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="connection in user.connectionViolations">
-                                        <td>
-                                            {{connection.date}}
-                                        </td>
-                                        <td>
-                                            {{connection.description}}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>-->
-                        <!-- END Connection Violations -->
-
+                        
                         <!-- Dayly Trip Report -->
                         <div class="panel">
                             <div class="panel-heading">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#report-alerts-{{vm.summaryReport.indexOf(user)}}">
-                                    Dayly Trip Report for {{user.name}}
+                                    Dayly Trip Report for {{user.FirstName}} {{user.LastName}}
                                 </button>
                             </div>
                             <table id="report-alerts-{{vm.summaryReport.indexOf(user)}}" class="table table-bordered collapse collapsed">
@@ -147,16 +106,26 @@
                                         <th>Trip End Time</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr ng-repeat="trip in user.dailyTripReports">
+                                <tbody ng-repeat="trip in user.DailyTripReport">
+                                    <tr>
                                         <td>
-                                            {{trip.day}}
+                                            {{trip.CreationDate | date:'MM/dd/yyyy'}}
                                         </td>
+                                        <td colspan="2"></td>
+                                    </tr>
+
+                                    <!--<tr>
+                                        <td rowspan="{{trip.Trips.length+1}}"></td>
+                                    </tr>-->
+
+                                    <tr ng-repeat="data in trip.Trips">
+                                        <td></td>
                                         <td>
-                                            {{trip.startTime}}
+                                            {{data.Start  | date:'h:mma'}}
                                         </td>
+
                                         <td>
-                                            {{trip.endTime}}
+                                            {{data.End | date:'h:mma'}}
                                         </td>
                                     </tr>
                                 </tbody>
