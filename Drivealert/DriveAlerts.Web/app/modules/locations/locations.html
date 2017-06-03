@@ -53,8 +53,13 @@
                         <tbody>
                             <tr ng-repeat="location in vm.locations">
                                 <td class="text-center">
-                                    <label class="css-input css-checkbox css-checkbox-primary">
-                                        <input type="checkbox" id="row_1" name="row_1" ng-click="vm.selectLocation()" ng-model="location.Selected"><span></span>
+                                    <label ng-hide="location.Latitude === '0' && location.Longitude === '0'"
+                                           class="css-input css-checkbox css-checkbox-primary">
+                                        <input type="checkbox" 
+                                               id="row_{{vm.locations.indexOf(location)}}" 
+                                               name="row_{{vm.locations.indexOf(location)}}" 
+                                               ng-click="vm.selectLocation()" 
+                                               ng-model="location.Selected"><span></span>
                                     </label>
                                 </td>
                                 <td>{{location.Date}}</td>

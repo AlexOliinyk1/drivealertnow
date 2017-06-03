@@ -44,7 +44,9 @@
 
         function _selectAll() {
             for (var i = 0; i < vm.locations.length; i++) {
-                vm.locations[i].Selected = vm.allSelected;
+                if (vm.locations[i].Latitude != 0 && vm.locations[i].Longitude != 0) {
+                    vm.locations[i].Selected = vm.allSelected;
+                }
             }
             _selectLocation();
         }
