@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="form-group clearfix">
-                    <div class="col-xs-6">
+                    <div class="col-xs-6" ng-hide="!vm.setting.EnableSpeedAlerts">
                         <div class="radio">
                             <label class="css-input css-radio css-radio-primary push-10-r">
                                 <input type="radio" ng-model="vm.setting.AlertSpeed" name="speed" ng-value="60"><span></span> 60MPH
@@ -65,7 +65,7 @@
                                 <input type="radio" ng-model="vm.setting.AlertSpeed" name="speed" ng-value="65"><span></span> 65MPH
                             </label>
                         </div>
-                    </div><div class="col-xs-6 ">
+                    </div><div class="col-xs-6 " ng-hide="!vm.setting.EnableSpeedAlerts">
 
                         <div class="radio">
                             <label class="css-input css-radio css-radio-primary push-10-r">
@@ -79,6 +79,7 @@
                         </div>
                     </div>
                 </div>
+                <span class=""></span>
                
 
             </div>
@@ -103,8 +104,8 @@
                     </div>
                 </div>
                 <div class="form-group  clearfix">
-                    <span class="col-xs-12" for="contact1-msg">Message</span>
-                    <div class="col-xs-12">
+                    <span class="col-xs-12" for="contact1-msg" ng-hide="!vm.setting.EnableAutoReply">Message</span>
+                    <div class="col-xs-12" ng-hide="!vm.setting.EnableAutoReply">
                         <textarea class="form-control auto-reply-text" id="setting-msg" name="setting-msg" rows="1" placeholder="Enter your message.."></textarea>
                     </div>
                 </div>
@@ -326,14 +327,6 @@
             every time the driver exceed 70 mph. If you select a 10 minute interval between alerts, per the interval between alerts section and the driver
             exceeds the speed you set, you will receive the highest speed they reached over that 10 minute interval.
         </li>
-        <li>
-            <p>Allow Hands-Free Bluetooth</p>
-            If you allow your child or driver to make and receive calls via the vehicle’s hands free Bluetooth or another hands-free BT device, just check off the
-            box to enable this feature. Important Note: to use a hands free Bluetooth device, the driver or administrator has to pair that device with the phone’s
-            Bluetooth. To do this, go to the phone’s Settings icon&gt;Bluetooth and you should see the vehicle’s built-in hands free Bluetooth. If you’re using another
-            hands free device, that device needs to be in the vehicle, connected, and you should know the sync instructions for that device.
-
-        </li>
     </ol>
 </script>
 
@@ -344,6 +337,14 @@
             The 4 check boxes, especially Bluetooth, Dongle or Trigger pulled out and Uninstalled need to be checked off. If they are not checked off,
             the driver will be able to get around the system. If they are checked off and the driver somehow shuts off Bluetooth, you will be notified
             via an alert. In addition, the driver’s phone will receive constant alerts on every screen they go to annoy and interrupt their use of the phone.
+        </li>
+        <li>
+            <p>Allow Hands-Free Bluetooth</p>
+            If you allow your child or driver to make and receive calls via the vehicle’s hands free Bluetooth or another hands-free BT device, just check off the
+            box to enable this feature. Important Note: to use a hands free Bluetooth device, the driver or administrator has to pair that device with the phone’s
+            Bluetooth. To do this, go to the phone’s Settings icon&gt;Bluetooth and you should see the vehicle’s built-in hands free Bluetooth. If you’re using another
+            hands free device, that device needs to be in the vehicle, connected, and you should know the sync instructions for that device.
+
         </li>
     </ol>
 </script>
