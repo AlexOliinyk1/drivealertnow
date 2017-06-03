@@ -63,6 +63,12 @@
                     },
                     {
                         Selected: false,
+                        Date: "5/19/2017 2:10:19 PM",
+                        Latitude: "0",
+                        Longitude: "0"
+                    },
+                    {
+                        Selected: false,
                         Date: "5/19/2017 1:50:14 PM",
                         Latitude: "40.444444444444",
                         Longitude: "-74"
