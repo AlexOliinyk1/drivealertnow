@@ -8,15 +8,18 @@
             LastName: "",
             TimeZone: 2
         };
+
         vm.passwordData = {
             currentPassword: '',
             newPassword: '',
             confirmPassword: ''
         }
+
         vm.saveUserInfo = _saveUserInfo;
         vm.changePassword = _changePassword;
 
         function _getUserData() {
+
             accountService.getUserData(authService.authentication.userId)
                 .then(function (data) {
                     if (!data) {

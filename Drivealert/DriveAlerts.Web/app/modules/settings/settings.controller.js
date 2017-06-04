@@ -5,15 +5,15 @@
         vm.setting = {
             PhoneNumber: "",
             AllowHeadset: false,             //Notify if Bluetooth is off
-            AlertSpeedFrame: '',              //Interval Between Alerts
-            AlertSpeed: 60,                 //Radiobuttons
+            AlertSpeedFrame: '',             //Interval Between Alerts
+            AlertSpeed: 60,                  //Radiobuttons
             GpsNotify: false,                //Notify if Location Services are disabled
             BluetoothNotify: false,          //Notify if Bluetooth is off
             DongleDisconnected: false,       //
             UninstalledNotify: false,        //Notify if Uninstalled
             EnableSpeedAlerts: false,        //Enable Speed Alerts
             EnableAutoReply: false,          //for android only?
-            AutoReplyText: "",              //for android only?
+            AutoReplyText: "",               //for android only?
             //admin settings
             EnableAdminTextAlerts: false,    //Enable Text Alerts to Administrator
             AdminMobilePhoneNumber: "",      //Phone
@@ -22,7 +22,7 @@
             //END admin settings
             EnableReportMovements: false,    //Report vehicle activity
             EnableReportCoordinates: false,  // Include coordinates
-            ReportTrackFrame: '',       //Interval between location moves
+            ReportTrackFrame: '',            //Interval between location moves
             AllowedPhone1: "911",
             AllowedPhone2: "",
             AllowedPhone3: "",
@@ -50,7 +50,7 @@
                 _changePhone(bufferService.activePhone);
             }
         }
-        
+
         function _getSettings(phoneId) {
             settingsService.getSettings(phoneId)
                 .then(function (result) {

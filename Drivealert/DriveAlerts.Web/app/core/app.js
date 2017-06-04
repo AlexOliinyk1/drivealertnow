@@ -5,5 +5,5 @@
     'ngSanitize',
     'ngMap',
     'cgBusy'
-    ]);
+]);
 

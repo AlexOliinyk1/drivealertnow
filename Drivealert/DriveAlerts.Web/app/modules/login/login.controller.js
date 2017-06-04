@@ -11,9 +11,9 @@
         AuthService.login(self.loginData).then(function (response) {
             $location.path('/');
         },
-        function (err) {
-            self.message = err.error_description;
-        });
+            function (err) {
+                self.message = err.error_description;
+            });
     };
 
     self.message = "";

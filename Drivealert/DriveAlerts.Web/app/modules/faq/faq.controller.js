@@ -3,5 +3,5 @@
 
     self.text = "FAQ";
 
-    
+
 }]);

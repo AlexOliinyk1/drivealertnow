@@ -1,11 +1,15 @@
 ﻿app.run(['AuthService', '$rootScope', '$location', 'BufferService', '$http',
     function (AuthService, $rootScope, $location, bufferService, $http) {
+
         if (window != window.top) {
             var res = $location.search();
             bufferService.setIsIFrame(true);
             AuthService.setSpesialAuthData(res.token, res.userId);
         }
-        else { AuthService.fillAuthData(); }
+        else {
+            AuthService.fillAuthData();
+        }
+
         console.log(bufferService.getIsIFrame());
 
         $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';

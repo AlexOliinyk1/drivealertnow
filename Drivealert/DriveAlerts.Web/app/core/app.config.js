@@ -119,6 +119,6 @@
     $routeProvider.otherwise({ redirectTo: '/alerts' });
 
     $httpProvider.interceptors.push('AuthInterceptorService');
-    //$locationProvider.html5Mode(true);
+
 });
 
