@@ -91,13 +91,6 @@
         authorize: false
     });
 
-    $routeProvider.when('/monthly-subscriptions', {
-        controller: 'MonthlySubscriptionsController',
-        templateUrl: '/app/modules/monthly-subscriptions/monthly-subscriptions.html',
-        controllerAs: 'vm',
-        authorize: false
-    });
-
     $routeProvider.when('/locations', {
         controller: 'LocationsController',
         templateUrl: '/app/modules/locations/locations.html',
