@@ -114,7 +114,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <div class="row" data-ng-repeat="choice in choices">
+                            <div class="row" data-ng-repeat="cell in cells">
                                 <div class="col-sm-1">
                                     <div class="form-group text-center push-5-t">
                                         <label>{{$index + 1}}</label>
@@ -122,29 +122,29 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" ng-modal="{{choice.fullName}}" name="full-name-{{$index + 1}}" placeholder="Enter a full name" >
+                                        <input type="text" class="form-control" ng-modal="{{cell.fullName}}" name="full-name-{{$index + 1}}" placeholder="Enter a full name" >
                                     </div>
                                 </div>
                                 <div class="col-sm-3 push-5-l">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" ng-modal="{{choice.phoneNumber}}" name="phone-number-{{$index + 1}}" placeholder="Enter a phone number" >
+                                        <input type="text" class="form-control" ng-modal="{{cell.phoneNumber}}" name="phone-number-{{$index + 1}}" placeholder="Enter a phone number" >
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <div class="col-xs-12">
                                             <label class="css-input css-radio css-radio-warning push-10-r">
-                                                <input type="radio" ng-modal="{{choice.phoneOs}}" name="type-os-{{$index + 1}}" ng-value="Android"><span></span> Android
+                                                <input type="radio" ng-modal="{{cell.phoneOs}}" name="type-os-{{$index + 1}}" ng-value="Android"><span></span> Android
                                             </label>
                                             <label class="css-input css-radio css-radio-warning">
-                                                <input type="radio" ng-modal="{{choice.phoneOs}}" name="type-os-{{$index + 1}}" ng-value="iOS"><span></span> iOS
+                                                <input type="radio" ng-modal="{{cell.phoneOs}}" name="type-os-{{$index + 1}}" ng-value="iOS"><span></span> iOS
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
-                                    <button class="btn btn-danger" ng-click="removeNewChoice()"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
-                             <button class="btn btn-success pull-right " ng-show="showAddChoice(choice)" ng-click="addNewChoice()" ng-disabled="vm.isDisableAdd"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></button>
+                                    <button class="btn btn-danger" ng-click="removeNewCell(cell)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+                             <button class="btn btn-success pull-right " ng-show="showAddCell(cell)" ng-click="addNewCell()" ng-disabled="vm.isDisableAdd"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></button>
                                 </div>
                             </div>
                         </div>

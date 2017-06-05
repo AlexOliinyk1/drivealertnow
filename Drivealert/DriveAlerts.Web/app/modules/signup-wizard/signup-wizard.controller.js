@@ -51,17 +51,17 @@
 
         _loadDevices();
 
-        $scope.choices = [
+        $scope.cells = [
             { id: 'choice1', fullName: 'fullName 1', phoneNumber: 'phoneNumber 1', phoneOs: 'phoneOs 1' },
           
         ];
 
-        $scope.addNewChoice = function () {
-            var newItemNo = $scope.choices.length + 1;
+        $scope.addNewCell = function () {
+            var newItemNo = $scope.cells.length + 1;
             if (newItemNo < 5) {
                 vm.isDisableAdd = false;
 
-                $scope.choices.push({ 'id': 'choice' + newItemNo, 'fullName': '', 'phoneNumber': '', 'phoneOs': '' });
+                $scope.cells.push({ 'id': 'cell' + newItemNo, 'fullName': '', 'phoneNumber': '', 'phoneOs': '' });
 
             }
             else {
@@ -69,16 +69,23 @@
             }
         };
 
-        $scope.removeNewChoice = function () {
-            var newItemNo = $scope.choices.length - 1;
+        $scope.removeNewCell = function (cell) {
+             
+            //var newItemNo = $scope.cells.length - 1;
+            $scope.cells;
             vm.isDisableAdd = false;
-            if (newItemNo !== 0) {
-                $scope.choices.pop();
-            }
+            
+                //$scope.cells.pop();
+                $scope.cells = $scope.cells.filter(function (obj) {
+                    return obj.id !== cell.id;
+                });
+            
+           
+            $scope.cells;
         };
 
-        $scope.showAddChoice = function (choice) {
-            return choice.id === $scope.choices[$scope.choices.length - 1].id;
+        $scope.showAddCell = function (cell) {
+            return cell.id === $scope.cells[$scope.cells.length - 1].id;
         };
 
 
