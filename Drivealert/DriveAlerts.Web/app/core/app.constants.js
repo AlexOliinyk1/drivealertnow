@@ -30,6 +30,8 @@
             //Auth
             authorize: apiServiceBaseUri + apiVersion + '/token',//POST
             report: apiServiceBaseUri + apiVersion + '/reports/phones/',//{phoneNumber},POST
+            // signup wizard
+            getCounties: apiServiceBaseUri + apiVersion + '/counties/',//GET 
         }
     });
 }());

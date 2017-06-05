@@ -11,7 +11,7 @@
                 <a class="inactive" show-tab href="#validation-step2" data-toggle="tab">Step 2</a>
             </li>
             <li>
-                <a class="inactive" show-tab href="#validation-step3" data-toggle="tab">Step 3</a>
+                <a class="inactive" show-tab href="#validation-step3" data-toggle="tab" ng-hide="vm.step1.isHavePromotionCode && !vm.step1.isPartOfSafetyProgram">Step 3</a>
             </li>
         </ul>
         <!-- END Step Tabs -->
@@ -34,19 +34,19 @@
                             <label for="validation-email">Please answer the following questions:</label><br>
                             <span>Enter your email that was used during the purchase and your order number</span>
                             <div class="form-material form-material-primary">
-                                <input class="form-control" ng-model="vm.step1.email" type="email" id="validation-email" name="validation-email" placeholder="Please enter your email">
+                                <input class="form-control" ng-model="vm.step1.email" type="email" id="wizard-email" name="wizard-email" placeholder="Please enter your email">
                             </div>
 
                             <div class="form-material form-material-primary">
                                 <input class="form-control"
                                        ng-disabled="vm.step1.isHavePromotionCode"
                                        ng-model="vm.step1.orderNumber"
-                                       type="text" id="validation-order" name="validation-firstname" placeholder="Please enter your order">
+                                       type="text" id="wizard-order" name="wizard-order" placeholder="Please enter your order">
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-group"></div>
+                    <br>
 
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
@@ -54,29 +54,44 @@
                                 <select ng-model="vm.step1.isHavePromotionCode"
                                         ng-init="vm.step1.isHavePromotionCode = vm.step1.yesNoQuestion[1].value"
                                         ng-options="a.value as a.text for a in vm.step1.yesNoQuestion"
-                                        class="form-control" id="validation-skills" name="validation-skills" size="1"></select>
+                                        class="form-control" id="wizard-isHavePromotionCode" name="wizard-isHavePromotionCode" size="1"></select>
                                 <label for="validation-skills">Do you have promotion code?</label>
                             </div>
 
                             <div class="form-material form-material-primary" ng-hide="!vm.step1.isHavePromotionCode">
-                                <input class="form-control" ng-model="vm.step1.promotionCode" type="text" id="validation-order" name="validation-firstname" placeholder="Please enter Promotion code">
+                                <input class="form-control" ng-model="vm.step1.promotionCode" type="text" id="wizard-promotionCode" name="wizard-promotionCode" placeholder="Please enter Promotion code">
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-group"></div>
+                    <br>
 
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
                             <div class="form-material form-material-primary">
                                 <select ng-model="vm.step1.isPartOfSafetyProgram"
-                                        ng-init="vm.step1.isPartOfSafetyProgram = vm.step1.yesNoQuestion[1]"
-                                        ng-options="a as a.text for a in vm.step1.yesNoQuestion track by a.value"
-                                        class="form-control" id="validation-skills" name="validation-skills" size="1"></select>
+                                        ng-init="vm.step1.isPartOfSafetyProgram = vm.step1.yesNoQuestion[1].value"
+                                        ng-options="a.value as a.text for a in vm.step1.yesNoQuestion"
+                                        class="form-control" id="wizard-isPartOfSafetyProgram" name="wizard-isPartOfSafetyProgram" size="1"></select>
 
                                 <label for="validation-skills">Are you part of any Court mandated County Distracted Driving Safety Program?</label>
                             </div>
+                            <div class="form-material form-material-primary" ng-hide="!vm.step1.isPartOfSafetyProgram">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <div class="form-material form-material-primary">
+                                        <select ng-options="state as state.StateName for state in vm.step1.availableStates"
+                                                ng-model="vm.step1.selectedState" ng-change="vm.step1.selectState(state)"></select>
+
+                                        <select ng-options="countie as countie.Name for countie in vm.step1.availableCounties"
+                                                ng-model="vm.step1.selectedCountie"></select>
+
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
+
+
                     </div>
 
                 </div>
@@ -86,56 +101,112 @@
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
                             <h3>Step 2</h3>
-
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-8 col-sm-offset-2">
-                            <div class="form-material form-material-primary">
-                                <textarea class="form-control" id="validation-details" name="validation-details" rows="9" placeholder="Share something about yourself"></textarea>
-                                <label for="validation-details">Details</label>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-sm-1">  </div>
+                                <div class="col-sm-2"> <span>Driver's Full Name</span>  </div>
+                                <div class="col-sm-3"> <span>Driver’s Cell Phone Number</span>  </div>
+                                <div class="col-sm-3">  <span>Phone’s OS</span> </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row" data-ng-repeat="choice in choices">
+                                <div class="col-sm-1">
+                                    <div class="form-group text-center push-5-t">
+                                        <label>{{$index + 1}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-modal="{{choice.fullName}}" name="full-name-{{$index + 1}}" placeholder="Enter a full name" >
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 push-5-l">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-modal="{{choice.phoneNumber}}" name="phone-number-{{$index + 1}}" placeholder="Enter a phone number" >
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <div class="col-xs-12">
+                                            <label class="css-input css-radio css-radio-warning push-10-r">
+                                                <input type="radio" ng-modal="{{choice.phoneOs}}" name="type-os-{{$index + 1}}" ng-value="Android"><span></span> Android
+                                            </label>
+                                            <label class="css-input css-radio css-radio-warning">
+                                                <input type="radio" ng-modal="{{choice.phoneOs}}" name="type-os-{{$index + 1}}" ng-value="iOS"><span></span> iOS
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-danger" ng-click="removeNewChoice()"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+                             <button class="btn btn-success pull-right " ng-show="showAddChoice(choice)" ng-click="addNewChoice()" ng-disabled="vm.isDisableAdd"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></button>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="panel-footer">
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field </small>, <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove form field :)</small>
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
+
                 <!-- END Step 2 -->
                 <!-- Step 3 -->
-                <div class="tab-pane fade fade-right push-30-t push-50" id="validation-step3">
+                <div class="tab-pane fade fade-right push-30-t push-50" id="validation-step3" ng-hide="vm.step1.isHavePromotionCode && !vm.step1.isPartOfSafetyProgram">
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
                             <h3>Step 3</h3>
 
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
+                            <label for="validation-email">Administrator Information:</label><br>
+                            <span>
+                                The Administrator is the person responsible for setting driving policies and monitoring the driver's habits (parent / employer).
+                                Please fill in the following for the Administrator of your subscription:
+                            </span><br>
+                            <br>
+                            <label for="validation-email">  Administrator Name:</label><br>
                             <div class="form-material form-material-primary">
-                                <input class="form-control" type="text" id="validation-city" name="validation-city" placeholder="Where do you live?">
-                                <label for="validation-city">City</label>
+                                <input class="form-control" ng-model="vm.step3.administratorName" type="text" id="administrator-name" name="administrator-name" placeholder="Please enter your administrator name">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <label for="validation-email">  Administrator's login email:</label>
+                            <div class="form-material form-material-primary">
+                                <input class="form-control" ng-model="vm.step3.administratorEmail" type="email" id="administrator-email" name="administrator-email" placeholder="Please enter your email">
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
+                            <label for="validation-email"> Please create:</label>
                             <div class="form-material form-material-primary">
-                                <select class="form-control" id="validation-skills" name="validation-skills" size="1">
-                                    <option value="">Please select your best skill</option>
-                                    <option value="1">Photoshop</option>
-                                    <option value="2">HTML</option>
-                                    <option value="3">CSS</option>
-                                    <option value="4">JavaScript</option>
-                                </select>
-                                <label for="validation-skills">Skills</label>
+                                <input class="form-control" type="password" id="administrator-password-new" name="administrator-password-new" placeholder="Please enter password">
+                                <input class="form-control" type="password" id="administrator-password-new-confirm" name="administrator-password-new-confirm" placeholder="Please enter confirm password">
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-8 col-sm-offset-2">
-                            <label class="css-input switch switch-sm switch-primary" for="validation-terms">
-                                <input type="checkbox" id="validation-terms" name="validation-terms"><span></span> Agree with the <a data-toggle="modal" data-target="#modal-terms" href="#">terms</a>
-                            </label>
-                        </div>
-                    </div>
+
+
                 </div>
                 <!-- END Step 3 -->
             </div>
@@ -196,6 +267,9 @@
                 }
             }
         });
+
+
+
 
 
     })(jQuery)
