@@ -1,5 +1,5 @@
-﻿app.factory('AuthInterceptorService', ['$q', '$location', 'localStorageService',
-    function ($q, $location, localStorageService) {
+﻿app.factory('AuthInterceptorService', ['$q', '$location', 'localStorageService', 'BufferService',
+    function ($q, $location, localStorageService, bufferService) {
 
         var authInterceptorServiceFactory = {};
 
@@ -24,7 +24,14 @@
                     var authService = $injector.get('AuthService');
                     authService.logOut();
                 }
-                $location.path('#!/login');
+
+                if (bufferService.getIsIFrame) {
+                    $location.path('#!/unatorize');
+                }
+                else {
+                    $location.path('#!/login');
+
+                }
             }
             return $q.reject(rejection);
         }

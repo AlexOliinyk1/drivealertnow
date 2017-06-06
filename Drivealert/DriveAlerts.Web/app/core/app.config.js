@@ -109,6 +109,11 @@
         icon: 'fa-table'
     });
 
+    $routeProvider.when('/unatorize', {
+        templateUrl: '/app/modules/unatorize-socialjudo/unatorize.html',
+        authorize: false
+    });
+
     $routeProvider.otherwise({ redirectTo: '/alerts' });
 
     $httpProvider.interceptors.push('AuthInterceptorService');
