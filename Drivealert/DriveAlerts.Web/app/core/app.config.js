@@ -109,8 +109,9 @@
         icon: 'fa-table'
     });
 
-    $routeProvider.when('/unatorize', {
-        templateUrl: '/app/modules/unatorize-socialjudo/unatorize.html',
+    $routeProvider.when('/unathorize', {
+        templateUrl: '/app/modules/unatgorize-socialjudo/unathorize.html',
+        title: 'Authorize expired',
         authorize: false
     });
 

@@ -1,5 +1,5 @@
-﻿app.factory('AuthService', ['$http', '$q', 'localStorageService', 'ngWebSettings', '$rootScope',
-    function ($http, $q, localStorageService, ngWebSettings, $rootScope) {
+﻿app.factory('AuthService', ['$http', '$q', 'localStorageService', 'ngWebSettings', '$rootScope', '$location',
+    function ($http, $q, localStorageService, ngWebSettings, $rootScope, $location) {
 
         var authServiceFactory = {};
 
@@ -40,7 +40,7 @@
 
             _authentication.isAuth = false;
             _authentication.userName = "";
-
+            //$location.path('#!/login');
         };
 
         var _fillAuthData = function () {

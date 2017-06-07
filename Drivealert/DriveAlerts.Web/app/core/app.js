@@ -4,6 +4,7 @@
     'oitozero.ngSweetAlert',
     'ngSanitize',
     'ngMap',
-    'cgBusy'
+    'cgBusy',
+    'ui.mask'
 ]);
 

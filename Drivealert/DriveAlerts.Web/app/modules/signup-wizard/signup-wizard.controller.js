@@ -1,93 +1,121 @@
-﻿app.controller('SignupWizardController', ['$scope', 'SignupWizardService',
-    function ($scope, signupWizardService) {
+﻿app.controller('SignupWizardController', ['$scope', 'SignupWizardService', '$routeParams',
+    function ($scope, signupWizardService, $routeParams) {
         var vm = this;
-        vm.isDisableAdd = false;
+        var maxPhones = 4;
+        var phoneModel = function () {
+            var model = {};
+            model.id = '';
+            model.fullName = '';
+            model.phoneNumber = '';
+            model.phoneOs = '';
+            model.validationMessage = '';
+            return model;
+        };
 
-        vm.step1 = {
+        vm.init = init;
+        vm.proccess = false;
+        vm.firstStep = {
             email: '',
             orderNumber: '',
-            yesNoQuestion: [{ text: 'Yes', value: true }, { text: 'No', value: false }],
-            isHavePromotionCode: false,
             promotionCode: '',
-            isPartOfSafetyProgram: false,
-            availableStates: [],
             selectedState: '',
-            selectState: function (state) {
-
-                vm.step1.availableCounties = vm.step1.selectedState.Counties;
-            },
+            selectedCounty: '',
+            changeState: changeState,
+            availableStates: [],
             availableCounties: [],
-            selectedCountie: '',
+            isValid: false
         };
+        vm.secondStep = {
+            maxPhones: maxPhones,
+            phones: [new phoneModel()],
+            canAddPhone: true,
+            violations: '',
 
-        vm.step2 = {
+            addPhone: addNewCell,
+            removePhone: removeNewCell,
+            validatePhoneNumber: validatePhoneNumber,
+            isValid: false
+        };
+        vm.thirdStep = {
+            adminName: '',
             email: '',
-            orderNumber: '',
+            password: '',
+            confirmPassword: '',
+            isValid: false
+        };
+        vm.stepsResources = {
             yesNoQuestion: [{ text: 'Yes', value: true }, { text: 'No', value: false }],
             isHavePromotionCode: false,
-            promotionCode: '',
-            isPartOfSafetyProgram: false
+            isPartOfSafetyProgram: false,
+
         };
 
+        $scope.$watch('vm.stepsResources.isPartOfSafetyProgram', function (newVal, oldVal) {
+            if (newVal) {
+                vm.secondStep.maxPhones = 1;
+                vm.secondStep.phones.splice(1, vm.secondStep.phones.length);
+            }
+            else {
+                vm.secondStep.maxPhones = maxPhones;
+            }
+        });
 
-        vm.step3 = {
-            email: '',
-            orderNumber: '',
-            yesNoQuestion: [{ text: 'Yes', value: true }, { text: 'No', value: false }],
-            isHavePromotionCode: false,
-            promotionCode: '',
-            isPartOfSafetyProgram: false
+        function validatePhoneNumber(number) {
+            if (number.phoneNumber) {
+                signupWizardService.validatePhoneNumber(number.phoneNumber)
+                .then(function (response) {
+                    if (response.status != 200) {
+                        number.validationMessage = JSON.parse(response.data.Message).Message;
+                    }
+                    else {
+                        number.validationMessage = '';
+                    }
+                });
+            }
+            else {
+                number.validationMessage = 'Phone Number Is Required';
+            }
+        }
+
+        function addNewCell() {
+            if (vm.secondStep.canAddPhone) {
+                vm.secondStep.phones.push(new phoneModel());
+            }
+
+            vm.secondStep.canAddPhone = vm.secondStep.phones.length < vm.secondStep.maxPhones;
         };
 
+        function removeNewCell(index) {
+            if (vm.secondStep.phones.length > 1) {
+                vm.secondStep.phones.splice(index, 1);
+            }
 
-        function _loadDevices() {
-            vm.isLoading = signupWizardService.getCounties()
+            vm.secondStep.canAddPhone = vm.secondStep.phones.length < vm.secondStep.maxPhones;
+        };
+
+        function changeState() {
+            vm.firstStep.availableCounties = vm.firstStep.selectedState.Counties;
+        }
+
+        function loadStates() {
+            signupWizardService.getCounties()
                 .then(function (result) {
-
-                    //success
-                    vm.step1.availableStates = result;
+                    vm.firstStep.availableStates = result;
                 });
         }
 
-        _loadDevices();
-
-        $scope.cells = [
-            { id: 'choice1', fullName: 'fullName 1', phoneNumber: 'phoneNumber 1', phoneOs: 'phoneOs 1' },
-          
-        ];
-
-        $scope.addNewCell = function () {
-            var newItemNo = $scope.cells.length + 1;
-            if (newItemNo < 5) {
-                vm.isDisableAdd = false;
-
-                $scope.cells.push({ 'id': 'cell' + newItemNo, 'fullName': '', 'phoneNumber': '', 'phoneOs': '' });
-
+        function init() {
+            if ($routeParams.orderNumber && $routeParams.email) {
+                vm.proccess = signupWizardService.validateOrderInfo({ OrderNumber: $routeParams.orderNumber, Email: $routeParams.email })
+                    .then(function (result) {
+                        if (result.status == 200) {
+                            vm.firstStep.email = $routeParams.email;
+                            vm.firstStep.orderNumber = $routeParams.orderNumber;
+                        }
+                    });
             }
-            else {
-                vm.isDisableAdd = true;
-            }
-        };
 
-        $scope.removeNewCell = function (cell) {
-             
-            //var newItemNo = $scope.cells.length - 1;
-            $scope.cells;
-            vm.isDisableAdd = false;
-            
-                //$scope.cells.pop();
-                $scope.cells = $scope.cells.filter(function (obj) {
-                    return obj.id !== cell.id;
-                });
-            
-           
-            $scope.cells;
-        };
-
-        $scope.showAddCell = function (cell) {
-            return cell.id === $scope.cells[$scope.cells.length - 1].id;
-        };
-
-
+            loadStates();
+        }
     }
 ]);

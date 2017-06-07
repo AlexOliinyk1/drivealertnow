@@ -1,0 +1,87 @@
+﻿<div class="form-group">
+    <div class="col-sm-8 col-sm-offset-2">
+        <h3>Step 2</h3>
+    </div>
+</div>
+
+<div class="form-group" ng-show="vm.stepsResources.isPartOfSafetyProgram">
+    <div class="col-sm-8 col-sm-offset-2">
+        <label for="validation-email">Please answer the following questions:</label><br>
+        <span>Violation or Ticket #:</span>
+        <div class="form-material form-material-primary">
+            <input class="form-control" ng-model="vm.secondStep.violations" type="email" id="wizard-email" name="wizard-email" placeholder="Violations">
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-1">
+                <button class="btn btn-success pull-right"
+                        ng-click="vm.secondStep.addPhone()"
+                        ng-disabled="vm.secondStep.phones.length >= vm.secondStep.maxPhones">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="col-sm-2"> <span>Driver's Full Name</span>  </div>
+            <div class="col-sm-3"> <span>Driver’s Cell Phone Number</span>  </div>
+            <div class="col-sm-3">  <span>Phone’s OS</span> </div>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="row" ng-repeat="cell in vm.secondStep.phones">
+            <div class="col-sm-1">
+                <div class="form-group text-center push-5-t">
+                    <label>{{$index + 1}}</label>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="cell.fullName" name="full-name-{{$index + 1}}" placeholder="Enter a full name">
+                </div>
+            </div>
+
+            <div class="col-sm-3 push-5-l">
+                <div class="form-group">
+                    <input type="text" class="form-control" 
+                           ng-blur="vm.secondStep.validatePhoneNumber(cell)"
+                           ng-model="cell.phoneNumber"
+                           ui-mask="(999) 999-9999"  
+                           ui-mask-placeholder ui-mask-placeholder-char="_" 
+                           name="phone-number-{{$index + 1}}" 
+                           placeholder="Enter a phone number">
+                    <label class="text-danger" ng-show="cell.validationMessage.length">{{cell.validationMessage}}</label>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="css-input css-radio css-radio-warning push-10-r">
+                            <input type="radio" ng-model="cell.phoneOs" name="type-os-{{$index + 1}}" ng-value="Android"><span></span> Android
+                        </label>
+                        <label class="css-input css-radio css-radio-warning">
+                            <input type="radio" ng-model="cell.phoneOs" name="type-os-{{$index + 1}}" ng-value="iOS"><span></span> iOS
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <button class="btn btn-danger" ng-click="vm.secondStep.removePhone($index)" ng-disabled="vm.secondStep.phones.length<=1"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel-footer">
+    <div class="form-group">
+        <div class="col-xs-6">
+            <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field </small>, <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove form field :)</small>
+        </div>
+    </div>
+</div>

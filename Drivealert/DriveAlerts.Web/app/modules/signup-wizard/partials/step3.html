@@ -1,0 +1,75 @@
+﻿<div class="form-group">
+    <div class="col-sm-8 col-sm-offset-2">
+        <h3>Step 3</h3>
+
+    </div>
+</div>
+
+<div class="form-group" ng-hide="vm.stepsResources.isPartOfSafetyProgram">
+    <div class="col-sm-8 col-sm-offset-2">
+        <label for="validation-email">Administrator Information:</label><br>
+        <span>
+            The Administrator is the person responsible for setting driving policies and monitoring the driver's habits (parent / employer).
+            Please fill in the following for the Administrator of your subscription:
+        </span><br>
+        <br>
+        <label for="validation-email">  Administrator Name:</label><br>
+        <div class="form-material form-material-primary">
+            <input class="form-control" 
+                   ng-model="vm.thirdStep.adminName" 
+                   type="text"
+                   id="administrator-name"
+                   name="administrator-name" 
+                   placeholder="Please enter your administrator name">
+        </div>
+
+    </div>
+</div>
+
+<div class="form-group" ng-show="vm.stepsResources.isPartOfSafetyProgram">
+    <div class="col-sm-8 col-sm-offset-2">
+        <label for="validation-email">  User email:</label>
+        <div class="form-material form-material-primary">
+            <input class="form-control"
+                   ng-model="vm.thirdStep.email"
+                   type="email"
+                   id="user-email"
+                   name="user-email"
+                   placeholder="Please enter your email">
+        </div>
+    </div>
+</div>
+
+<div class="form-group" ng-hide="vm.stepsResources.isPartOfSafetyProgram">
+    <div class="col-sm-8 col-sm-offset-2">
+        <label for="validation-email">  Administrator's login email:</label>
+        <div class="form-material form-material-primary">
+            <input class="form-control" 
+                   ng-model="vm.thirdStep.email"
+                   type="email" 
+                   id="administrator-email" 
+                   name="administrator-email" 
+                   placeholder="Please enter your email">
+        </div>
+    </div>
+</div>
+
+<div class="form-group"  ng-hide="vm.stepsResources.isPartOfSafetyProgram">
+    <div class="col-sm-8 col-sm-offset-2">
+        <label for="validation-email"> Please create:</label>
+        <div class="form-material form-material-primary">
+            <input class="form-control"
+                   ng-model="vm.thirdStep.password"
+                   type="password" 
+                   id="administrator-password-new" 
+                   name="administrator-password-new" 
+                   placeholder="Please enter password">
+            <input class="form-control" 
+                   ng-model="vm.thirdStep.confirmPassword"
+                   type="password" 
+                   id="administrator-password-new-confirm" 
+                   name="administrator-password-new-confirm" 
+                   placeholder="Please enter confirm password">
+        </div>
+    </div>
+</div>

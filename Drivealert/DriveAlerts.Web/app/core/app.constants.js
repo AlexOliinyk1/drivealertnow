@@ -32,6 +32,8 @@
             report: apiServiceBaseUri + apiVersion + '/reports/phones/',//{phoneNumber},POST
             // signup wizard
             getCounties: apiServiceBaseUri + apiVersion + '/counties/',//GET 
+            validateOrder: apiServiceBaseUri + apiVersion + '/purchases/validate',//POST
+            validatePhoneNumber: apiServiceBaseUri + apiVersion + '/phones/validate',//POST
         }
     });
 }());

@@ -3,6 +3,10 @@
         var service = {};
        
         service.getCounties = _getCounties;
+        service.validateOrderInfo = validateOrderInfo;
+        service.validatePhoneNumber = validatePhoneNumber;
+
+        return service;
 
         function _getCounties() {
 
@@ -16,6 +20,25 @@
                 });
         }
 
-        return service;
+        function validateOrderInfo(toValidate) {
+            return $http.post(ngWebSettings.api.validateOrder, toValidate, { headers: { 'Content-Type': 'application/json' } })
+                .then(function (result) {
+                    return result;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    return false;
+                });
+        }
+
+        function validatePhoneNumber(phoneNumber) {
+            return $http.post(ngWebSettings.api.validatePhoneNumber, phoneNumber, { headers: { 'Content-Type': 'application/json' } })
+                .then(function (result) {
+                    return result;
+                })
+                .catch(function (error) {
+                    return error;
+                });
+        }
     }
 ]);

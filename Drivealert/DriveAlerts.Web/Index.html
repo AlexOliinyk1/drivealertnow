@@ -42,9 +42,9 @@
 
                     <li phone-select class="navbar-text menu-select" ng-hide="(!authentication.isAuth || isIFrame())"></li>
 
-                    <li ng-hide="authentication.isAuth"><a href="http://drivealertnow.com/product/monthly-subscriptions/"><i class="fa fa-shopping-cart"></i> BUY NOW</a></li>
-                    <li ng-hide="authentication.isAuth"><a href="#!/signup-wizard"><i class="fa fa-key"></i> ACTIVATE</a></li>
-                    <li ng-hide="authentication.isAuth"><a href="#!/login"><i class="fa fa-sign-in"></i> LOGIN</a></li>
+                    <li ng-hide="authentication.isAuth || isIFrame()"><a href="http://drivealertnow.com/product/monthly-subscriptions/"><i class="fa fa-shopping-cart"></i> BUY NOW</a></li>
+                    <li ng-hide="authentication.isAuth || isIFrame()"><a href="#!/signup-wizard"><i class="fa fa-key"></i> ACTIVATE</a></li>
+                    <li ng-hide="authentication.isAuth || isIFrame()"><a href="#!/login"><i class="fa fa-sign-in"></i> LOGIN</a></li>
                     <li ng-hide="(!authentication.isAuth || isIFrame())"><a href="" ng-click="logOut()">Logout</a></li>
                 </ul>
 
@@ -78,7 +78,7 @@
     <script src="scripts/angular-local-storage.min.js"></script>
     <script src="scripts/angular-sanitize.min.js"></script>
     <script src="scripts/angular-busy.min.js"></script>
-
+    <script src="Scripts/mg/packages/angular-ui/mask.min.js"></script>
 
     <!-- Plugins -->
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyDcNbMFbtIqN4OncBQUrP03tdEKrahNQVE"></script>

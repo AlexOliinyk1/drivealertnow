@@ -23,11 +23,18 @@
                             return true;
                         }
                         evt.preventDefault();
-                        $location.path("/login");
+
+                        //var bufferService = $injector.get('BufferService');
+
+                        if (bufferService.getIsIFrame()) {
+                            $location.path('/unathorize');
+                        }
+                        else {
+                            $location.path('/login');
+                        }
                     }];
                 }
             }
-
             $rootScope.$broadcast('pageTitle.change.start', null);
         });
 
