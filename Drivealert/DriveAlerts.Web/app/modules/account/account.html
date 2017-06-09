@@ -19,7 +19,22 @@
                             <div class="col-xs-12">
                                 <div class="form-material form-material-primary">
                                     <label for="profile-email">Email</label>
-                                    <input class="form-control input-lg" type="email" id="profile-email" name="profile-email" ng-model="vm.userData.EmailAddress" placeholder="Enter login Email..">
+                                    <input class="form-control input-lg" type="email" id="profile-email" name="profile-email" ng-model="vm.userData.Email" placeholder="Enter login Email..">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="form-material form-material-primary">
+                                    <label for="profile-phone">Phone Number</label>
+                                    <input class="form-control input-lg" 
+                                           type="text" 
+                                           id="profile-phone" 
+                                           name="profile-phone" 
+                                           ng-model="vm.userData.PhoneNumber"
+                                           ui-mask="(999) 999-9999"
+                                           ui-mask-placeholder ui-mask-placeholder-char="_" 
+                                           placeholder="Enter your phone number..">
                                 </div>
                             </div>
                         </div>

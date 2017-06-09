@@ -3,7 +3,8 @@
         var vm = this;
 
         vm.userData = {
-            EmailAddress: "",
+            Email: "",
+            PhoneNumber: "",
             FirstName: "",
             LastName: "",
             TimeZone: 2
@@ -20,9 +21,10 @@
 
         function _getUserData() {
 
-            accountService.getUserData(authService.authentication.userId)
+            accountService.getUserData()
                 .then(function (data) {
-                    if (!data) {
+                    console.log(data);
+                    if (data) {
                         vm.userData = data;
                     } else {
                         //  TODO: Notify about error

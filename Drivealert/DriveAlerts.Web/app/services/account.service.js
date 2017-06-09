@@ -6,8 +6,8 @@
         service.updateUserData = _updateUserData;
         service.changeUserPassword = _changeUserPassword;
 
-        function _getUserData(userId) {
-            return $http.get(ngWebSettings.api.getAccountInfo + userId, { headers: { 'Content-Type': 'application/json' } })
+        function _getUserData() {
+            return $http.get(ngWebSettings.api.getAccountInfo, { headers: { 'Content-Type': 'application/json' } })
                 .then(function (result) {
                     return result.data;
                 })

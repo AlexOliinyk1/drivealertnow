@@ -8,7 +8,7 @@
 
         api: {
             //Account
-            getAccountInfo: apiServiceBaseUri + apiVersion + '/NONE/',//GET: Not implemented
+            getAccountInfo: apiServiceBaseUri + apiVersion + '/accounts/',//GET: Not implemented
             createAccount: apiServiceBaseUri + apiVersion + '/accounts/',//POST: Create new account
             updateAccountInfo: apiServiceBaseUri + apiVersion + '/accounts/',//PUT: Update user info
             //  used 'addPhone' instead this
