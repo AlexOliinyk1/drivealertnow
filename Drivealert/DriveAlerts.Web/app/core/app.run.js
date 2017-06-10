@@ -8,7 +8,7 @@
             var queryString = $location.search();
             var socialToken = queryString.token;
             var socialUserId = queryString.userId;
-            debugger
+
             bufferService.activePhone = queryString.phoneNumber;
 
             AuthService.socialLogin({ socialToken: socialToken, userId: socialUserId })
