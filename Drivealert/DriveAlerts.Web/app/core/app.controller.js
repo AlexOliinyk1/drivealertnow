@@ -11,7 +11,9 @@
         };
 
         $scope.$on('phoneNumber.changed', function (evnt, phone) {
-            bufferService.activePhone = phone;
+            if (phone) {
+                bufferService.activePhone = phone.PhoneNumber;
+            }
         });
 
         $scope.$on('pageTitle.change.start', function (evnt) {

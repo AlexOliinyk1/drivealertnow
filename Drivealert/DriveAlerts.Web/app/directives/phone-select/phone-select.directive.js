@@ -19,8 +19,10 @@
                 devicesService.getDevices(authService.authentication.userId)
                     .then(function (result) {
                         $scope.phones = result;
-                        $scope.activePhone = $scope.phones[0];
-                        bufferService.activePhone = $scope.activePhone;
+                        if (result.length) {
+                            $scope.activePhone = $scope.phones[0];
+                            bufferService.activePhone = $scope.activePhone.phoneNumber;
+                        }
                     });
             }
 

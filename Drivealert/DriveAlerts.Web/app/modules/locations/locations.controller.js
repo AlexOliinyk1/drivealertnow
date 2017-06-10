@@ -4,7 +4,7 @@
 
         vm.isLoading = {};
         vm.phones = [];
-        vm.selectedPhone = {};
+        vm.selectedPhone = 0;
         vm.locations = [];
         vm.searchOptions = {
             DateStart: new Date(),
@@ -20,7 +20,7 @@
 
         $scope.$on('phoneNumber.changed', function (evnt, phone) {
             if (phone) {
-                _changePhoneNumber(phone);
+                _changePhoneNumber(phone.PhoneNumber);
             }
         });
 
@@ -31,7 +31,7 @@
         }
 
         function _loadLocations() {
-            vm.isLoading = locationService.getLocations(vm.selectedPhone.PhoneNumber, vm.searchOptions)
+            vm.isLoading = locationService.getLocations(vm.selectedPhone, vm.searchOptions)
                 .then(function (result) {
                     if (!result.status) {
                         vm.locations = result;

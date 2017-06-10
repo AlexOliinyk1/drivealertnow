@@ -1,7 +1,7 @@
 ﻿app.controller('AlertsController', ['$scope', 'AlertService', 'DevicesService', 'AuthService', 'BufferService',
     function ($scope, alertService, devicesService, authService, bufferService) {
         var vm = this;
-        var selectedPhone = {};
+        var selectedPhone = 0;
 
         vm.isLoading = {};
         vm.alerts = [];
@@ -18,19 +18,19 @@
 
         $scope.$on('phoneNumber.changed', function (evnt, phone) {
             if (phone) {
-                _changePhone(phone);
+                _changePhone(phone.PhoneNumber);
             }
         });
 
         function _init() {
-            if (bufferService.activePhone) {
+            if (bufferService.activePhone != null) {
                 _changePhone(bufferService.activePhone);
             }
         }
 
         //  get alerts for selected phone
         function _searchAlerts() {
-            vm.isLoading = alertService.getAlerts(selectedPhone.PhoneNumber, vm.searchConfig)
+            vm.isLoading = alertService.getAlerts(selectedPhone, vm.searchConfig)
                 .then(function (result) {
                     vm.alerts = result;
                 });
