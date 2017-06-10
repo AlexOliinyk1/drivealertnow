@@ -3,6 +3,7 @@
         var service = {};
         var _isInFrame = false;
 
+        service.authorizationInProcess = false;
         service.editorDevice = null;
         service.activePhone = null;
         service.setIsIFrame = _setIsIFrame;

@@ -2,40 +2,64 @@
     function (AuthService, $rootScope, $location, bufferService, $http) {
 
         if (window != window.top) {
-            var res = $location.search();
             bufferService.setIsIFrame(true);
-            AuthService.setSpesialAuthData(res.token, res.userId);
+            bufferService.authorizationInProcess = true;
+
+            var queryString = $location.search();
+            var socialToken = queryString.token;
+            var socialUserId = queryString.userId;
+            debugger
+            bufferService.activePhone = queryString.phoneNumber;
+
+            AuthService.socialLogin({ socialToken: socialToken, userId: socialUserId })
+                .then(function success(data) {
+
+                    AuthService.setSpesialAuthData(data.token, data.userId);
+                    bufferService.authorizationInProcess = false;
+                    $location.path('/');
+
+                }, function fail(exc) {
+
+                    console.log(exc);
+                    bufferService.authorizationInProcess = false;
+                    $location.path('/unathorize');
+
+                });
         }
         else {
             AuthService.fillAuthData();
         }
 
-        console.log(bufferService.getIsIFrame());
-
         $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
         $rootScope.$on("$routeChangeStart", function (evt, to, from) {
+            //  Custom redirecting rule for authorized or anonymous users
             if (to.authorize === true) {
                 to.resolve = to.resolve || {};
                 if (!to.resolve.authorizationResolver) {
                     to.resolve.authorizationResolver = ["AuthService", function (AuthService) {
-                        if (AuthService.authentication.isAuth) {
-                            return true;
-                        }
-                        evt.preventDefault();
+                        //  need to wait for end of social authorization
+                        if (!bufferService.authorizationInProcess) {
 
-                        //var bufferService = $injector.get('BufferService');
+                            if (AuthService.authentication.isAuth) {
+                                return true;
+                            }
+                            evt.preventDefault();
 
-                        if (bufferService.getIsIFrame()) {
-                            $location.path('/unathorize');
-                        }
-                        else {
-                            $location.path('/login');
+                            if (bufferService.getIsIFrame()) {
+                                //  if site use as IFrame show unauthorize page
+                                $location.path('/unathorize');
+                            }
+                            else {
+                                //  if main site go to login
+                                $location.path('/login');
+                            }
                         }
                     }];
                 }
             }
-            $rootScope.$broadcast('pageTitle.change.start', null);
+
+            $rootScope.$broadcast('pageTitle.change.start');
         });
 
         $rootScope.$on("$routeChangeSuccess", function (evt, to, from) {

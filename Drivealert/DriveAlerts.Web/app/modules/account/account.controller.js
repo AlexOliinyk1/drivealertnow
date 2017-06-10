@@ -20,10 +20,8 @@
         vm.changePassword = _changePassword;
 
         function _getUserData() {
-
             accountService.getUserData()
                 .then(function (data) {
-                    console.log(data);
                     if (data) {
                         vm.userData = data;
                     } else {

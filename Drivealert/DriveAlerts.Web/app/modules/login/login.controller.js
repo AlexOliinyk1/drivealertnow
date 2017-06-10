@@ -8,9 +8,10 @@
 
     function _login() {
 
-        AuthService.login(self.loginData).then(function (response) {
-            $location.path('/');
-        },
+        AuthService.login(self.loginData)
+            .then(function (response) {
+                $location.path('/');
+            },
             function (err) {
                 self.message = err.error_description;
             });

@@ -2,8 +2,10 @@
     function ($http, $q, ngWebSettings) {
         var service = {};
 
-        service.getLocations = _getFakeLocations;
+        service.getLocations = _getLocations;
         service.toGoogleCoordinates = _toGoogleCoordinates;
+
+        return service;
 
         function _toGoogleCoordinates(coordinates) {
             var d = $q.defer();
@@ -79,6 +81,5 @@
             return d.promise;
         }
 
-        return service;
     }
 ]);

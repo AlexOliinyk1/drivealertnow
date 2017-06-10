@@ -2,12 +2,23 @@
     function ($http, $q, localStorageService, ngWebSettings, $rootScope, $location) {
 
         var authServiceFactory = {};
-
         var _authentication = {
             isAuth: false,
             userName: "",
             userId: 0
         };
+
+        var loginSucceded = function (response) {
+            localStorageService.set('authorizationData', { token: response.data.access_token, userName: response.data.userName, userId: response.data.userId });
+
+            _authentication.isAuth = true;
+            _authentication.userName = response.data.userName;
+            _authentication.userId = response.data.userId;
+
+            $rootScope.$broadcast('user.authorized', {});
+
+            return { token: response.data.access_token, userId: response.data.userId };
+        }
 
         var _login = function (loginData) {
 
@@ -17,13 +28,7 @@
 
             $http.post(ngWebSettings.api.authorize, data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .then(function (response) {
-                    localStorageService.set('authorizationData', { token: response.data.access_token, userName: response.data.userName, userId: response.data.userId });
-
-                    _authentication.isAuth = true;
-                    _authentication.userName = response.data.userName;
-                    _authentication.userId = response.data.userId;
-
-                    $rootScope.$broadcast('user.authorized', {});
+                    loginSucceded(response);
                     deferred.resolve(response);
                 }, function (err, status) {
                     _logOut();
@@ -34,13 +39,32 @@
 
         };
 
+        var _socialLogin = function (loginData) {
+            var deferred = $q.defer();
+
+            var params = "grant_type=client_credentials"
+                + "&api_key=" + ngWebSettings.clientId
+                + "&token=" + loginData.socialToken
+                + "&userId=" + loginData.userId;
+
+            $http.post(ngWebSettings.api.authorize, params, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+                .then(function success(response) {
+                    deferred.resolve(loginSucceded(response));
+                }, function fail(exc, status) {
+                    _logOut();
+                    deferred.reject(exc.data);
+                });
+
+
+            return deferred.promise;
+        }
+
         var _logOut = function () {
 
             localStorageService.remove('authorizationData');
 
             _authentication.isAuth = false;
             _authentication.userName = "";
-            //$location.path('#!/login');
         };
 
         var _fillAuthData = function () {
@@ -72,6 +96,7 @@
         }
 
         authServiceFactory.login = _login;
+        authServiceFactory.socialLogin = _socialLogin;
         authServiceFactory.logOut = _logOut;
         authServiceFactory.fillAuthData = _fillAuthData;
         authServiceFactory.setSpesialAuthData = _setSpesialAuthData;

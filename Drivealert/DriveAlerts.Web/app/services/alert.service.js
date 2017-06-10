@@ -2,6 +2,10 @@
     function ($http, $q, ngWebSettings, authService) {
         var alertServiceFactory = {};
 
+        alertServiceFactory.getAlerts = _getAlerts;
+
+        return alertServiceFactory;
+
         function _getAlerts(phoneNumber, searchParams) {
             return $http.post(ngWebSettings.api.alertSearch + phoneNumber, searchParams, { headers: { 'Content-Type': 'application/json' } })
                 .then(function (result) {
@@ -11,6 +15,7 @@
                     return [];
                 });
         }
+
         function _getFakeAlerts() {
             var d = $q.defer();
             // imitate request
@@ -39,8 +44,5 @@
 
             return d.promise;
         }
-
-        alertServiceFactory.getAlerts = _getFakeAlerts;
-        return alertServiceFactory;
     }
 ]);
