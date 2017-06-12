@@ -39,6 +39,8 @@
         });
 
         function _init() {
+            vm.searchOptionsUI.DateStart.setDate(vm.searchOptionsUI.DateEnd.getDate() - 2);
+
             if (bufferService.activePhone !== null) {
                 _changePhoneNumber(bufferService.activePhone);
             }
@@ -78,8 +80,6 @@
                     }
                 });
         }
-
-
 
         _init();
     }

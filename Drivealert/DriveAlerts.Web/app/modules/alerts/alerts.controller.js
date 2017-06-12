@@ -28,6 +28,8 @@
         });
 
         function _init() {
+            vm.searchConfigUI.UIDateStart.setDate(vm.searchConfigUI.UIDateEnd.getDate() - 2);
+
             if (bufferService.activePhone != null) {
                 _changePhone(bufferService.activePhone);
             }

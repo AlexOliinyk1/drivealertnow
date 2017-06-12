@@ -33,6 +33,11 @@
                 });
         }
 
-        _loadReport();
+        function _init() {
+            vm.filterUI.fromDate.setDate(vm.filterUI.toDate.getDate() - 2);
+            _loadReport();
+        }
+
+        _init();
     }
 ]);
