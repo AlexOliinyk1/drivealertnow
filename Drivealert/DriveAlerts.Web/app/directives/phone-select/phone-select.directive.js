@@ -40,7 +40,6 @@
             link: link,
             restrict: 'EA',
             templateUrl: '/app/directives/phone-select/phone-select.template.html'
-            //templateUrl: '<select ng-model="activePhone" ng-init="activePhone = phones[0]" ng-options="phone.PhoneNumber for phone in phones"></select>'
         };
     }
 ]);
