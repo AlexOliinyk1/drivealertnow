@@ -29,13 +29,13 @@
         });
 
         $scope.$watch('vm.searchOptionsUI.DateStart', function (current, original) {
-            vm.searchOptions.DateStart = new Date(current);
-            vm.searchOptions.DateStart.setHours(0, 0, 0, 0);
+            searchOptions.DateStart = new Date(current);
+            searchOptions.DateStart.setHours(0, 0, 0, 0);
         });
 
         $scope.$watch('vm.searchOptionsUI.DateEnd', function (current, original) {
-            vm.searchOptions.DateEnd= new Date(current);
-            vm.searchOptions.DateEnd.setHours(0, 0, 0, 0);
+            searchOptions.DateEnd= new Date(current);
+            searchOptions.DateEnd.setHours(0, 0, 0, 0);
         });
 
         function _init() {
