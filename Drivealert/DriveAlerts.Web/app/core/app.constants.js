@@ -34,6 +34,8 @@
             getCounties: apiServiceBaseUri + apiVersion + '/counties/',//GET 
             validateOrder: apiServiceBaseUri + apiVersion + '/purchases/validate',//POST
             validatePhoneNumber: apiServiceBaseUri + apiVersion + '/phones/validate',//POST
+            validatePromoCode: apiServiceBaseUri + apiVersion + '/purchases/promocodes/validate',//POST
+            submitWizard: apiServiceBaseUri + apiVersion + '/accounts/wizard',//POST /v1/accounts/wizard
         }
     });
 }());

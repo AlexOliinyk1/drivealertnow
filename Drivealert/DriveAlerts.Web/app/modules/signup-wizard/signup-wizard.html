@@ -1,7 +1,7 @@
 ﻿<div class="row" ng-init="vm.init()">
     <!-- Validation Wizard (.js-wizard-validation class is initialized in js/pages/base_forms_wizard.js) -->
     <!-- For more examples you can check out http://vadimg.com/twitter-bootstrap-wizard-example/ -->
-    <div class="js-wizard-simple block" cg-busy="vm.proccess">
+    <div id="register-wizard" class="block" cg-busy="vm.proccess">
 
         <!-- Step Tabs -->
         <ul class="nav nav-tabs nav-tabs-alt nav-justified">
@@ -43,12 +43,12 @@
             <div class="block-content block-content-mini block-content-full border-t">
                 <div class="row">
                     <div class="col-xs-6">
-                        <button class="wizard-prev btn btn-warning" type="button">
+                        <button class="wizard-prev btn btn-warning" type="button" ng-click="vm.goBack()">
                             <i class="fa fa-arrow-circle-o-left"></i> Previous
                         </button>
                     </div>
                     <div class="col-xs-6 text-right">
-                        <button class="wizard-next btn btn-success" type="button">
+                        <button class="wizard-next btn btn-success" type="button" ng-click="vm.goForward($event)">
                             Next <i class="fa fa-arrow-circle-o-right"></i>
                         </button>
                         <button class="wizard-finish btn btn-primary" type="submit"><i class="fa fa-check-circle-o"></i> Submit</button>
@@ -65,16 +65,13 @@
 <script>
     (function ($) {
 
-        jQuery('.js-wizard-simple').bootstrapWizard({
-            'tabClass': '',
-            'firstSelector': '.wizard-first',
+        jQuery('#register-wizard').bootstrapWizard({
             'previousSelector': '.wizard-prev',
             'nextSelector': '.wizard-next',
-            'lastSelector': '.wizard-last',
+            'finishSelector': '.wizard-finish',
             'onTabShow': function ($tab, $navigation, $index) {
                 var $total = $navigation.find('li').length;
                 var $current = $index + 1;
-                var $percent = ($current / $total) * 100;
 
                 // Get vital wizard elements
                 var $wizard = $navigation.parents('.block');
@@ -83,9 +80,11 @@
                 var $btnNext = $wizard.find('.wizard-next');
                 var $btnFinish = $wizard.find('.wizard-finish');
 
-                // Update progress bar if there is one
-                if ($progress) {
-                    $progress.css({ width: $percent + '%' });
+                if ($index == 0) {
+                    $btnPrev.attr('disabled', 'disabled');
+                }
+                else {
+                    $btnPrev.removeAttr('disabled');
                 }
 
                 // If it's the last tab then hide the last button and show the finish instead
@@ -96,6 +95,9 @@
                     $btnNext.show();
                     $btnFinish.hide();
                 }
+            },
+            'onTabClick': function (tab, navigation, index) {
+                return false;
             }
         });
 

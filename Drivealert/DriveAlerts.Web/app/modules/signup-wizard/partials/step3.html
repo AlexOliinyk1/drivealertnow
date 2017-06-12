@@ -16,7 +16,7 @@
         <label for="validation-email">  Administrator Name:</label><br>
         <div class="form-material form-material-primary">
             <input class="form-control" 
-                   ng-model="vm.thirdStep.adminName" 
+                   ng-model="vm.steps[2].adminName" 
                    type="text"
                    id="administrator-name"
                    name="administrator-name" 
@@ -31,7 +31,7 @@
         <label for="validation-email">  User email:</label>
         <div class="form-material form-material-primary">
             <input class="form-control"
-                   ng-model="vm.thirdStep.email"
+                   ng-model="vm.steps[2].email"
                    type="email"
                    id="user-email"
                    name="user-email"
@@ -45,7 +45,7 @@
         <label for="validation-email">  Administrator's login email:</label>
         <div class="form-material form-material-primary">
             <input class="form-control" 
-                   ng-model="vm.thirdStep.email"
+                   ng-model="vm.steps[2].email"
                    type="email" 
                    id="administrator-email" 
                    name="administrator-email" 
@@ -59,13 +59,13 @@
         <label for="validation-email"> Please create:</label>
         <div class="form-material form-material-primary">
             <input class="form-control"
-                   ng-model="vm.thirdStep.password"
+                   ng-model="vm.steps[2].password"
                    type="password" 
                    id="administrator-password-new" 
                    name="administrator-password-new" 
                    placeholder="Please enter password">
             <input class="form-control" 
-                   ng-model="vm.thirdStep.confirmPassword"
+                   ng-model="vm.steps[2].confirmPassword"
                    type="password" 
                    id="administrator-password-new-confirm" 
                    name="administrator-password-new-confirm" 

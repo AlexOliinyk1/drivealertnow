@@ -10,17 +10,19 @@
         <label for="validation-email">Please answer the following questions:</label><br>
         <span>Enter your email that was used during the purchase and your order number</span>
         <div class="form-material form-material-primary">
-            <input class="form-control" ng-model="vm.firstStep.email" type="email" id="wizard-email" name="wizard-email" placeholder="Please enter your email">
+            <input class="form-control" ng-model="vm.steps[0].email" type="email" id="wizard-email" name="wizard-email" placeholder="Please enter your email">
         </div>
 
-        <div class="form-material form-material-primary">
+        <div class="form-material form-material-primary" ng-hide="vm.stepsResources.isHavePromotionCode">
             <input class="form-control"
-                    ng-model="vm.firstStep.orderNumber"
-                    ng-hide="vm.stepsResources.isHavePromotionCode"
-                    type="text" id="wizard-order" 
-                    name="wizard-order" 
-                    placeholder="Please enter your order">
+                   ng-model="vm.steps[0].orderNumber"
+                   ng-blur="vm.steps[0].validateOrder()"
+                   type="text" id="wizard-order"
+                   name="wizard-order"
+                   placeholder="Please enter your order number">
+            <label class="text-danger" ng-show="vm.steps[0].orderNumberMessage.length">{{vm.steps[0].orderNumberMessage}}</label>
         </div>
+
     </div>
 </div>
 
@@ -33,12 +35,22 @@
             <select ng-model="vm.stepsResources.isHavePromotionCode"
                     ng-init="vm.stepsResources.isHavePromotionCode = vm.stepsResources.yesNoQuestion[1].value"
                     ng-options="a.value as a.text for a in vm.stepsResources.yesNoQuestion"
-                    class="form-control" 
+                    class="form-control"
                     id="wizard-isHavePromotionCode"
-                    name="wizard-isHavePromotionCode" 
+                    name="wizard-isHavePromotionCode"
                     size="1"></select>
         </div>
- 
+
+        <div class="form-material form-material-primary" ng-show="vm.stepsResources.isHavePromotionCode">
+            <input class="form-control"
+                   ng-model="vm.steps[0].promotionCode"
+                   ng-blur="vm.steps[0].validatePromoCode(vm.steps[0].promotionCode)"
+                   type="text"
+                   id="wizard-promotioncode"
+                   name="wizard-promotioncode"
+                   placeholder="Please enter your Promotion Code">
+            <label class="text-danger" ng-show="vm.steps[0].promocodeMessage.length">{{vm.steps[0].promocodeMessage}}</label>
+        </div>
     </div>
 </div>
 
@@ -52,7 +64,7 @@
                     ng-options="a.value as a.text for a in vm.stepsResources.yesNoQuestion"
                     class="form-control"
                     id="wizard-isPartOfSafetyProgram"
-                    name="wizard-isPartOfSafetyProgram" 
+                    name="wizard-isPartOfSafetyProgram"
                     size="1"></select>
 
             <label for="validation-skills">Are you part of any Court mandated County Distracted Driving Safety Program?</label>
@@ -60,12 +72,12 @@
         <div class="form-material form-material-primary" ng-hide="!vm.stepsResources.isPartOfSafetyProgram">
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="form-material form-material-primary">
-                    <select ng-options="state as state.StateName for state in vm.firstStep.availableStates"
-                            ng-model="vm.firstStep.selectedState" 
-                            ng-change="vm.firstStep.changeState()"></select>
+                    <select ng-options="state as state.StateName for state in vm.steps[0].availableStates"
+                            ng-model="vm.steps[0].selectedState"
+                            ng-change="vm.steps[0].changeState()"></select>
 
-                    <select ng-options="countie as countie.Name for countie in vm.firstStep.availableCounties"
-                            ng-model="vm.firstStep.selectedCounty"></select>
+                    <select ng-options="countie as countie.Name for countie in vm.steps[0].availableCounties"
+                            ng-model="vm.steps[0].selectedCounty"></select>
 
                 </div>
 
