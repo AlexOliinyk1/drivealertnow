@@ -4,25 +4,25 @@
 
         vm.setting = {
             PhoneNumber: "",
-            AllowHeadset: false,             //Notify if Bluetooth is off
-            AlertSpeedFrame: '',             //Interval Between Alerts
-            AlertSpeed: 60,                  //Radiobuttons
-            GpsNotify: false,                //Notify if Location Services are disabled
-            BluetoothNotify: false,          //Notify if Bluetooth is off
-            DongleDisconnected: false,       //
-            UninstalledNotify: false,        //Notify if Uninstalled
-            EnableSpeedAlerts: false,        //Enable Speed Alerts
-            EnableAutoReply: false,          //for android only?
-            AutoReplyText: "",               //for android only?
+            AllowHeadset: false,
+            AlertSpeedFrame: '',
+            AlertSpeed: 60,
+            GpsNotify: false,
+            BluetoothNotify: false,
+            DongleDisconnected: false,
+            UninstalledNotify: false,
+            EnableSpeedAlerts: false,
+            EnableAutoReply: false,
+            AutoReplyText: "",
             //admin settings
-            EnableAdminTextAlerts: false,    //Enable Text Alerts to Administrator
-            AdminMobilePhoneNumber: "",      //Phone
-            EnableAdminEmailAlerts: false,   //Enable Email Alerts to Administrator
-            AdminEmailAddress: "",           //Email
+            EnableAdminTextAlerts: false,
+            AdminMobilePhoneNumber: "",
+            EnableAdminEmailAlerts: false,
+            AdminEmailAddress: "",
             //END admin settings
-            EnableReportMovements: false,    //Report vehicle activity
-            EnableReportCoordinates: false,  // Include coordinates
-            ReportTrackFrame: '',            //Interval between location moves
+            EnableReportMovements: false,
+            EnableReportCoordinates: false,
+            ReportTrackFrame: '',
             AllowedPhone1: "911",
             AllowedPhone2: "",
             AllowedPhone3: "",
@@ -30,12 +30,12 @@
             AllowedPhone5: "",
             AllowedPhoneOwner1: "",
             AllowedPhoneOwner2: "",
-            //WHY why we used only numbers after 1 aand 2 ? 
             AllowedPhoneOwner3: "",
             AllowedPhoneOwner4: "",
             AllowedPhoneOwner5: ""
         };
-        vm.activePhone = {};
+        vm.activePhone = '';
+        vm.activePhoneId = '';
         vm.saveSettings = _saveSettings;
         vm.saveAllSettings = _saveAllSettings;
         vm.modalContent = null;
@@ -60,8 +60,16 @@
                 });
         }
 
+        function _getPhoneId(phoneNumber) {
+            devicesService.searchDeviceByNumber(authService.authentication.userId, phoneNumber)
+                .then(function (result) {
+                    vm.activePhoneId = result.PhoneId
+                    _getSettings(vm.activePhoneId);
+                });
+        }
+
         function _saveSettings() {
-            settingsService.saveSettings(vm.activePhone.PhoneId, vm.setting)
+            settingsService.saveSettings(vm.activePhoneId, vm.setting)
                 .then(function (result) {
                     if (result) {
                         console.log("Save successed");
@@ -84,7 +92,7 @@
 
         function _changePhone(phone) {
             vm.activePhone = phone;
-            _getSettings(vm.activePhone.PhoneId);
+            _getPhoneId(phone);
         }
 
         function _showModal(modalContentId) {

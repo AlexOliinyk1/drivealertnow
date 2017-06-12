@@ -6,6 +6,7 @@
         service.createDevice = _createDevice;
         service.updateDevice = _updateDevice;
         service.removeDevice = _removeDevice;
+        service.searchDeviceByNumber = _searchDeviceByNumber;
 
         //  GET /v1/phones/users/{userId}
         function _getDevices(userId) {
@@ -22,6 +23,29 @@
                     console.log(error);
                     return [];
                 });
+        }
+
+        function _searchDeviceByNumber(userId, phoneNumber) {
+
+            var defer = $q.defer();
+
+            $http.get(ngWebSettings.api.getPhones + userId, { headers: { 'Content-Type': 'application/json' } })
+                .then(function (result) {
+                    var phones = result.data;
+
+                    for (var i = 0; i < phones.length; i++) {
+                        if (phones[i].PhoneNumber === phoneNumber) {
+                            return defer.resolve(phones[i]);
+                        }
+                    }
+
+                    return defer.reject(null);
+                }).catch(function (error) {
+                    console.log(error);
+                    return [];
+                });
+
+            return defer.promise;
         }
 
         //  POST /v1/phones/users/{userId}
