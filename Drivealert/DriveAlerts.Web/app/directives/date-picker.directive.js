@@ -1,10 +1,14 @@
 ﻿app.directive('datePicker', function () {
     return {
         restrict: 'A',
-        link: function (scope, element, attrs) {
+        scope: {
+            modelValue: '=ngModel'
+        },
+        link: function (scope, element, attrs, ctrl) {
             element.daterangepicker({
                 singleDatePicker: true,
-                showDropdowns: true
+                showDropdowns: true,
+                startDate: scope.modelValue,
             });
         }
     };
