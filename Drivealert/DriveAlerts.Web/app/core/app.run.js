@@ -1,36 +1,39 @@
 ﻿app.run(['AuthService', '$rootScope', '$location', 'BufferService', '$http',
     function (AuthService, $rootScope, $location, bufferService, $http) {
 
-        if (window != window.top) {
-            bufferService.setIsIFrame(true);
-            bufferService.authorizationInProcess = true;
+        var auth = function () {
+            if (window != window.top) {
+                bufferService.setIsIFrame(true);
+                bufferService.authorizationInProcess = true;
 
-            var queryString = $location.search();
-            var socialToken = queryString.token;
-            var socialUserId = queryString.userId;
+                var queryString = $location.search();
+                var socialToken = queryString.token;
+                var socialUserId = queryString.userId;
 
-            bufferService.activePhone = queryString.phoneNumber;
 
-            AuthService.socialLogin({ socialToken: socialToken, userId: socialUserId })
-                .then(function success(data) {
+                AuthService.socialLogin({ socialToken: socialToken, userId: socialUserId })
+                    .then(function success(data) {
 
-                    AuthService.setSpesialAuthData(data.token, data.userId);
-                    bufferService.authorizationInProcess = false;
-                    $location.path('/');
+                        AuthService.setSpesialAuthData(data.token, data.userId);
+                        bufferService.authorizationInProcess = false;
+                        bufferService.activePhone = queryString.phoneNumber;
 
-                }, function fail(exc) {
+                        $location.path('/');
 
-                    console.log(exc);
-                    bufferService.authorizationInProcess = false;
-                    $location.path('/unathorize');
+                    }, function fail(exc) {
 
-                });
+                        console.log(exc);
+                        bufferService.authorizationInProcess = false;
+                        $location.path('/unathorize');
+
+                    });
+            }
+            else {
+                AuthService.fillAuthData();
+            }
         }
-        else {
-            AuthService.fillAuthData();
-        }
 
-        $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+        auth();
 
         $rootScope.$on("$routeChangeStart", function (evt, to, from) {
             //  Custom redirecting rule for authorized or anonymous users
