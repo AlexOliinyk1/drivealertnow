@@ -62,7 +62,7 @@
                                                ng-model="location.Selected"><span></span>
                                     </label>
                                 </td>
-                                <td>{{location.Date}}</td>
+                                <td>{{location.Date | date:'MM-dd-yyyy h:mma'}}</td>
                                 <td>{{location.Longitude}}</td>
                                 <td>{{location.Latitude}}</td>
                             </tr>

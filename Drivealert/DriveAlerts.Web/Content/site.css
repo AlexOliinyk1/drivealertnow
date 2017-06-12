@@ -126,3 +126,7 @@ textarea.form-control.auto-reply-text {
     width: 250px;
 }
 
+.summary-rowspan{
+    border-right: 1px solid #f0f0f0 !important;
+}
+

@@ -46,9 +46,9 @@
                     <td class="align-middle">{{user.FirstName}} {{user.LastName}}</td>
                     <td>{{user.DailyTripReport.length + user.Violations.length}}</td>
                     <td>{{user.PhoneNumber}}</td>
-                    <td>{{user.InstallDate}}</td>
-                    <td>{{user.LastActivityDate}}</td>
-                    <td>{{user.LastActivityDate}}</td>
+                    <td>{{user.InstallDate | date:'MM-dd-yyyy h:mma'}}</td>
+                    <td>{{user.LastActivityDate | date:'MM-dd-yyyy h:mma'}}</td>
+                    <td>{{user.LastActivityDate | date:'MM-dd-yyyy h:mma'}}</td>
                 </tr>
                 <tr id="collapseOne" class="collapse collapsed main-{{vm.summaryReport.indexOf(user)}}" ng-repeat-end>
                     <td></td>
@@ -71,7 +71,7 @@
                                 <tbody>
                                     <tr ng-repeat="call in user.Violations">
                                         <td>
-                                            {{call.CreationDate}}
+                                            {{call.CreationDate | date:'MM-dd-yyyy'}}
                                         </td>
                                         <td>
                                             {{call.ViolationDescription}}
@@ -80,7 +80,7 @@
 
                                     <tr ng-repeat="connection in user.connectionViolations">
                                         <td>
-                                            {{connection.date}}
+                                            {{connection.date | date:'MM-dd-yyyy'}}
                                         </td>
                                         <td>
                                             {{connection.description}}
@@ -109,17 +109,16 @@
                                 <tbody ng-repeat="trip in user.DailyTripReport">
                                     <tr>
                                         <td>
-                                            {{trip.CreationDate | date:'MM/dd/yyyy'}}
+                                            {{trip.CreationDate | date:'MM-dd-yyyy'}}
                                         </td>
                                         <td colspan="2"></td>
                                     </tr>
 
-                                    <!--<tr>
-                                        <td rowspan="{{trip.Trips.length+1}}"></td>
-                                    </tr>-->
+                                    <tr>
+                                        <td class="summary-rowspan" rowspan="{{trip.Trips.length+1}}"></td>
+                                    </tr>
 
                                     <tr ng-repeat="data in trip.Trips">
-                                        <td></td>
                                         <td>
                                             {{data.Start  | date:'h:mma'}}
                                         </td>

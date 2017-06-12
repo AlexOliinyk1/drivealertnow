@@ -35,8 +35,8 @@
                             <td>{{phone.FirstName}} {{phone.LastName}}</td>
                             <td>{{phone.PhoneNumber}}</td>
                             <!--<td>{{phone.PhoneId}}</td>-->
-                            <td>{{phone.LastActivityDate}}</td>
-                            <td>{{phone.InstallDate}}</td>
+                            <td>{{phone.LastActivityDate | date:'MM-dd-yyyy'}}</td>
+                            <td>{{phone.InstallDate | date:'MM-dd-yyyy'}}</td>
                             <td class="text-center">{{phone.PhoneOs}}</td>
                             <td class="text-center">{{phone.Version}}</td>
 
