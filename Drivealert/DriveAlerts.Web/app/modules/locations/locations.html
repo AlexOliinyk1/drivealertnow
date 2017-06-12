@@ -7,12 +7,12 @@
                 <form class="form-inline">
                     <div class="form-group col-md-8">
 
-                        <label class="col-md-2 control-label push-5-t" for="date-start">Date Range</label>
+                        <label class="col-md-2 control-label push-5-t">Date Range</label>
                         <div class="col-md-8">
                             <div class="input-daterange input-group col-xs-7" data-date-format="mm/dd/yyyy">
-                                <input date-picker class="form-control" type="text" id="date-start" ng-model="vm.searchOptions.DateStart" name="date-start" placeholder="From">
+                                <input date-picker class="form-control" type="text" id="date-start" ng-model="vm.searchOptionsUI.DateStart" name="date-start" placeholder="From">
                                 <span class="input-group-addon"><i class="fa fa-chevron-right"></i></span>
-                                <input date-picker class="form-control" type="text" id="date-end" ng-model="vm.searchOptions.DateEnd" name="date-end" placeholder="To">
+                                <input date-picker class="form-control" type="text" id="date-end" ng-model="vm.searchOptionsUI.DateEnd" name="date-end" placeholder="To">
                             </div>
                             <button class="btn btn-primary" ng-click="vm.searchLocations()" type="submit">Update</button>
 

@@ -1,12 +1,16 @@
 ﻿app.controller('LocationsController', ['$scope', 'LocationService', 'DevicesService', 'AuthService', 'BufferService', 'NgMap',
     function ($scope, locationService, devicesService, authService, bufferService, NgMap) {
         var vm = this;
+        var searchOptions = {
+            DateStart: undefined,
+            DateEnd: undefined
+        };
 
         vm.isLoading = {};
         vm.phones = [];
         vm.selectedPhone = 0;
         vm.locations = [];
-        vm.searchOptions = {
+        vm.searchOptionsUI = {
             DateStart: new Date(),
             DateEnd: new Date()
         };
@@ -24,6 +28,16 @@
             }
         });
 
+        $scope.$watch('vm.searchOptionsUI.DateStart', function (current, original) {
+            vm.searchOptions.DateStart = new Date(current);
+            vm.searchOptions.DateStart.setHours(0, 0, 0, 0);
+        });
+
+        $scope.$watch('vm.searchOptionsUI.DateEnd', function (current, original) {
+            vm.searchOptions.DateEnd= new Date(current);
+            vm.searchOptions.DateEnd.setHours(0, 0, 0, 0);
+        });
+
         function _init() {
             if (bufferService.activePhone !== null) {
                 _changePhoneNumber(bufferService.activePhone);
@@ -31,14 +45,9 @@
         }
 
         function _loadLocations() {
-            vm.isLoading = locationService.getLocations(vm.selectedPhone, vm.searchOptions)
+            vm.isLoading = locationService.getLocations(vm.selectedPhone, searchOptions)
                 .then(function (result) {
-                    if (!result.status) {
-                        vm.locations = result;
-                    }
-                    else {
-                        console.log(result);
-                    }
+                    vm.locations = result;
                 });
         }
 
