@@ -23,19 +23,19 @@
                 d.resolve([
                     {
                         User: "Social Judo",
-                        Date: "5/17/2017 3:19 PM",
+                        Date: new Date(),
                         ViolationType: "Speed alerts",
                         ViolationDescription: "Some deription"
                     },
                     {
                         User: "Another User",
-                        Date: "5/17/2017 3:19 PM",
+                        Date: new Date(),
                         ViolationType: "Emergency calls",
                         ViolationDescription: "This is test decription"
                     },
                     {
                         User: "Social Judo",
-                        Date: "5/17/2017 3:19 PM",
+                        Date: new Date(),
                         ViolationType: "Connection Violations",
                         ViolationDescription: "Lorem ipsum"
                     }
